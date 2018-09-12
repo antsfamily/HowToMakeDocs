@@ -10,7 +10,7 @@ Welcome to A Brief Tutorial On Making Beauty Documents!
 
 - **邮箱（email）**：zhiliu.mind@gmail.com
 - **博客（blog）**：http://blog.csdn.net/enjoyyl
-- **主页（homepage）**：[iridescent.ink](iridescent.ink)
+- **主页（homepage）**：[iridescent.ink](http://iridescent.ink)
 
 .. Image:: _static/figs/contact_nolinkedin.png
 
