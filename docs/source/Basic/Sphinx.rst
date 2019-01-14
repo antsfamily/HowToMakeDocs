@@ -461,9 +461,67 @@ Sphinx重要扩展介绍
 .. tip:: 简单包含某个文件, 可以使用 `include <http://docutils.sourceforge.net/docs/ref/rst/directives.html#include>`_ 指令.
 
 
+代码与语法着色
+++++++++++++++++++
+
+更多功能, 参考 `Showing code examples <http://www.sphinx-doc.org/en/stable/usage/restructuredtext/directives.html#showing-code-examples>`_  
+
+::
+
+  .. code-block:: python
+      :lineno-start: 10
+      :emphasize-lines: 9
+      :linenos: 
+      :caption: demo_python.m
+      :name: bind-id
+
+      import pytool
+      import numpy as np
+      import matplotlib.pyplot as plt
+
+      # =====================generate Ellipse=====================
+      a = 6  # major axis
+      b = 2  # minor axis
+      x0 = 10  # center x0
+      y0 = 10  # center y0
+      N = 1000  # number of points
+
+      # angle for rotating ellipse data
+      theta = np.pi * 30 / 180
+
+      x, y = pytool.ellipse_surface(a, b, x0, y0, N, 'rand')
+
+      x = x - np.mean(x)
+      y = y - np.mean(y)
 
 
+将被渲染成
 
+.. code-block:: python
+    :lineno-start: 10
+    :emphasize-lines: 9
+    :linenos: 
+    :caption: demo_python.m
+    :name: bind-id
+
+    import pytool
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # =====================generate Ellipse=====================
+    a = 6  # major axis
+    b = 2  # minor axis
+    x0 = 10  # center x0
+    y0 = 10  # center y0
+    N = 1000  # number of points
+
+    # angle for rotating ellipse data
+    theta = np.pi * 30 / 180
+
+    x, y = pytool.ellipse_surface(a, b, x0, y0, N, 'rand')
+
+    x = x - np.mean(x)
+    y = y - np.mean(y)
 
 
 问题集锦
