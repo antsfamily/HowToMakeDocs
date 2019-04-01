@@ -453,8 +453,23 @@ Sphinx自带主题
 Sphinx重要扩展介绍
 --------------------
 
+Sphinx扩展
+++++++++++++++++++
+
+可以通过以下链接找到 Sphinx的扩展:
+
+- `sphinx extensions doc <http://www.sphinx-doc.org/en/master/usage/extensions/index.html>`_  : 官方文档介绍, 含 **Built-in extensions** 和 **Third-party extensions** 
+- `Awesome Sphinx <https://github.com/yoloseem/awesome-sphinxdoc>`_ : A curated list of awesome tools for Sphinx Python Documentation Generator.
+- `sphinx-contrib <https://bitbucket.org/birkenfeld/sphinx-contrib>`_ : a collection of Sphinx extensions maintained by their respective authors. It is not an official part of Sphinx.
+- `Survey of Sphinx extensions <https://sphinxext-survey.readthedocs.io/en/latest/>`_ : This is list of Sphinx extensions at October, 2014.
+
+
+内置扩展简介
++++++++++++++++++++
+
+
 目录树 (toctree)
-++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 由于 reST 没有处理多个文档, 或将文档分割成多个输出文件的机制, Sphinx使用一个自定义指令来添加组成整篇文档的单个文件间的关系, 以及目录. 这个指令的核心就是 ``toctree`` .
 
@@ -462,7 +477,7 @@ Sphinx重要扩展介绍
 
 
 代码与语法着色
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 更多功能, 参考 `Showing code examples <http://www.sphinx-doc.org/en/stable/usage/restructuredtext/directives.html#showing-code-examples>`_  
 
@@ -522,6 +537,114 @@ Sphinx重要扩展介绍
 
     x = x - np.mean(x)
     y = y - np.mean(y)
+
+
+第三方扩展
++++++++++++++++++++
+
+如下扩展可以通过类似 ``pip install extensions_name`` 的命令安装, 在 `conf.py` 文件中的 ``extensions`` 中加入该扩展, 以下不在赘述.
+
+sphinxcontrib-proof
+^^^^^^^^^^^^^^^^^^^^^
+
+`sphinxcontrib-proof <https://sphinxcontrib-proof.readthedocs.io/en/latest/>`_  提供定理, 定义, 证明等支持. 在 `conf.py` 文件中的 ``extensions`` 中加入该扩展 ( ``sphinxcontrib.proof`` ) .
+
+然后在 `_static` 目录下新建 `proof.css` 和 `proof.js` 两个文件, 加入如下内容, 你可以自己定义其它的样式.
+
+`proof.css` ::
+
+    .proof {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    /* Titles */
+    .proof .proof-title {
+      background-color: #0000EE;
+      border: 1px solid #86989b;
+      color: white;
+      font-size: 120%;
+      }
+
+    /* Content */
+    .proof-content {
+      border: 1px solid #9fb1b4;
+      background-color: #F0F8FF;
+      padding: 0.5em 1em;
+    }
+
+
+    /* Toggle proof */
+    .proof-type-proof > .proof-title {
+        display: block;
+        clear: both;
+    }
+
+    .proof-type-proof > .proof-title:after {
+        content: " ▼";
+    }
+
+    .proof-type-proof > .proof-title.open:after {
+        content: " ▲";
+    }
+
+`proof.js` ::
+
+      $(document).ready(function() {
+          $(".proof-type-proof > *").hide();
+          $(".proof-type-proof .proof-title").show();
+          $(".proof-type-proof .proof-title").click(function() {
+              $(this).parent().children().not(".proof-title").toggle(400);
+              $(this).parent().children(".proof-title").toggleClass("open");
+          })
+      });
+
+
+
+使用举例::
+
+    .. _righttriangle:
+
+    .. proof:definition:: Right triangle
+
+       A *right triangle* is a triangle in which one angle is a right angle.
+
+    .. _pythagorean:
+
+    .. proof:theorem:: Pythagorean theorem
+
+       In a :ref:`righttriangle`, the square of the hypotenuse is equal to the sum of the squares of the other two sides.
+
+    .. _proof:
+
+    .. proof:proof::
+
+       The proof is left to the reader.
+
+    You can label and reference definition and theorems (e.g. :numref:`theorem {number} <pythagorean>`). You can also reference proofs (see the :ref:`proof of the Pythagorean theorem <proof>`).
+
+
+代码将被渲染为
+
+.. _righttriangle:
+
+.. proof:definition:: Right triangle
+
+   A *right triangle* is a triangle in which one angle is a right angle.
+
+.. _pythagorean:
+
+.. proof:theorem:: Pythagorean theorem
+
+   In a :ref:`righttriangle`, the square of the hypotenuse is equal to the sum of the squares of the other two sides.
+
+.. _proof:
+
+.. proof:proof::
+
+   The proof is left to the reader.
+
+You can label and reference definition and theorems (e.g. :numref:`theorem {number} <pythagorean>`). You can also reference proofs (see the :ref:`proof of the Pythagorean theorem <proof>`).
 
 
 问题集锦
