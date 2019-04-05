@@ -23,6 +23,7 @@ import sphinx_rtd_theme
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
 
 # -- General configuration ------------------------------------------------
 
@@ -39,13 +40,24 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     # 'sphinx.ext.imgmath',
-    'sphinx.ext.mathjax',
-    # 'sphinxcontrib.katex',
+    # 'sphinx.ext.mathjax',
+    'sphinxcontrib.katex',
+    'sphinxcontrib.bibtex',
     'sphinxcontrib.proof',
+    'sphinxcontrib.seqdiag',  # http://blockdiag.com/en/
     'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
+    # 'sphinx.ext.viewcode',
+    # 'sphinx.ext.githubpages',
+    'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+    'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+    'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
 ]
+
+#-------------------------added------------
+#-----------pip install sphinx-numfig
+# -----------# https://bitbucket.org/arjones6/sphinx-numfig
+number_figures = True
+figure_caption_prefix = 'Figure'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -217,7 +229,7 @@ html_show_copyright = True
 #   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
 #   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr', 'zh'
 #html_search_language = 'en'
-#html_search_language = 'en'
+html_search_language = 'en'
 
 
 # A dictionary with options for the search language support, empty by default.
@@ -398,7 +410,8 @@ epub_exclude_files = ['search.html']
 # `Math support in Sphinx <file:///mnt/d/library/pubdocs/sphinx/manuals/sphinx-stable/contents.html#document-ext/math>`_
 
 # Set this option to True if you want all displayed math to be numbered. The default is False.
-# math_number_all = True
+math_number_all = True
+math_numfig = True
 # The path to the JavaScript file to include in the HTML files in order to
 # load MathJax.
 mathjax_path = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'

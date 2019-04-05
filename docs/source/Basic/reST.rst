@@ -652,7 +652,14 @@ There is a particular *magic* expansion for tables. Here is how it works:
        (a + b)^2  &=  (a + b)(a + b) \\
                   &=  a^2 + 2ab + b^2
 
-.. hint:: 当使用MathJax对数学公式渲染时, 可能不能达到预期效果, 请参考 :ref:`SecSphinxMathSupport` .
+.. hint:: 
+
+    - 当使用MathJax对数学公式渲染时, 可能不能达到预期效果, 请参考 :ref:`SecSphinxMathSupport` ;
+    
+    - 关于Sphinx中的如何使用Katex渲染公式, 参见 :ref:`SecSphinxMathSupport` .
+      
+    - 关于Sphinx中的如何使用定义定理等环境, 参见 :ref:`SubSubSection_SphinxcontribProof` ;
+      
 
 
 .. seealso::
@@ -913,6 +920,8 @@ Lorem ipsum [Ref]_ dolor sit amet.
 
 引文的用法与脚注用法相似, 但标签不是数字, 也不是以 ``#`` 开头.
 
+.. hint::
+    关于Sphinx中如何使用 ``bibtex`` 参考文献, 请参考 :ref:`SubSubSection_SphinxcontribBibtex` 小结.
 
 替换 (Substitutions)
 +++++++++++++++++++++

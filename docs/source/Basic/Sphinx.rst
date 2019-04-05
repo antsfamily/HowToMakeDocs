@@ -544,6 +544,8 @@ Sphinx扩展
 
 如下扩展可以通过类似 ``pip install extensions_name`` 的命令安装, 在 `conf.py` 文件中的 ``extensions`` 中加入该扩展, 以下不在赘述.
 
+.. _SubSubSection_SphinxcontribProof:
+
 sphinxcontrib-proof
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -645,6 +647,166 @@ sphinxcontrib-proof
    The proof is left to the reader.
 
 You can label and reference definition and theorems (e.g. :numref:`theorem {number} <pythagorean>`). You can also reference proofs (see the :ref:`proof of the Pythagorean theorem <proof>`).
+
+
+图表编号
+^^^^^^^^^^^^^^^^^
+
+借用 jterrace 的论文模版 `sphinxtr <http://jterrace.github.io/sphinxtr/>`_ 中的 ``numfig`` 可以实现. 从 `这里 <https://github.com/jterrace/sphinxtr>`_ 下载源码, 将其中的 `sphinxtr` 放到你的文档源码根目录下, 然后 `conf.py` 添加
+
+.. code-block:: python
+   :caption: Code Blocks can have captions.
+   :linenos:
+   :emphasize-lines: 1,20-22
+
+    sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
+
+    extensions = [
+      'sphinx.ext.autodoc',
+      'sphinx.ext.doctest',
+      'sphinx.ext.intersphinx',
+      'sphinx.ext.todo',
+      'sphinx.ext.coverage',
+      # 'sphinx.ext.imgmath',
+      # 'sphinx.ext.mathjax',
+      'sphinxcontrib.katex',
+      'sphinxcontrib.proof',  # https://framagit.org/spalax/sphinxcontrib-proof/
+      'sphinxcontrib.bibtex',  # https://sphinxcontrib-bibtex.readthedocs.io/en/latest/
+      'sphinxcontrib.seqdiag',  # http://blockdiag.com/en/
+      'sphinx.ext.ifconfig',
+      # 'sphinx.ext.viewcode',
+      # 'sphinx.ext.githubpages',
+      # 'rst2pdf.pdfbuilder',
+      # 'sphinx.ext.napoleon',
+      'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+      'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+      'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+    ]
+
+    math_numfig = True
+    number_figures = True
+    figure_caption_prefix = 'Figure'
+
+
+比如, 这里通过如下代码插入图片:
+
+::
+
+  .. _fig-testFigureNumber:
+
+  .. figure:: ../_static/figs/logo.*
+      :alt: Test Figure Number
+      :width: 30%
+      :align: center
+      
+      Test Figure Number
+
+代码将被渲染为
+
+.. figure:: ../_static/figs/logo.*
+    :alt: Test Figure Number
+    :width: 100%
+    :align: center
+    
+    Test Figure Number
+
+
+在其它地方可以通过 ``:num:`fig-testFigureNumber``` 引用,  :ref:`fig-testFigureNumber` .
+
+
+
+
+.. _SubSubSection_SphinxcontribBibtex:
+
+sphinxcontrib-bibtex
+^^^^^^^^^^^^^^^^^^^^^
+
+在 Sphinx中可以使用 `BibTex <http://www.bibtex.org/>`_  , 通过 ``pip install sphinxcontrib-bibtex`` 安装扩展, 并在 `conf.py` 中添加该扩展 ``sphinxcontrib.bibtex`` , 官方文档在 `这里 <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html>`_ .
+
+然后, 新建 `reference.rst` , 加入如下代码:
+
+.. code-block:: rst
+   :caption: reference.rst.
+   :linenos:
+   :emphasize-lines: 3,5
+
+   .. bibliography:: ./refs.bib
+       :style: unsrt
+       :list: enumerated
+       :start: 1
+
+假如 `refs.bib` 文件中的内容如下:
+
+::
+
+    @Proceedings{1993:PatiOMP, 
+    author={Y. C. {Pati} and R. {Rezaiifar} and P. S. {Krishnaprasad}}, 
+    booktitle={Proceedings of 27th Asilomar Conference on Signals, Systems and Computers}, 
+    title={Orthogonal matching pursuit: recursive function approximation with applications to wavelet decomposition}, 
+    year={1993}, 
+    volume={}, 
+    number={}, 
+    pages={40-44 vol.1}, 
+    doi={10.1109/ACSSC.1993.342465}, 
+    ISSN={1058-6393}, 
+    month={Nov},
+  }
+
+
+  @article{2003JChPh.118.6720W,
+     author = {{Wu}, Y. and {Batista}, V.~S.},
+      title = "{Matching-pursuit for simulations of quantum processes}",
+    journal = {\jcp},
+   keywords = {Tunneling traversal time quantum Zeno dynamics, Foundations of quantum mechanics, measurement theory, Fourier analysis, Integral transforms},
+       year = 2003,
+      month = apr,
+     volume = 118,
+      pages = {6720-6724},
+        doi = {10.1063/1.1560636},
+     adsurl = {http://adsabs.harvard.edu/abs/2003JChPh.118.6720W},
+    adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+  }
+
+可以通过 ``:cite:`1993:PatiOMP` , :cite:`2003JChPh.118.6720W``` 来引用.
+
+.. hint::
+    如果你想自定义参考文献引用格式, 可以通过 ``pip install pybtex`` 安装 `pybtex <https://docs.pybtex.org/api/plugins.html>`_ , 然后参考 `这里 <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#custom-formatting-sorting-and-labelling>`_ 或者下面的讲述配置使用.
+
+
+
+sphinxcontrib-seqdiag
+^^^^^^^^^^^^^^^^^^^^^
+
+通过 ``pip install sphinxcontrib-seqdiag`` 安装扩展, 并在 `conf.py` 中添加该扩展 ``sphinxcontrib.seqdiag`` , 官方文档在 `这里 <http://blockdiag.com/en/>`_ .
+
+
+::
+
+    .. blockdiag::
+
+     blockdiag {
+       blockdiag -> generates -> "block-diagrams";
+       blockdiag -> is -> "very easy!";
+
+       blockdiag [color = "greenyellow"];
+       "block-diagrams" [color = "pink"];
+       "very easy!" [color = "orange"];
+     }
+
+     被渲染为:
+
+.. blockdiag::
+
+   blockdiag {
+     blockdiag -> generates -> "block-diagrams";
+     blockdiag -> is -> "very easy!";
+
+     blockdiag [color = "greenyellow"];
+     "block-diagrams" [color = "pink"];
+     "very easy!" [color = "orange"];
+   }
+
+
 
 
 问题集锦
@@ -800,8 +962,13 @@ Sphinx数学支持
 
 如上所述, 在 ``extensions`` 列表变量里添加项 ``'sphinx.ext.imgmath',`` 即可. 数学公式通过LaTex引擎渲染成图片, 然后在HTML中显示. 但要求PC机安装有LaTex.
 
-如果你不像使用默认配置, 请参考 `Math support in Sphinx <http://www.sphinx-doc.org/en/stable/contents.html#document-ext/math>`_ .
+如果你不使用默认配置, 请参考 `Math support in Sphinx <http://www.sphinx-doc.org/en/stable/contents.html#document-ext/math>`_ .
 
+
+使用KaTex渲染公式
+^^^^^^^^^^^^^^^^^^^
+
+ `KaTex <https://katex.org/>`_ 具有比 MathJax更快的解析速度. 使用 ``pip install sphinxcontrib.katex`` 安装 `KaTex <https://katex.org/>`_  扩展. 如上所述, 在 ``extensions`` 列表变量里添加项 ``'sphinxcontrib.katex',`` 即可. 数学公式通过KaTex引擎渲染公式在HTML中显示. 
 
 使用MathJax渲染公式
 ^^^^^^^^^^^^^^^^^^^^^

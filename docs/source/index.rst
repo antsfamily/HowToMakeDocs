@@ -22,8 +22,8 @@ Welcome to A Brief Tutorial On Making Beauty Documents!
 .. _Contents:
 
 .. toctree::
-   :numbered: 2
-   :maxdepth: 2
+   :numbered: 4
+   :maxdepth: 4
 
    Introduction/intro
    Basic/index
