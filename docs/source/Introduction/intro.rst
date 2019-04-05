@@ -14,7 +14,14 @@
 - reStructuredText简明教程
 - 版本控制系统Git教程
 
+.. math:: 
+   \alpha \neq \beta
 
+:math:`\alpha\ {\neq} \beta`   
+
+:math:`\alpha\ {\not=} \beta`   
+
+:math:`\alpha {\ne} \beta`   
 
 撰写与发布
 ++++++++++++++
