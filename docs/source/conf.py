@@ -44,10 +44,14 @@ extensions = [
     'sphinxcontrib.katex',
     'sphinxcontrib.bibtex',
     'sphinxcontrib.proof',
+    'sphinxcontrib.blockdiag',  # http://blockdiag.com/en/
     'sphinxcontrib.seqdiag',  # http://blockdiag.com/en/
+    'sphinxcontrib.actdiag',  # http://blockdiag.com/en/
+    'sphinxcontrib.nwdiag',  # http://blockdiag.com/en/
     'sphinx.ext.ifconfig',
     # 'sphinx.ext.viewcode',
     # 'sphinx.ext.githubpages',
+    'pybtex',  # for style of bibtex
     'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
     'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
     'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions

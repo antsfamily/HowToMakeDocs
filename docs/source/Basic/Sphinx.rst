@@ -731,7 +731,6 @@ sphinxcontrib-bibtex
    :emphasize-lines: 3,5
 
    .. bibliography:: ./refs.bib
-       :style: unsrt
        :list: enumerated
        :start: 1
 
@@ -767,18 +766,41 @@ sphinxcontrib-bibtex
     adsnote = {Provided by the SAO/NASA Astrophysics Data System}
   }
 
-可以通过 ``:cite:`1993:PatiOMP` , :cite:`2003JChPh.118.6720W``` 来引用.
+可以通过 ``:cite:`1993:PatiOMP` , :cite:`2003JChPh.118.6720W``` 来引用, 即 :cite:`1993:PatiOMP` , :cite:`2003JChPh.118.6720W` . 如果一次性引用多个文献, 可以用逗号分开, 但不要有空格, 比如这样 ``:cite:`1993:PatiOMP,2003JChPh.118.6720W``` 得到 :cite:`1993:PatiOMP,2003JChPh.118.6720W` .
 
 .. hint::
     如果你想自定义参考文献引用格式, 可以通过 ``pip install pybtex`` 安装 `pybtex <https://docs.pybtex.org/api/plugins.html>`_ , 然后参考 `这里 <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#custom-formatting-sorting-and-labelling>`_ 或者下面的讲述配置使用.
 
 
+.. note::
+    ``pybtex`` 提示: 安装好 pybtex 后, 若想在你的文档工程中使用, 需要在 `conf.py` 文件中添加该扩展, 即 ``extensions = ['pybtex']`` , 然后你就可以使用了, 在 ``.. bibliography:: ./refs.bib`` 里添加 ``:style: unsrt`` 即可以更改文献引用格式. 
 
-sphinxcontrib-seqdiag
+    .. code-block:: rst
+       :caption: reference.rst.
+       :linenos:
+       :emphasize-lines: 2
+
+       .. bibliography:: ./refs.bib
+          :style: unsrt
+
+    注意, 如果添加 ``list`` 或 ``start`` 等域, 不能正常渲染, 不能跳转!
+
+sphinxcontrib-xxxdiag
 ^^^^^^^^^^^^^^^^^^^^^
 
-通过 ``pip install sphinxcontrib-seqdiag`` 安装扩展, 并在 `conf.py` 中添加该扩展 ``sphinxcontrib.seqdiag`` , 官方文档在 `这里 <http://blockdiag.com/en/>`_ .
+``xxxdiag`` 包含以下几种类型:
 
+- ``blockdiag`` : `blockdiag <http://blockdiag.com/en/blockdiag/index.html>`_  
+- ``seqdiag`` : `seqdiag <http://blockdiag.com/en/seqdiag/index.html>`_  
+- ``actdiag`` : `actdiag <http://blockdiag.com/en/actdiag/index.html>`_  
+- ``nwdiag`` : `nwdiag <http://blockdiag.com/en/nwdiag/index.html>`_  
+
+
+通过 ``pip install sphinxcontrib-xxxdiag`` 安装扩展, 并在 `conf.py` 中添加该扩展 ``sphinxcontrib.xxxdiag`` , 官方文档在 `这里 <http://blockdiag.com/en/>`_ .
+
+举例: 如
+
+原始代码
 
 ::
 
@@ -793,7 +815,7 @@ sphinxcontrib-seqdiag
        "very easy!" [color = "orange"];
      }
 
-     被渲染为:
+渲染结果
 
 .. blockdiag::
 
@@ -807,7 +829,104 @@ sphinxcontrib-seqdiag
    }
 
 
+原始代码
 
+::
+
+  .. seqdiag::
+
+   seqdiag {
+     seqdiag -> "sequence-diagrams" [label = "generates"];
+     seqdiag --> "is very easy!";
+   }
+
+渲染结果
+
+.. seqdiag::
+
+   seqdiag {
+     seqdiag -> "sequence-diagrams" [label = "generates"];
+     seqdiag --> "is very easy!";
+   }
+
+
+原始代码
+
+::
+
+  .. actdiag::
+
+     actdiag {
+       write -> convert -> image
+
+       lane user {
+          label = "User"
+          write [label = "Writing reST"];
+          image [label = "Get diagram IMAGE"];
+       }
+       lane actdiag {
+          convert [label = "Convert reST to Image"];
+       }
+     }
+
+渲染结果
+
+.. actdiag::
+
+   actdiag {
+     write -> convert -> image
+
+     lane user {
+        label = "User"
+        write [label = "Writing reST"];
+        image [label = "Get diagram IMAGE"];
+     }
+     lane actdiag {
+        convert [label = "Convert reST to Image"];
+     }
+   }
+
+原始代码
+
+::
+
+  .. nwdiag::
+
+     nwdiag {
+       network dmz {
+           address = "210.x.x.x/24"
+
+           web01 [address = "210.x.x.1"];
+           web02 [address = "210.x.x.2"];
+       }
+       network internal {
+           address = "172.x.x.x/24";
+
+           web01 [address = "172.x.x.1"];
+           db01;
+           app01;
+       }
+     }
+
+渲染结果
+
+.. nwdiag::
+
+   nwdiag {
+     network dmz {
+         address = "210.x.x.x/24"
+
+         web01 [address = "210.x.x.1"];
+         web02 [address = "210.x.x.2"];
+     }
+     network internal {
+         address = "172.x.x.x/24";
+
+         web01 [address = "172.x.x.1"];
+         db01;
+         app01;
+     }
+   }
 
 问题集锦
 ---------

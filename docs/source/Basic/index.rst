@@ -11,6 +11,7 @@
    Sphinx
    reST
    Git
+   reference
 
 
 
