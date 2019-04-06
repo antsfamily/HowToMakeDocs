@@ -424,6 +424,8 @@ Sphinx自带主题
 .. seealso:: 如果文档含有中文, 且需要中文搜索功能, 请参考 :ref:`secChineseSearchProblem`
 
 
+.. _genLaTex:
+
 生成LaTex文档
 ++++++++++++++
 
@@ -432,6 +434,57 @@ Sphinx自带主题
 安装完成后, 进入Sphinx工程根目录, 在终端输入： ``make latex`` 即可生成对应的LaTex文件, 在目录 ``build/latex`` 里.
 
 .. seealso:: 如果文档含有中文, 请参考 :ref:`secChineseDocProblem`
+
+这里还可以自定义 ``Latex`` 输出样式, 具体参见 `LaTeX customization <https://www.sphinx-doc.org/en/master/latex.html>`_ . 主要修改 `conf.py` 文件, 本人采用的配置如下:
+
+.. code-block:: python
+   :caption: conf.py.
+   :linenos:
+   :emphasize-lines:
+
+    # -- Options for LaTeX output ---------------------------------------------
+    latex_engine = 'xelatex'
+    latex_elements = {
+    'passoptionstopackages': r'''\PassOptionsToPackage{svgnames}{xcolor}''',
+    # The paper size ('letterpaper' or 'a4paper').
+    #'papersize': 'letterpaper',
+    'papersize': 'a4paper',
+
+    # The font size ('10pt', '11pt' or '12pt').
+    #'pointsize': '10pt',
+
+    # Additional stuff for the LaTeX preamble.
+    #'preamble': '',
+
+
+    # Latex figure (float) alignment
+    'figure_align': 'htbp',
+
+
+    'sphinxsetup': r'''
+    verbatimwithframe = false,
+    VerbatimColor = {named}{OldLace},
+    TitleColor = {named}{Black},
+    hintBorderColor = {named}{Green},
+    hintBgColor = {named}{LightGreen},
+    attentionborder = 3pt,
+    attentionBorderColor = {named}{Salmon},
+    attentionBgColor = {named}{LightSalmon},
+    noteborder = 2pt,
+    noteBorderColor = {named}{Goldenrod},
+    noteBgColor = {named}{LightGoldenrod},
+    cautionborder = 3pt,
+    cautionBorderColor = {named}{Pink},
+    cautionBgColor = {named}{LightPink}''',
+
+    # Using Package for ZH
+    'preamble':r'''\usepackage{ctex}
+    ''',
+    }
+
+.. hint::
+    上述代码中包含的颜色信息, 可以从 `svgnames Colors <http://www.latextemplates.com/svgnames-colors>`_ 找到. 
+
 
 
 生成PDF文档
@@ -443,8 +496,18 @@ Sphinx自带主题
 其实，我们还可以先通过 ``make latex`` 生成 `tex` 文件，然后就可以像处理普通 tex 文件那样自由编辑编译 生成PDF文件。
 
 
+.. seealso:: 如果文档含有中文, 请参考 :ref:`secChineseDocProblem` , 如果你觉得生成的PDF不好看, 可以参考 :ref:`genLaTex` 自定义.
 
-.. seealso:: 如果文档含有中文, 请参考 :ref:`secChineseDocProblem`
+自定义生成的PDF文件部分环境预览如下
+
+.. figure:: ../_static/figs/mkdocs/customizeLatexColor.png
+   :scale: 80 %
+   :alt: 自定义生成的PDF文件部分环境预览
+   :align: center
+
+   自定义生成的PDF文件部分环境预览结果
+
+   自定义生成的PDF文件部分环境预览结果
 
 
 

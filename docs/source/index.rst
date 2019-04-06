@@ -15,6 +15,11 @@ Welcome to A Brief Tutorial On Making Beauty Documents!
 .. Image:: _static/figs/contact_nolinkedin.png
 
 
+.. hint::
+
+    `PDF 版文档可以点这里查看 <./_static/pdf/MakingBeautyDocuments.pdf>`_  
+    
+
 |                                              **写于2015年6月24日**
 
 --------------------------------------------

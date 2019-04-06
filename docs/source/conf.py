@@ -249,25 +249,51 @@ html_search_language = 'en'
 htmlhelp_basename = 'aBriefTutorialOnMakingBeautyDocuments'
 
 # -- Options for LaTeX output ---------------------------------------------
-
+latex_engine = 'xelatex'
 latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    #'papersize': 'letterpaper',
+'passoptionstopackages': r'''\PassOptionsToPackage{svgnames}{xcolor}''',
+# The paper size ('letterpaper' or 'a4paper').
+#'papersize': 'letterpaper',
+'papersize': 'a4paper',
 
-    # The font size ('10pt', '11pt' or '12pt').
-    #'pointsize': '10pt',
+# The font size ('10pt', '11pt' or '12pt').
+#'pointsize': '10pt',
 
-    # Additional stuff for the LaTeX preamble.
-    #'preamble': '',
+# Additional stuff for the LaTeX preamble.
+#'preamble': '',
 
-    # Latex figure (float) alignment
-    #'figure_align': 'htbp',
 
-    # Using Package for ZH
-    'preamble' : r'''
-    \usepackage{ctex}
-    ''',
+# Latex figure (float) alignment
+'figure_align': 'htbp',
 
+
+'sphinxsetup': r'''
+verbatimwithframe = true,
+VerbatimColor = {named}{Gainsboro}, % background colour for code-blocks
+VerbatimBorderColor = {rgb}{0.5,0.3,0.9}, % The frame color
+VerbatimHighlightColor = {rgb}{0.878,1,1}, % The color for highlighted lines.
+InnerLinkColor = {rgb}{0.208,0.374,0.486}, % Inner Link Color
+OuterLinkColor = {named}{LightSkyBlue}, % Inner Link Color
+TitleColor = {named}{Black},
+hintBorderColor = {named}{Green},
+dangerBorderColor = {named}{Red},
+dangerBgColor = {named}{Tomato},
+errorBorderColor = {named}{Crimson},
+warningBorderColor = {named}{Chocolate},
+attentionborder = 2pt,
+attentionBorderColor = {named}{Salmon},
+attentionBgColor = {named}{LightSalmon},
+noteborder = 2pt,
+noteBorderColor = {named}{Goldenrod},
+importantborder = 2pt,
+importantBorderColor = {named}{OrangeRed},
+cautionborder = 2pt,
+cautionBorderColor = {named}{Pink},
+cautionBgColor = {named}{LightPink}''',
+
+# Using Package for ZH
+'preamble':r'''\usepackage{ctex}
+''',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
