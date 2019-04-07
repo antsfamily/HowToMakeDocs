@@ -293,6 +293,7 @@ cautionBgColor = {named}{LightPink}''',
 
 # Using Package for ZH
 'preamble':r'''\usepackage{ctex}
+\usepackage{bm}
 ''',
 }
 
