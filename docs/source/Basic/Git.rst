@@ -115,6 +115,39 @@ Git 在 ubuntu 上的安装很简单, 首先终端 ( 快捷键 ``Ctrl + Alt + T`
 ~~~~~~~~~~~~
 
 
+瘦身
+^^^^^^^^^^^^^^^^
+
+对于一个git库, 提交次数多了, 特别是库中含有大文件时, 会使得库显得很臃肿, 如果直接删除 `.git` 文件夹会带来很多问题, 使用下面的命令可以清空提交历史缓存, 保持最新代码, 达到瘦身的效果.
+
+.. code-block:: bash
+
+    # 1. Checkout
+
+    git checkout --orphan latest_branch
+
+    # 2. Add all the files
+
+    git add -A
+
+    # 3. Commit the changes
+
+    git commit -am "commit message"
+
+    # 4. Delete the branch
+
+    git branch -D master
+
+    # 5. Rename the current branch to master
+
+    git branch -m master
+
+    # 6. Finally, force update your repository
+
+    git push -f origin master
+
+
+
 
 远程仓库
 ~~~~~~~~~~~~~~~~
@@ -260,7 +293,7 @@ Git服务端配置
 3. 将git设为管理员(可选): ``sudo gedit /etc/sudoers`` --> 添加
    ``git ALL=(ALL:ALL)  ALL``
 4. 新建仓库目录并更改权限
-   
+
    .. code:: bash
 
       cd /home/git
