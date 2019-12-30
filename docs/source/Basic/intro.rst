@@ -13,7 +13,7 @@
 简而言之, 标记语言就是特定的标记符号集合, 每个特定标记符可以实现特定的功能（自己总结的）, 如倾斜、加粗、连接、引用等等, 如在reStructureText或者Markdown中, 使用星号括住文本, 可将文本渲染成斜体或粗体, 即 ``*我变斜了*`` 被渲染成 *我变斜了*, ``**我变粗了**`` 被渲染成 **我变粗了** .
 
 Markdown标记语言
-++++++++++++++++
+~~~~~~~~~~~~~~~~~~~
 
 `Markdown <https://zh.wikipedia.org/wiki/Markdown>`_ 的 **设计哲学是易读（easy-to-read）易写（easy-to-write）, 是一种轻量级标记语言**, 之所以称为轻量级是因为其标记符号集合较小, 容易记住和使用. Markdown标记语言, 如今被越来越多的写作爱好者和撰稿者广泛使用, 也被大多数现代网站所采用, 如 `GitHub <https://github.com/>`_ 、 `StackOverflow <http://stackoverflow.com/>`_ 、 `简书 <http://www.jianshu.com/>`_ 、 `CSDN <http://www.csdn.net/>`_ 、 `有道云笔记 <http://note.youdao.com/>`_ 、 `Gitblog <http://www.gitblog.cn/>`_ 等等. 此外, 很多开源项目的自述文件 ``README.md`` 就是采用Markdown语言编写的.
 
@@ -27,13 +27,13 @@ Markdown的语法手册可以参见：
 
 
 reStructuredText标记语言
-++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ 是比Markdown功能更为强大但语法也更为复杂的一种标记语言. 配合Sphinx使用, 可以撰写渲染排版出优美的文档, 且输出格式丰富. 两者的介绍分别见： :ref:`reStructuredTextSimpleTutorial` 和 :ref:`ChaSphinxSimpleTutorial` .
 
 
 标记语言的优点
-++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~
 
 标记语言的撰写很简单, 不需要很高大上的IDE, 只需要一个能够编辑文字的文本编辑器即可, 完全可以只用Windows系统的“记事本”或者Linux上的“vi”来完成撰写. 这样的类似代码的语言, 很容易使用诸如Git这样的版本控制系统进行管理！可以总结出以下优点：
 

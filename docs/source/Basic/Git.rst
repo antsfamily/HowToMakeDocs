@@ -154,6 +154,9 @@ Git 在 ubuntu 上的安装很简单, 首先终端 ( 快捷键 ``Ctrl + Alt + T`
 
 分支管理
 ~~~~~~~~~~~~~~~~
+
+
+
 标签话管理
 ~~~~~~~~~~~~~~~~
 
@@ -257,6 +260,8 @@ Git命令概览
     cd [project]
     git submodule init
     git submodule update
+
+
 
 搭建Git服务器
 ----------------

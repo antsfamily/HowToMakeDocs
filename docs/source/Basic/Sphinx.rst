@@ -440,7 +440,7 @@ Sphinx自带主题
 .. code-block:: python
     :lineno-start: 0
     :emphasize-lines: 4
-    :linenos: 
+    :linenos:
     :caption: latex_elements of conf.py
     :name: bind-id
 
@@ -451,18 +451,18 @@ Sphinx自带主题
     # The paper size ('letterpaper' or 'a4paper').
     #'papersize': 'letterpaper',
     'papersize': 'a4paper',
-    
+
     # The font size ('10pt', '11pt' or '12pt').
     #'pointsize': '10pt',
-    
+
     # Additional stuff for the LaTeX preamble.
     #'preamble': '',
-    
-    
+
+
     # Latex figure (float) alignment
     'figure_align': 'htbp',
-    
-    
+
+
     'sphinxsetup': r'''
     verbatimwithframe = true,
     VerbatimColor = {named}{Gainsboro}, % background colour for code-blocks
@@ -486,7 +486,7 @@ Sphinx自带主题
     cautionborder = 2pt,
     cautionBorderColor = {named}{Pink},
     cautionBgColor = {named}{LightPink}''',
-    
+
     # Using Package for ZH
     'preamble':r'''\usepackage{ctex}
     \usepackage{bm}
@@ -494,7 +494,7 @@ Sphinx自带主题
     }
 
 .. hint::
-    上述代码中包含的颜色信息, 可以从 `svgnames Colors <http://www.latextemplates.com/svgnames-colors>`_ 找到. 
+    上述代码中包含的颜色信息, 可以从 `svgnames Colors <http://www.latextemplates.com/svgnames-colors>`_ 找到.
 
 
 
@@ -521,486 +521,6 @@ Sphinx自带主题
    自定义生成的PDF文件部分环境预览结果
 
 
-
-.. _SphinxExtensionDirectives:
-
-Sphinx重要扩展介绍
---------------------
-
-Sphinx扩展
-++++++++++++++++++
-
-可以通过以下链接找到 Sphinx的扩展:
-
-- `sphinx extensions doc <http://www.sphinx-doc.org/en/master/usage/extensions/index.html>`_  : 官方文档介绍, 含 **Built-in extensions** 和 **Third-party extensions** 
-- `Awesome Sphinx <https://github.com/yoloseem/awesome-sphinxdoc>`_ : A curated list of awesome tools for Sphinx Python Documentation Generator.
-- `sphinx-contrib <https://bitbucket.org/birkenfeld/sphinx-contrib>`_ : a collection of Sphinx extensions maintained by their respective authors. It is not an official part of Sphinx.
-- `Survey of Sphinx extensions <https://sphinxext-survey.readthedocs.io/en/latest/>`_ : This is list of Sphinx extensions at October, 2014.
-
-
-内置扩展简介
-+++++++++++++++++++
-
-
-目录树 (toctree)
-^^^^^^^^^^^^^^^^^^^
-
-由于 reST 没有处理多个文档, 或将文档分割成多个输出文件的机制, Sphinx使用一个自定义指令来添加组成整篇文档的单个文件间的关系, 以及目录. 这个指令的核心就是 ``toctree`` .
-
-.. tip:: 简单包含某个文件, 可以使用 `include <http://docutils.sourceforge.net/docs/ref/rst/directives.html#include>`_ 指令.
-
-
-代码与语法着色
-^^^^^^^^^^^^^^^^^^^
-
-更多功能, 参考 `Showing code examples <http://www.sphinx-doc.org/en/stable/usage/restructuredtext/directives.html#showing-code-examples>`_  
-
-::
-
-  .. code-block:: python
-      :lineno-start: 10
-      :emphasize-lines: 9
-      :linenos: 
-      :caption: demo_python.m
-      :name: bind-id
-
-      import pytool
-      import numpy as np
-      import matplotlib.pyplot as plt
-
-      # =====================generate Ellipse=====================
-      a = 6  # major axis
-      b = 2  # minor axis
-      x0 = 10  # center x0
-      y0 = 10  # center y0
-      N = 1000  # number of points
-
-      # angle for rotating ellipse data
-      theta = np.pi * 30 / 180
-
-      x, y = pytool.ellipse_surface(a, b, x0, y0, N, 'rand')
-
-      x = x - np.mean(x)
-      y = y - np.mean(y)
-
-
-将被渲染成
-
-.. code-block:: python
-    :lineno-start: 10
-    :emphasize-lines: 9
-    :linenos: 
-    :caption: demo_python.m
-    :name: bind-id
-
-    import pytool
-    import numpy as np
-    import matplotlib.pyplot as plt
-
-    # =====================generate Ellipse=====================
-    a = 6  # major axis
-    b = 2  # minor axis
-    x0 = 10  # center x0
-    y0 = 10  # center y0
-    N = 1000  # number of points
-
-    # angle for rotating ellipse data
-    theta = np.pi * 30 / 180
-
-    x, y = pytool.ellipse_surface(a, b, x0, y0, N, 'rand')
-
-    x = x - np.mean(x)
-    y = y - np.mean(y)
-
-
-第三方扩展
-+++++++++++++++++++
-
-如下扩展可以通过类似 ``pip install extensions_name`` 的命令安装, 在 `conf.py` 文件中的 ``extensions`` 中加入该扩展, 以下不在赘述.
-
-.. _SubSubSection_SphinxcontribProof:
-
-sphinxcontrib-proof
-^^^^^^^^^^^^^^^^^^^^^
-
-`sphinxcontrib-proof <https://sphinxcontrib-proof.readthedocs.io/en/latest/>`_  提供定理, 定义, 证明等支持. 在 `conf.py` 文件中的 ``extensions`` 中加入该扩展 ( ``sphinxcontrib.proof`` ) .
-
-然后在 `_static` 目录下新建 `proof.css` 和 `proof.js` 两个文件, 加入如下内容, 你可以自己定义其它的样式.
-
-`proof.css` ::
-
-    .proof {
-      margin-top: 1em;
-      margin-bottom: 1em;
-    }
-
-    /* Titles */
-    .proof .proof-title {
-      background-color: #0000EE;
-      border: 1px solid #86989b;
-      color: white;
-      font-size: 120%;
-      }
-
-    /* Content */
-    .proof-content {
-      border: 1px solid #9fb1b4;
-      background-color: #F0F8FF;
-      padding: 0.5em 1em;
-    }
-
-
-    /* Toggle proof */
-    .proof-type-proof > .proof-title {
-        display: block;
-        clear: both;
-    }
-
-    .proof-type-proof > .proof-title:after {
-        content: " ▼";
-    }
-
-    .proof-type-proof > .proof-title.open:after {
-        content: " ▲";
-    }
-
-`proof.js` ::
-
-      $(document).ready(function() {
-          $(".proof-type-proof > *").hide();
-          $(".proof-type-proof .proof-title").show();
-          $(".proof-type-proof .proof-title").click(function() {
-              $(this).parent().children().not(".proof-title").toggle(400);
-              $(this).parent().children(".proof-title").toggleClass("open");
-          })
-      });
-
-
-
-使用举例::
-
-    .. _righttriangle:
-
-    .. proof:definition:: Right triangle
-
-       A *right triangle* is a triangle in which one angle is a right angle.
-
-    .. _pythagorean:
-
-    .. proof:theorem:: Pythagorean theorem
-
-       In a :ref:`righttriangle`, the square of the hypotenuse is equal to the sum of the squares of the other two sides.
-
-    .. _proof:
-
-    .. proof:proof::
-
-       The proof is left to the reader.
-
-    You can label and reference definition and theorems (e.g. :numref:`theorem {number} <pythagorean>`). You can also reference proofs (see the :ref:`proof of the Pythagorean theorem <proof>`).
-
-
-代码将被渲染为
-
-.. _righttriangle:
-
-.. proof:definition:: Right triangle
-
-   A *right triangle* is a triangle in which one angle is a right angle.
-
-.. _pythagorean:
-
-.. proof:theorem:: Pythagorean theorem
-
-   In a :ref:`righttriangle`, the square of the hypotenuse is equal to the sum of the squares of the other two sides.
-
-.. _proof:
-
-.. proof:proof::
-
-   The proof is left to the reader.
-
-You can label and reference definition and theorems (e.g. :numref:`theorem {number} <pythagorean>`). You can also reference proofs (see the :ref:`proof of the Pythagorean theorem <proof>`).
-
-
-图表编号
-^^^^^^^^^^^^^^^^^
-
-借用 jterrace 的论文模版 `sphinxtr <http://jterrace.github.io/sphinxtr/>`_ 中的 ``numfig`` 可以实现. 从 `这里 <https://github.com/jterrace/sphinxtr>`_ 下载源码, 将其中的 `sphinxtr` 放到你的文档源码根目录下, 然后 `conf.py` 添加
-
-.. code-block:: python
-   :caption: Code Blocks can have captions.
-   :linenos:
-   :emphasize-lines: 1,20-22
-
-    sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
-
-    extensions = [
-      'sphinx.ext.autodoc',
-      'sphinx.ext.doctest',
-      'sphinx.ext.intersphinx',
-      'sphinx.ext.todo',
-      'sphinx.ext.coverage',
-      # 'sphinx.ext.imgmath',
-      # 'sphinx.ext.mathjax',
-      'sphinxcontrib.katex',
-      'sphinxcontrib.proof',  # https://framagit.org/spalax/sphinxcontrib-proof/
-      'sphinxcontrib.bibtex',  # https://sphinxcontrib-bibtex.readthedocs.io/en/latest/
-      'sphinxcontrib.seqdiag',  # http://blockdiag.com/en/
-      'sphinx.ext.ifconfig',
-      # 'sphinx.ext.viewcode',
-      # 'sphinx.ext.githubpages',
-      # 'rst2pdf.pdfbuilder',
-      # 'sphinx.ext.napoleon',
-      'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
-      'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
-      'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
-    ]
-
-    math_numfig = True
-    number_figures = True
-    figure_caption_prefix = 'Figure'
-
-
-比如, 这里通过如下代码插入图片:
-
-::
-
-  .. _fig-testFigureNumber:
-
-  .. figure:: ../_static/figs/logo.*
-      :alt: Test Figure Number
-      :width: 30%
-      :align: center
-      
-      Test Figure Number
-
-代码将被渲染为
-
-.. figure:: ../_static/figs/logo.*
-    :alt: Test Figure Number
-    :width: 100%
-    :align: center
-    
-    Test Figure Number
-
-
-在其它地方可以通过 ``:num:`fig-testFigureNumber``` 引用,  :ref:`fig-testFigureNumber` .
-
-
-
-
-.. _SubSubSection_SphinxcontribBibtex:
-
-sphinxcontrib-bibtex
-^^^^^^^^^^^^^^^^^^^^^
-
-在 Sphinx中可以使用 `BibTex <http://www.bibtex.org/>`_  , 通过 ``pip install sphinxcontrib-bibtex`` 安装扩展, 并在 `conf.py` 中添加该扩展 ``sphinxcontrib.bibtex`` , 官方文档在 `这里 <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html>`_ .
-
-然后, 新建 `reference.rst` , 加入如下代码:
-
-.. code-block:: rst
-   :caption: reference.rst.
-   :linenos:
-   :emphasize-lines: 3,5
-
-   .. bibliography:: ./refs.bib
-       :list: enumerated
-       :start: 1
-
-假如 `refs.bib` 文件中的内容如下:
-
-::
-
-    @Proceedings{1993:PatiOMP, 
-    author={Y. C. {Pati} and R. {Rezaiifar} and P. S. {Krishnaprasad}}, 
-    booktitle={Proceedings of 27th Asilomar Conference on Signals, Systems and Computers}, 
-    title={Orthogonal matching pursuit: recursive function approximation with applications to wavelet decomposition}, 
-    year={1993}, 
-    volume={}, 
-    number={}, 
-    pages={40-44 vol.1}, 
-    doi={10.1109/ACSSC.1993.342465}, 
-    ISSN={1058-6393}, 
-    month={Nov},
-  }
-
-
-  @article{2003JChPh.118.6720W,
-     author = {{Wu}, Y. and {Batista}, V.~S.},
-      title = "{Matching-pursuit for simulations of quantum processes}",
-    journal = {\jcp},
-   keywords = {Tunneling traversal time quantum Zeno dynamics, Foundations of quantum mechanics, measurement theory, Fourier analysis, Integral transforms},
-       year = 2003,
-      month = apr,
-     volume = 118,
-      pages = {6720-6724},
-        doi = {10.1063/1.1560636},
-     adsurl = {http://adsabs.harvard.edu/abs/2003JChPh.118.6720W},
-    adsnote = {Provided by the SAO/NASA Astrophysics Data System}
-  }
-
-可以通过 ``:cite:`1993:PatiOMP` , :cite:`2003JChPh.118.6720W``` 来引用, 即 :cite:`1993:PatiOMP` , :cite:`2003JChPh.118.6720W` . 如果一次性引用多个文献, 可以用逗号分开, 但不要有空格, 比如这样 ``:cite:`1993:PatiOMP,2003JChPh.118.6720W``` 得到 :cite:`1993:PatiOMP,2003JChPh.118.6720W` .
-
-.. hint::
-    如果你想自定义参考文献引用格式, 可以通过 ``pip install pybtex`` 安装 `pybtex <https://docs.pybtex.org/api/plugins.html>`_ , 然后参考 `这里 <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#custom-formatting-sorting-and-labelling>`_ 或者下面的讲述配置使用.
-
-
-.. note::
-    ``pybtex`` 提示: 安装好 pybtex 后, 若想在你的文档工程中使用, 需要在 `conf.py` 文件中添加该扩展, 即 ``extensions = ['pybtex']`` , 然后你就可以使用了, 在 ``.. bibliography:: ./refs.bib`` 里添加 ``:style: unsrt`` 即可以更改文献引用格式. 
-
-    .. code-block:: rst
-       :caption: reference.rst.
-       :linenos:
-       :emphasize-lines: 2
-
-       .. bibliography:: ./refs.bib
-          :style: unsrt
-
-    注意, 如果添加 ``list`` 或 ``start`` 等域, 不能正常渲染, 不能跳转!
-
-sphinxcontrib-xxxdiag
-^^^^^^^^^^^^^^^^^^^^^
-
-``xxxdiag`` 包含以下几种类型:
-
-- ``blockdiag`` : `blockdiag <http://blockdiag.com/en/blockdiag/index.html>`_  
-- ``seqdiag`` : `seqdiag <http://blockdiag.com/en/seqdiag/index.html>`_  
-- ``actdiag`` : `actdiag <http://blockdiag.com/en/actdiag/index.html>`_  
-- ``nwdiag`` : `nwdiag <http://blockdiag.com/en/nwdiag/index.html>`_  
-
-
-通过 ``pip install sphinxcontrib-xxxdiag`` 安装扩展, 并在 `conf.py` 中添加该扩展 ``sphinxcontrib.xxxdiag`` , 官方文档在 `这里 <http://blockdiag.com/en/>`_ .
-
-举例: 如
-
-原始代码
-
-::
-
-    .. blockdiag::
-
-     blockdiag {
-       blockdiag -> generates -> "block-diagrams";
-       blockdiag -> is -> "very easy!";
-
-       blockdiag [color = "greenyellow"];
-       "block-diagrams" [color = "pink"];
-       "very easy!" [color = "orange"];
-     }
-
-渲染结果
-
-.. blockdiag::
-
-   blockdiag {
-     blockdiag -> generates -> "block-diagrams";
-     blockdiag -> is -> "very easy!";
-
-     blockdiag [color = "greenyellow"];
-     "block-diagrams" [color = "pink"];
-     "very easy!" [color = "orange"];
-   }
-
-
-原始代码
-
-::
-
-  .. seqdiag::
-
-   seqdiag {
-     seqdiag -> "sequence-diagrams" [label = "generates"];
-     seqdiag --> "is very easy!";
-   }
-
-渲染结果
-
-.. seqdiag::
-
-   seqdiag {
-     seqdiag -> "sequence-diagrams" [label = "generates"];
-     seqdiag --> "is very easy!";
-   }
-
-
-原始代码
-
-::
-
-  .. actdiag::
-
-     actdiag {
-       write -> convert -> image
-
-       lane user {
-          label = "User"
-          write [label = "Writing reST"];
-          image [label = "Get diagram IMAGE"];
-       }
-       lane actdiag {
-          convert [label = "Convert reST to Image"];
-       }
-     }
-
-渲染结果
-
-.. actdiag::
-
-   actdiag {
-     write -> convert -> image
-
-     lane user {
-        label = "User"
-        write [label = "Writing reST"];
-        image [label = "Get diagram IMAGE"];
-     }
-     lane actdiag {
-        convert [label = "Convert reST to Image"];
-     }
-   }
-
-原始代码
-
-::
-
-  .. nwdiag::
-
-     nwdiag {
-       network dmz {
-           address = "210.x.x.x/24"
-
-           web01 [address = "210.x.x.1"];
-           web02 [address = "210.x.x.2"];
-       }
-       network internal {
-           address = "172.x.x.x/24";
-
-           web01 [address = "172.x.x.1"];
-           db01;
-           app01;
-       }
-     }
-
-渲染结果
-
-.. nwdiag::
-
-   nwdiag {
-     network dmz {
-         address = "210.x.x.x/24"
-
-         web01 [address = "210.x.x.1"];
-         web02 [address = "210.x.x.2"];
-     }
-     network internal {
-         address = "172.x.x.x/24";
-
-         web01 [address = "172.x.x.1"];
-         db01;
-         app01;
-     }
-   }
 
 问题集锦
 ---------
@@ -1161,7 +681,7 @@ Sphinx数学支持
 使用KaTex渲染公式
 ^^^^^^^^^^^^^^^^^^^
 
- `KaTex <https://katex.org/>`_ 具有比 MathJax更快的解析速度. 使用 ``pip install sphinxcontrib.katex`` 安装 `KaTex <https://katex.org/>`_  扩展. 如上所述, 在 ``extensions`` 列表变量里添加项 ``'sphinxcontrib.katex',`` 即可. 数学公式通过KaTex引擎渲染公式在HTML中显示. 
+ `KaTex <https://katex.org/>`_ 具有比 MathJax更快的解析速度. 使用 ``pip install sphinxcontrib.katex`` 安装 `KaTex <https://katex.org/>`_  扩展. 如上所述, 在 ``extensions`` 列表变量里添加项 ``'sphinxcontrib.katex',`` 即可. 数学公式通过KaTex引擎渲染公式在HTML中显示.
 
 使用MathJax渲染公式
 ^^^^^^^^^^^^^^^^^^^^^

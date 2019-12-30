@@ -17,8 +17,8 @@ Welcome to A Brief Tutorial On Making Beauty Documents!
 
 .. hint::
 
-    `PDF 版文档可以点这里查看 <./_static/pdf/MakingBeautyDocuments.pdf>`_  
-    
+    `PDF 版文档可以点这里查看 <./_static/pdf/MakingBeautyDocuments.pdf>`_
+
 
 |                                              **写于2015年6月24日**
 
@@ -27,8 +27,8 @@ Welcome to A Brief Tutorial On Making Beauty Documents!
 .. _Contents:
 
 .. toctree::
-   :numbered: 4
-   :maxdepth: 4
+   :numbered: 5
+   :maxdepth: 6
 
    Introduction/intro
    Basic/index

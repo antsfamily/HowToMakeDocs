@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = ../../HowToMakeDocs-docs/
-PUBLISHDIR    = ../../../iridescent/Tutorials/HowToMakeDocs/
+PUBLISHDIR    = ../../../iridescent/_site/Tutorials/HowToMakeDocs/
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -61,9 +61,10 @@ html:
 	# --------------------------------------------------------------
 	# Added by Zhi Liu - auto open html
 	#google-chrome build/html/index.html
-	firefox build/html/index.html
+	firefox $(BUILDDIR)/html/index.html
 	mkdir -p $(PUBLISHDIR)/
-	cp -rf $(BUILDDIR)/html/ $(PUBLISHDIR)/
+	# cp -rf $(BUILDDIR)/html/ $(PUBLISHDIR)/
+	rsync -av --exclude $(BUILDDIR)/html/.git $(BUILDDIR)/html/* $(PUBLISHDIR)/html/
 	# --------------------------------------------------------------
 
 .PHONY: dirhtml

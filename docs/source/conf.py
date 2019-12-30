@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# A Brief Tutorial On Making Beauty Documents documentation build configuration file, 
+# A Brief Tutorial On Making Beauty Documents documentation build configuration file,
 # created by sphinx-quickstart on Tue Jun 14 15:33:22 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -52,9 +52,9 @@ extensions = [
     # 'sphinx.ext.viewcode',
     # 'sphinx.ext.githubpages',
     'pybtex',  # for style of bibtex
-    'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
-    'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
-    'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+    # 'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+    # 'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
+    # 'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
 ]
 
 #-------------------------added------------
@@ -251,23 +251,23 @@ htmlhelp_basename = 'aBriefTutorialOnMakingBeautyDocuments'
 # -- Options for LaTeX output ---------------------------------------------
 latex_engine = 'xelatex'
 latex_elements = {
-'passoptionstopackages': r'''\PassOptionsToPackage{svgnames}{xcolor}''',
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
-'papersize': 'a4paper',
+    'passoptionstopackages': r'''\PassOptionsToPackage{svgnames}{xcolor}''',
+    # The paper size ('letterpaper' or 'a4paper').
+    #'papersize': 'letterpaper',
+    'papersize': 'a4paper',
 
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    #'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
-
-
-# Latex figure (float) alignment
-'figure_align': 'htbp',
+    # Additional stuff for the LaTeX preamble.
+    #'preamble': '',
 
 
-'sphinxsetup': r'''
+    # Latex figure (float) alignment
+    'figure_align': 'htbp',
+
+
+    'sphinxsetup': r'''
 verbatimwithframe = true,
 VerbatimColor = {named}{Gainsboro}, % background colour for code-blocks
 VerbatimBorderColor = {rgb}{0.5,0.3,0.9}, % The frame color
@@ -291,8 +291,8 @@ cautionborder = 2pt,
 cautionBorderColor = {named}{Pink},
 cautionBgColor = {named}{LightPink}''',
 
-# Using Package for ZH
-'preamble':r'''\usepackage{ctex}
+    # Using Package for ZH
+    'preamble': r'''\usepackage{ctex}
 \usepackage{bm}
 ''',
 }
@@ -437,12 +437,43 @@ epub_exclude_files = ['search.html']
 # intersphinx_mapping = {'https://docs.python.org/': None}
 
 
-# ---------------------Added by Zhi Liu, for math-----------------
+# ---------------------Added by Zhi Liu, for math, figure, table...-----------------
 # `Math support in Sphinx <file:///mnt/d/library/pubdocs/sphinx/manuals/sphinx-stable/contents.html#document-ext/math>`_
 
 # Set this option to True if you want all displayed math to be numbered. The default is False.
-math_number_all = True
-math_numfig = True
 # The path to the JavaScript file to include in the HTML files in order to
 # load MathJax.
 mathjax_path = 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
+
+math_number_all = True  # Set this option to True if you want all displayed math to be numbered. The default is False.
+math_eqref_format = 'Eq.{number}'  # gets rendered as, for example, Eq.10.
+
+# If True, displayed math equations are numbered across pages when numfig
+# is enabled. The numfig_secnum_depth setting is respected. The eq, not
+# numref, role must be used to reference equation numbers. Default is
+# True.
+math_numfig = True
+
+# see http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-numfig
+# If true, figures, tables and code-blocks are automatically numbered if they have a caption.
+# The numref role is enabled. Obeyed so far only by HTML and LaTeX builders. Default is False.
+# The LaTeX builder always assigns numbers whether this option is enabled or not.
+numfig = True
+numfig_secnum_depth = 2
+
+# A dictionary mapping 'figure', 'table', 'code-block' and 'section' to strings that are used for format of figure numbers.
+# As a special character, %s will be replaced to figure number.
+# Default is to use 'Fig. %s' for 'figure', 'Table %s' for 'table', 'Listing %s' for 'code-block' and 'Section' for 'section'.
+numfig_format = {
+    'figure': 'Fig. %s',
+    'table': 'Table %s',
+    'code-block': 'Listing %s',
+    'section': 'Section %s',
+}
+
+numfig_format = {
+    'figure': '图 %s',
+    'table': '表 %s',
+    'code-block': '代码 %s',
+    'section': '节 %s',
+}

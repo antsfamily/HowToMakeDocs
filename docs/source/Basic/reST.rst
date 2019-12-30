@@ -7,7 +7,7 @@ reStructuredText简明教程
 
 
 What is reStructuredText
-------------------------
+--------------------------
 
 `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ 官网说 **reStructuredText** 是 **Docutils** (Documentation Utilities) 标记语法和解析器组件 ( Markup Syntax and Parser Component of `Docutils <http://docutils.sourceforge.net/index.html>`_  ).
 
@@ -52,7 +52,7 @@ reST环境搭建
 
 
 Sublime Text及其安装
-++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 用过 `Notepad++ <https://notepad-plus-plus.org/>`_ 的童鞋都可能会对其爱不释手, 但如果你基本掌握了 `Sublime Text <http://www.sublimetext.com/>`_ (以下会简称为"ST"), 你应该会有一种相见恨晚的感觉!
 
@@ -72,7 +72,7 @@ Sublime Text支持三大主流操作系统: Windows, Linux, OS X. 几乎你需�
 
 
 Sublime Text的安装
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 对于Windows系统, 其实是不需要安装的, 是的, 你没听错, 请访问 `ST下载页面 <http://www.sublimetext.com/3>`_ , 并选择 **便携版 (portable version)**, 然后解压后双击 sublime_text.exe  当然, 你也可以选择安装版, 不过我会选择便携版, 因为这样复制到其它机器上就照常用了.
 
@@ -80,13 +80,11 @@ Sublime Text的安装
 
 
 ST中插件包的安装
-++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^
 
 在ST中可以配置各种代码编辑器环境, 一般通过安装ST的插件包来实现, **Package Control** 是ST的插件包管理器, 访问 `Package Control <https://packagecontrol.io/>`_ 查看插件包, 插件包的安装方式一般有如下两种.
 
-
-下载并解压安装包
-^^^^^^^^^^^^^^^^^
+1. 下载并解压安装包
 
 到 `Package Control <https://packagecontrol.io/>`_ 或 `GitHub <https://github.com/>`_ 搜索并下载插件包, 然后解压到ST根目录即可.
 
@@ -95,11 +93,9 @@ ST中插件包的安装
 
 然后, 重启ST即可.
 
+2. 通过Package Control安装管理包
 
-通过Package Control安装管理包
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. 首先需要给ST安装 ``Package Control`` 包管理器插件.
+首先需要给ST安装 ``Package Control`` 包管理器插件.
 
 安装方法很简单, 可以参见官网：https://packagecontrol.io/installation#st3, 也可以看下面的介绍.
 
@@ -114,7 +110,7 @@ For ST2: ::
     import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')
 
 
-2. 通过 ``Package Control`` 安装插件包.
+然后, 通过 ``Package Control`` 安装插件包.
 
 使用 ``Ctrl + Shift + P`` 打开PackageControl, 如果没有输入 ``package`` 就出现了, 选择 ``Install Package`` , 如下图
 
@@ -126,7 +122,7 @@ For ST2: ::
 
 
 配置reST环境
-++++++++++++
+^^^^^^^^^^^^^^^
 
 给ST安装以下插件包:
 
@@ -165,7 +161,7 @@ reST语法简介
 
 
 章节 (Section Structure)
-+++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 章节头部 ( `参考 <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#sections>`_ ) 由下线(也可有上线)和包含标点的标题 组合创建, 其中下线要至少等于标准文本的长度, 如:
 
@@ -203,7 +199,7 @@ reST语法简介
 
 
 段落 (Paragraphs)
-++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 段落由空白行分割, 且应左对齐, 与Markdown相同; 在reST中, 缩进的段落意味着引用, 这在Markdown中是通过标记符号 ``>`` 实现的.
 
@@ -224,8 +220,7 @@ reST语法简介
 
 
 行内标记 (Inline Markup)
-+++++++++++++++++++++++++
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -256,7 +251,7 @@ reST语法简介
 
 
 列表 (Lists)
-++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -333,7 +328,7 @@ next term
 
 
 源代码 (Source Code)
-+++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 标记符号 ``::`` 紧接一空白行, 然后紧跟代码, 整个代码文本块必须缩进 (同所有的段落一样, 使用空白行和周围文本完成分隔), 如:
 
@@ -387,7 +382,7 @@ next term
 
 
 侧边栏 (Sidebar)
-+++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -419,11 +414,31 @@ next term
 
 
 表格 (Tables)
-+++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-支持两种表格.  一种是 *网格表格* , 可以自定义表格的边框. 如下
+支持三种表格, 参见 `docutils tables <https://docutils.sourceforge.io/docs/ref/rst/directives.html#tables>`_. 一种是 *网格表格* , 可以自定义表格的边框. 如下标记代码::
 
-::
+   .. table:: Grid Table Demo
+      :name: table-gridtable
+
+      +------------------------+----------+----------+----------+
+      | Header row, column 1   | Header 2 | Header 3 | Header 4 |
+      | (header rows optional) |          |          |          |
+      +========================+==========+==========+==========+
+      | body row 1, column 1   | column 2 | column 3 | column 4 |
+      +------------------------+----------+----------+----------+
+      | body row 2             | ...      | ...      |          |
+      +------------------------+----------+----------+----------+
+
+
+   可以使用 :ref:`table-gridtable` 引用, 在Sphinx中还可以使用 :table:numref:`table-gridtable` 来引用.
+
+
+
+**将被渲染成**:
+
+.. table:: Grid Table Demo
+   :name: table-gridtable
 
    +------------------------+----------+----------+----------+
    | Header row, column 1   | Header 2 | Header 3 | Header 4 |
@@ -435,16 +450,8 @@ next term
    +------------------------+----------+----------+----------+
 
 
-**将被渲染成**:
+可以使用 :ref:`table-gridtable` 引用, 在Sphinx中还可以使用 :table:numref:`table-gridtable` 来引用.
 
-+------------------------+----------+----------+----------+
-| Header row, column 1   | Header 2 | Header 3 | Header 4 |
-| (header rows optional) |          |          |          |
-+========================+==========+==========+==========+
-| body row 1, column 1   | column 2 | column 3 | column 4 |
-+------------------------+----------+----------+----------+
-| body row 2             | ...      | ...      |          |
-+------------------------+----------+----------+----------+
 
 
 *简单表格* 书写简单, 但有一些限制: 需要有多行, 且第一列元素不能分行显示, 如下::
@@ -460,6 +467,7 @@ next term
 
 **将被渲染成**:
 
+
 =====  =====  =======
 A      B      A and B
 =====  =====  =======
@@ -468,6 +476,30 @@ True   False  False
 False  True   False
 True   True   True
 =====  =====  =======
+
+
+CSV表格::
+
+  .. csv-table:: Frozen Delights!
+     :header: "Treat", "Quantity", "Description"
+     :widths: 15, 10, 30
+
+     "Albatross", 2.99, "On a stick!"
+     "Crunchy Frog", 1.49, "If we took the bones out, it wouldn't be
+     crunchy, now would it?"
+     "Gannet Ripple", 1.99, "On a stick!"
+
+被渲染为
+
+.. csv-table:: Frozen Delights!
+   :header: "Treat", "Quantity", "Description"
+   :widths: 15, 10, 30
+
+   "Albatross", 2.99, "On a stick!"
+   "Crunchy Frog", 1.49, "If we took the bones out, it wouldn't be
+   crunchy, now would it?"
+   "Gannet Ripple", 1.99, "On a stick!"
+
 
 
 .. tip:: 如果你使用"*Restructured Text (RST) Snippets*", 即 ``sublime-rst-completion`` , 那么表格的制作将变得极为简单, 如下, 更多内容参考 `sublime-rst-completion <https://github.com/mgaitan/sublime-rst-completion>`_ :
@@ -527,7 +559,7 @@ There is a particular *magic* expansion for tables. Here is how it works:
 
 
 直接标记 (Explicit Markup)
-+++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 直接标记用于处理reST中的特殊内容, 如脚注, 高亮段落, 注释以及通用指令.
 
@@ -567,7 +599,7 @@ There is a particular *magic* expansion for tables. Here is how it works:
 
 
 指令 (Directives)
-++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 官方文档的描述是:
 
@@ -582,7 +614,7 @@ There is a particular *magic* expansion for tables. Here is how it works:
 
 
 数学
-^^^^
+^^^^^^^^
 
 数学公式指令 ``math``
 
@@ -652,14 +684,14 @@ There is a particular *magic* expansion for tables. Here is how it works:
        (a + b)^2  &=  (a + b)(a + b) \\
                   &=  a^2 + 2ab + b^2
 
-.. hint:: 
+.. hint::
 
     - 当使用MathJax对数学公式渲染时, 可能不能达到预期效果, 请参考 :ref:`SecSphinxMathSupport` ;
-    
+
     - 关于Sphinx中的如何使用Katex渲染公式, 参见 :ref:`SecSphinxMathSupport` .
-      
+
     - 关于Sphinx中的如何使用定义定理等环境, 参见 :ref:`SubSubSection_SphinxcontribProof` ;
-      
+
 
 
 .. seealso::
@@ -669,7 +701,8 @@ There is a particular *magic* expansion for tables. Here is how it works:
 
 
 图像
-^^^^
+^^^^^^^^
+
 
 - 图像指令 ``image``
 
@@ -728,7 +761,8 @@ There is a particular *magic* expansion for tables. Here is how it works:
 
 
 提示警告类
-^^^^^^^^^^
+^^^^^^^^^^^
+
 
 有很多: ``tip``, ``note``, ``hint``, ``danger``, ``error``, ``warning``, ``caution``, ``attention`` , ``important``
 
@@ -781,8 +815,33 @@ reST 标记代码:
 .. seealso:: This is seealso
 
 
-提示警告类
+主题
 ^^^^^^^^^^
+
+reST 标记代码:::
+
+  .. topic:: Topic Title
+
+      Subsequent indented lines comprise
+      the body of the topic, and are
+      interpreted as body elements.
+
+
+被渲染成
+
+
+.. topic:: Topic Title
+
+    Subsequent indented lines comprise
+    the body of the topic, and are
+    interpreted as body elements.
+
+.. sidebar:: Sidebar Title
+   :subtitle: Optional Sidebar Subtitle
+
+   Subsequent indented lines comprise
+   the body of the sidebar, and are
+   interpreted as body elements.
 
 
 额外的主体元素
@@ -828,7 +887,7 @@ Sphinx 新增指令可查阅 `Sphinx Markup Constructs <http://www.sphinx-doc.or
 
 
 超链接 (Hyperlinks)
-++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 外部链接
 ^^^^^^^^^
@@ -868,7 +927,7 @@ This is a paragraph that contains `a link`_.
 
 
 脚注 (Footnotes)
-+++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 包含两步:
 
@@ -906,7 +965,7 @@ This is a paragraph that contains `a link`_.
 
 
 引文 (Citations)
-+++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sphinx支持标准的 reST 引文, 此外, 在Sphinx里, 所有的引文都是全局的, 所有文件都能引用任意的文献, 像下面这样使用引文: ::
 
@@ -924,7 +983,7 @@ Lorem ipsum [Ref]_ dolor sit amet.
     关于Sphinx中如何使用 ``bibtex`` 参考文献, 请参考 :ref:`SubSubSection_SphinxcontribBibtex` 小结.
 
 替换 (Substitutions)
-+++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 reST 支持替换, 你可以像下面这样使用替换:
 
@@ -978,7 +1037,7 @@ reST源码:
 
 
 Sphinx扩展指令
-+++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 有关Sphinx的扩展指令, 如 **目录树** , **术语** , **特定语法着色** 等, 请移步本手册 :ref:`SphinxExtensionDirectives` 指南, 或参考Sphinx官方手册 `The TOC tree <http://www.sphinx-doc.org/en/stable/markup/toctree.html>`_ 部分.
 

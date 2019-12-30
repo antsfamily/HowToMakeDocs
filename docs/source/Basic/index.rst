@@ -5,11 +5,13 @@
 
 
 .. toctree::
-   :maxdepth: 6
+   :maxdepth: 3
 
    intro
    Sphinx
    reST
+   SphinxExtensions
+   SphinxOtherLanguageSupport
    Git
    reference
 
