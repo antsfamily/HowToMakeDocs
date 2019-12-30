@@ -1,0 +1,1270 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.3. reStructuredText简明教程 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.4. Sphinx重要扩展介绍" href="SphinxExtensions.html" />
+    <link rel="prev" title="2.2. Sphinx简明教程" href="Sphinx.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基础教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">2.1. 文档制作简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html">2.2. Sphinx简明教程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. reStructuredText简明教程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-restructuredtext">2.3.1. What is reStructuredText</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-restructuredtext">2.3.2. Why reStructuredText</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest">2.3.3. reST环境搭建</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sublime-text">2.3.3.1. Sublime Text及其安装</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">2.3.4. reST语法简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#section-structure">2.3.4.1. 章节 (Section Structure)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#paragraphs">2.3.4.2. 段落 (Paragraphs)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inline-markup">2.3.4.3. 行内标记 (Inline Markup)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lists">2.3.4.4. 列表 (Lists)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-code">2.3.4.5. 源代码 (Source Code)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sidebar">2.3.4.6. 侧边栏 (Sidebar)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tables">2.3.4.7. 表格 (Tables)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#explicit-markup">2.3.4.8. 直接标记 (Explicit Markup)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#directives">2.3.4.9. 指令 (Directives)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hyperlinks">2.3.4.10. 超链接 (Hyperlinks)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#footnotes">2.3.4.11. 脚注 (Footnotes)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#citations">2.3.4.12. 引文 (Citations)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#substitutions">2.3.4.13. 替换 (Substitutions)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">2.3.4.14. Sphinx扩展指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html">2.4. Sphinx重要扩展介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html">2.6. 版本控制系统Git教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>基础教程</a> &raquo;</li>
+        
+      <li><span class="section-number">2.3. </span>reStructuredText简明教程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Basic/reST.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="restructuredtext">
+<span id="restructuredtextsimpletutorial"></span><h1><span class="section-number">2.3. </span>reStructuredText简明教程<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h1>
+<p>简要介绍 <strong>reStructuredText</strong> 的概念, 语法等.</p>
+<div class="section" id="what-is-restructuredtext">
+<h2><span class="section-number">2.3.1. </span>What is reStructuredText<a class="headerlink" href="#what-is-restructuredtext" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> 官网说 <strong>reStructuredText</strong> 是 <strong>Docutils</strong> (Documentation Utilities) 标记语法和解析器组件 ( Markup Syntax and Parser Component of <a class="reference external" href="http://docutils.sourceforge.net/index.html">Docutils</a>  ).</p>
+<blockquote>
+<div>Docutils 项目的主要是为了创造一套将纯文本转换为一些常用格式的工具, 这些常用格式包括：HTML、XML和LaTeX.</div></blockquote>
+<p><strong>reStructuredText是一个易读, 易写, 所见即所得的明文标记语法和解析系统</strong>, 对于 “in-line” 程序文档 (如 Python docstrings) 非常有用, 用于快速创建简单的网页和本地文档. reStructuredText是专为特定应用领域的扩展而设计, 其解析器是Docutils的一个组件. reStructuredText是轻量级标记系统 <a class="reference external" href="http://dev.zope.org/Members/jim/StructuredTextWiki/FrontPage/">StructuredText</a> 和 <a class="reference external" href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a> 的修订和重解释版本.</p>
+<p>reStructuredText的主要目的是定义和实现一个用于Python文档和其他文档域的 <strong>标记语法</strong> , 要求是 <strong>可读的</strong> 和 <strong>简单的</strong> , 同时 <strong>足够胜任非凡的任务</strong> . 标记的目的是能够将reStructuredText文档转换成有用的结构化数据格式.</p>
+<p>上面是对下面这段话的翻译:</p>
+<blockquote>
+<div><p>reStructuredText is an easy-to-read, what-you-see-is-what-you-get plaintext markup syntax and parser system. It is useful for in-line program documentation (such as Python docstrings), for quickly creating simple web pages, and for standalone documents. reStructuredText is designed for extensibility for specific application domains. The reStructuredText parser is a component of Docutils. reStructuredText is a revision and reinterpretation of the StructuredText and Setext lightweight markup systems.</p>
+<p>The primary goal of reStructuredText is to define and implement a markup syntax for use in Python docstrings and other documentation domains, that is readable and simple, yet powerful enough for non-trivial use. The intended purpose of the markup is the conversion of reStructuredText documents into useful structured data formats.</p>
+</div></blockquote>
+<p>就这些吧! 如果你现在就想尝试, 可以在线试一试: <a class="reference external" href="http://rst.ninjs.org/">http://rst.ninjs.org/</a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">“reStructuredText” is <strong>ONE</strong> word, <em>not two!</em>, 以下可能会简写成 <code class="docutils literal notranslate"><span class="pre">reST</span></code>.</p>
+</div>
+</div>
+<div class="section" id="why-restructuredtext">
+<h2><span class="section-number">2.3.2. </span>Why reStructuredText<a class="headerlink" href="#why-restructuredtext" title="Permalink to this headline">¶</a></h2>
+<p>我不想再多说了, 简要列举一下吧:</p>
+<ul class="simple">
+<li>专注于文本内容而不是排版样式</li>
+<li>兼容所有文本编辑器与字处理软件</li>
+<li>渲染导出格式丰富, 如HTML、PDF, 借助一些工具还可以导出Latex、epub等文件</li>
+<li>可以使用Git等版本控制系统管理文章版本</li>
+<li>可读、直观、易学</li>
+</ul>
+</div>
+<div class="section" id="rest">
+<h2><span class="section-number">2.3.3. </span>reST环境搭建<a class="headerlink" href="#rest" title="Permalink to this headline">¶</a></h2>
+<p>正如前面所说, 你可以在线试一试: <a class="reference external" href="http://rst.ninjs.org/">http://rst.ninjs.org/</a>, 也可以去下载一些相关工具, 可以参考 <a class="reference external" href="http://stackoverflow.com/questions/2746692/restructuredtext-tool-support">这里</a> , 如 <a class="reference external" href="http://docutils.sourceforge.net/index.html">Docutils</a> , <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> , 当然你也可以参照我的博客: <a class="reference external" href="http://blog.csdn.net/enjoyyl/article/details/50057491">超级文本编辑器Sublime Text3</a> 来安装Sublime Text并配置reStructuredText环境, 不过我下面会讲到.</p>
+<p>如果你想使用 <code class="docutils literal notranslate"><span class="pre">Sphinx</span></code> 请移步 <a class="reference internal" href="Sphinx.html#chasphinxsimpletutorial"><span class="std std-ref">Sphinx简明教程</span></a> , 下面介绍 <strong>Sublime Text</strong> 下环境的配置.</p>
+<div class="section" id="sublime-text">
+<h3><span class="section-number">2.3.3.1. </span>Sublime Text及其安装<a class="headerlink" href="#sublime-text" title="Permalink to this headline">¶</a></h3>
+<p>用过 <a class="reference external" href="https://notepad-plus-plus.org/">Notepad++</a> 的童鞋都可能会对其爱不释手, 但如果你基本掌握了 <a class="reference external" href="http://www.sublimetext.com/">Sublime Text</a> (以下会简称为”ST”), 你应该会有一种相见恨晚的感觉!</p>
+<blockquote>
+<div>Sublime Text is a sophisticated text editor for code, markup and prose. You’ll love the slick user interface, extraordinary features and amazing performance.</div></blockquote>
+<p>如作者自己对ST的定位, ST是一个高雅且精良的 <strong>文本编辑器</strong> , 由程序员Jon Skinner于2008年1月份所开发出来, 可以访问`Sublime Text主页 &lt;<a class="reference external" href="http://www.sublimetext.com/">http://www.sublimetext.com/</a>&gt;`_ 查看效果展示.</p>
+<blockquote>
+<div>Sublime Text具有漂亮的用户界面和强大的功能, 例如代码缩略图, Python的插件, 代码段等. 还可自定义键绑定, 菜单和工具栏. Sublime Text 的主要功能包括：拼写检查, 书签, 完整的 Python API ,  Goto 功能, 即时项目切换, 多选择, 多窗口等等.</div></blockquote>
+<p>Sublime Text支持三大主流操作系统: Windows, Linux, OS X. 几乎你需要的功能都有, 一切可修改（快捷键、插件包etc.）, 界面优美, 可惜的是不开源, 不过即使不注册也可以使用, 功能不受限. <a class="reference external" href="http://limetext.org/">Lime Text</a> 是其开源版的一种实现, 我还没打算用这个.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">如果你在使用ST的过程中遇到了一些问题, 可以先访问本人博客 <a class="reference external" href="http://blog.csdn.net/enjoyyl/article/details/50057491">超级文本编辑器Sublime Text3</a>, 也许有你要的答案.</p>
+</div>
+<div class="section" id="id6">
+<h4><span class="section-number">2.3.3.1.1. </span>Sublime Text的安装<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>对于Windows系统, 其实是不需要安装的, 是的, 你没听错, 请访问 <a class="reference external" href="http://www.sublimetext.com/3">ST下载页面</a> , 并选择 <strong>便携版 (portable version)</strong>, 然后解压后双击 sublime_text.exe  当然, 你也可以选择安装版, 不过我会选择便携版, 因为这样复制到其它机器上就照常用了.</p>
+<p>对于Linux系统, 可以访问 <a class="reference external" href="http://www.sublimetext.com/3">ST下载页面</a> 下载安装, 对于Ubuntu系统, 直接双击下载的 <code class="docutils literal notranslate"><span class="pre">deb</span></code> 包, 然后到软件中心单击 <code class="docutils literal notranslate"><span class="pre">安装</span></code>. 当然, 可以通过命令安装: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg</span> <span class="pre">-i</span> <span class="pre">&lt;package.deb&gt;</span></code> , 安装完成后, 终端输入: <code class="docutils literal notranslate"><span class="pre">subl</span></code> 即可启动ST3.</p>
+</div>
+<div class="section" id="id8">
+<h4><span class="section-number">2.3.3.1.2. </span>ST中插件包的安装<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>在ST中可以配置各种代码编辑器环境, 一般通过安装ST的插件包来实现, <strong>Package Control</strong> 是ST的插件包管理器, 访问 <a class="reference external" href="https://packagecontrol.io/">Package Control</a> 查看插件包, 插件包的安装方式一般有如下两种.</p>
+<ol class="arabic simple">
+<li>下载并解压安装包</li>
+</ol>
+<p>到 <a class="reference external" href="https://packagecontrol.io/">Package Control</a> 或 <a class="reference external" href="https://github.com/">GitHub</a> 搜索并下载插件包, 然后解压到ST根目录即可.</p>
+<ul class="simple">
+<li>对于Windows, 请解压至 <code class="docutils literal notranslate"><span class="pre">Sublime</span> <span class="pre">Text3</span> <span class="pre">x64/Data/Packages</span></code> 目录下</li>
+<li>对于Linux系统, 解压至 <code class="docutils literal notranslate"><span class="pre">~/.config/sublime-text-3/Packages</span></code> 下</li>
+</ul>
+<p>然后, 重启ST即可.</p>
+<ol class="arabic simple" start="2">
+<li>通过Package Control安装管理包</li>
+</ol>
+<p>首先需要给ST安装 <code class="docutils literal notranslate"><span class="pre">Package</span> <span class="pre">Control</span></code> 包管理器插件.</p>
+<p>安装方法很简单, 可以参见官网：<a class="reference external" href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a>, 也可以看下面的介绍.</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">--&gt;</span> <span class="pre">Show</span> <span class="pre">Console</span></code> 打开打开控制台, 粘贴如下代码并回车安装</p>
+<p>For ST3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib.request</span><span class="o">,</span><span class="nn">os</span><span class="o">,</span><span class="nn">hashlib</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="s1">&#39;2915d1851351e5ee549c20394736b442&#39;</span> <span class="o">+</span> <span class="s1">&#39;8bc59f460fa1548d1514676163dafc88&#39;</span><span class="p">;</span> <span class="n">pf</span> <span class="o">=</span> <span class="s1">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span> <span class="n">ipp</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">())</span> <span class="p">);</span> <span class="n">by</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span> <span class="s1">&#39;http://packagecontrol.io/&#39;</span> <span class="o">+</span> <span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="n">dh</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">by</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">();</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error validating download (got </span><span class="si">%s</span><span class="s1"> instead of </span><span class="si">%s</span><span class="s1">), please try manual install&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dh</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span> <span class="k">if</span> <span class="n">dh</span> <span class="o">!=</span> <span class="n">h</span> <span class="k">else</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">ipp</span><span class="p">,</span> <span class="n">pf</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span> <span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">by</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For ST2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="o">,</span><span class="nn">hashlib</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="s1">&#39;2915d1851351e5ee549c20394736b442&#39;</span> <span class="o">+</span> <span class="s1">&#39;8bc59f460fa1548d1514676163dafc88&#39;</span><span class="p">;</span> <span class="n">pf</span> <span class="o">=</span> <span class="s1">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span> <span class="n">ipp</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span> <span class="n">ipp</span> <span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">())</span> <span class="p">);</span> <span class="n">by</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span> <span class="s1">&#39;http://packagecontrol.io/&#39;</span> <span class="o">+</span> <span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="n">dh</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">by</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">();</span> <span class="nb">open</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">ipp</span><span class="p">,</span> <span class="n">pf</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span> <span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">by</span><span class="p">)</span> <span class="k">if</span> <span class="n">dh</span> <span class="o">==</span> <span class="n">h</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error validating download (got </span><span class="si">%s</span><span class="s1"> instead of </span><span class="si">%s</span><span class="s1">), please try manual install&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dh</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="k">if</span> <span class="n">dh</span> <span class="o">!=</span> <span class="n">h</span> <span class="k">else</span> <span class="s1">&#39;Please restart Sublime Text to finish installation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>然后, 通过 <code class="docutils literal notranslate"><span class="pre">Package</span> <span class="pre">Control</span></code> 安装插件包.</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">P</span></code> 打开PackageControl, 如果没有输入 <code class="docutils literal notranslate"><span class="pre">package</span></code> 就出现了, 选择 <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Package</span></code> , 如下图</p>
+<a class="reference internal image-reference" href="../_images/st-packagecontrol.png"><img alt="../_images/st-packagecontrol.png" class="align-center" src="../_images/st-packagecontrol.png" style="width: 512.8000000000001px; height: 289.6px;" /></a>
+<p>接着在弹出的窗口中输入 <strong>插件包的名字</strong> 选择安装即可.</p>
+</div>
+<div class="section" id="id10">
+<h4><span class="section-number">2.3.3.1.3. </span>配置reST环境<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>给ST安装以下插件包:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://theo.im/OmniMarkupPreviewer/">OmniMarkupPreviewer</a> , 也可以到 <a class="reference external" href="https://github.com/timonwong/OmniMarkupPreviewer">这里</a> 下载, (用于解析渲染reST等多种标记语法, <strong>必选</strong> ), 安装好后, 按快捷键 <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">O</span></code> 预览.</li>
+<li><a class="reference external" href="https://libraries.io/sublime/RestructuredText%20Improved">reStructuredText Improved</a> (用于语法着色, <strong>可选</strong> , 建议安装 )</li>
+<li><a class="reference external" href="https://github.com/mgaitan/sublime-rst-completion">sublime-rst-completion</a> ,(用于自动补全, <strong>可选</strong>, 但推荐安装 ), 在制表时很有用, 请点击链接查看.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><span class="section-number">2.3.4. </span>reST语法简介<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>请访问 <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick reStructuredText</a> 查看快速参考, 页面给出了示例代码及效果的对比显示, 非常易学, 见下图：</p>
+<a class="reference internal image-reference" href="../_images/rest-quickref.png"><img alt="../_images/rest-quickref.png" class="align-center" src="../_images/rest-quickref.png" style="width: 1080.8px; height: 472.8px;" /></a>
+<p>也可以参考以下手册:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">Sphinx-reStructuredText Primer</a></li>
+<li><a class="reference external" href="http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html">Restructured Text (reST) and Sphinx CheatSheet</a></li>
+<li><a class="reference external" href="http://sphinx-doc-zh.readthedocs.io/en/latest/rest.html">reStructuredText 入门</a></li>
+<li><a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">reStructuredText Markup Specification</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code> 的文档中使用了 <code class="docutils literal notranslate"><span class="pre">reStructuredText</span></code> 的大量语法, 可以从 <a class="reference external" href="https://github.com/rtfd/sphinx_rtd_theme/tree/master/docs">这里</a>   下载其文档源码来学习相关指令.</li>
+</ul>
+<p>下面进行基本语法介绍.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>OmniMarkupPreviewer</cite> 有时预览效果不好, 可以使用它做个大致预览, 然后可以使用其它工具如Sphinx. 此外, Sphinx对reST进行了一些扩展, 请参考Sphinx手册.</p>
+</div>
+<div class="section" id="section-structure">
+<h3><span class="section-number">2.3.4.1. </span>章节 (Section Structure)<a class="headerlink" href="#section-structure" title="Permalink to this headline">¶</a></h3>
+<p>章节头部 ( <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#sections">参考</a> ) 由下线(也可有上线)和包含标点的标题 组合创建, 其中下线要至少等于标准文本的长度, 如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">======</span>
+<span class="n">Title</span>
+<span class="o">======</span>
+
+<span class="n">Subtitle1</span>
+<span class="o">---------</span>
+
+<span class="n">SubSubtitle</span>
+<span class="o">+++++++++++</span>
+
+<span class="n">Subtitle2</span>
+<span class="o">-----------</span>
+</pre></div>
+</div>
+<p>通常没有专门的符号表示标题的等级, 但是对于Python 文档, 可以使用如下约定:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">#</span></code> 下划线及上划线表示 部分</li>
+<li><code class="docutils literal notranslate"><span class="pre">*</span></code> 下划线及上划线表示 章节</li>
+<li><code class="docutils literal notranslate"><span class="pre">=</span></code> 下划线表示 小章节</li>
+<li><code class="docutils literal notranslate"><span class="pre">-</span></code> 下划线表示 子章节</li>
+<li><code class="docutils literal notranslate"><span class="pre">^</span></code> 下划线表示 子章节的子章节</li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;</span></code> 下划线表示 段落</li>
+</ul>
+<p>在Markdown中, 用 <code class="docutils literal notranslate"><span class="pre">#</span></code> , <code class="docutils literal notranslate"><span class="pre">*</span></code> 的多少来代表标题等级, 如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="c1"># Title</span>
+<span class="c1">## Subtitle1</span>
+<span class="c1">### SubSubtitle</span>
+<span class="c1">## Subtitle2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="paragraphs">
+<h3><span class="section-number">2.3.4.2. </span>段落 (Paragraphs)<a class="headerlink" href="#paragraphs" title="Permalink to this headline">¶</a></h3>
+<p>段落由空白行分割, 且应左对齐, 与Markdown相同; 在reST中, 缩进的段落意味着引用, 这在Markdown中是通过标记符号 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> 实现的.</p>
+<p>如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">这是第一段</span>
+
+<span class="n">这是第二段</span>
+<span class="n">这个还是第二段</span>
+</pre></div>
+</div>
+<p>被渲染成:</p>
+<p>这是第一段</p>
+<p>这是第二段
+这个还是第二段</p>
+</div>
+<div class="section" id="inline-markup">
+<h3><span class="section-number">2.3.4.3. </span>行内标记 (Inline Markup)<a class="headerlink" href="#inline-markup" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="30%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">reST文本</th>
+<th class="head">解析渲染结果</th>
+<th class="head">注解</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">*emphasis*</span></code></td>
+<td><em>emphasis</em></td>
+<td>通常渲染成斜体, 与Markdown相同</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">**emphasis**</span></code></td>
+<td><strong>emphasis</strong></td>
+<td>通常渲染成粗体, 与Markdown相同</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">`interpreted</span> <span class="pre">text`</span></code></td>
+<td><cite>interpreted text</cite></td>
+<td>强调解释.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">``inline</span> <span class="pre">literal``</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">inline</span> <span class="pre">literal</span></code></td>
+<td>常用于行内代码, 与Markdown相同</td>
+</tr>
+<tr class="row-even"><td>A <code class="docutils literal notranslate"><span class="pre">:sub:`xxx`</span></code></td>
+<td>A <sub>xxx</sub></td>
+<td>下标(subscript)</td>
+</tr>
+<tr class="row-odd"><td>A <code class="docutils literal notranslate"><span class="pre">:sup:`xxx`</span></code></td>
+<td>A <sup>xxx</sup></td>
+<td>上标(superscript)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:guilabel:`Action`</span></code></td>
+<td><span class="guilabel">Action</span></td>
+<td>GUI labels</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">:kbd:`Ctrl+Shift`</span></code></td>
+<td><kbd class="kbd docutils literal notranslate">Ctrl+Shift</kbd></td>
+<td>Key-bindings</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">:menuselection:`A--&gt;B--&gt;C`</span></code></td>
+<td><span class="menuselection">A‣B‣C</span></td>
+<td>菜单选择</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">对于行内标记, 标记前后要留有至少一个空格. 如 <code class="docutils literal notranslate"><span class="pre">你好*我没变斜*你好</span></code> –&gt; 你好*我没变斜*你好, 正确为: <code class="docutils literal notranslate"><span class="pre">你好</span> <span class="pre">*我变斜了*</span> <span class="pre">你好</span></code> –&gt; 你好 <em>我变斜了</em> 你好, 或 <code class="docutils literal notranslate"><span class="pre">你好\</span> <span class="pre">*我变斜了*\</span> <span class="pre">你好</span></code> –&gt; 你好<em>我变斜了</em>你好.</p>
+</div>
+</div>
+<div class="section" id="lists">
+<h3><span class="section-number">2.3.4.4. </span>列表 (Lists)<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre>无序列表使用 ``-`` , ``*`` , ``+`` 来标记:
+
+- 无序列表第一项
+- 无序列表第二项
+
+有序列表使用 ``num.`` 来标记:
+
+1. 有序列表第一项
+2. 有序列表第二项
+
+自动编号列表必须使用 ``#.`` 来标记:
+
+#. 自动编号的列表第一项
+#. 自动编号的列表第二项
+
+这是一个定义列表:
+
+term
+    术语定义必须缩进
+
+    可以包含多个段落
+
+next term
+    术语描述
+
+下面是一个嵌套列表, 每一级别向右缩进一次, 同级别缩进应相同:
+
+1. 有序列表第一项
+    * 无序列表第一项
+    * 无序列表第二项
+#. 有序列表第二项
+    + 无序列表第一项
+    + 无序列表第二项
+</pre></div>
+</div>
+<p><strong>将被渲染成</strong>:</p>
+<p>无序列表使用 <code class="docutils literal notranslate"><span class="pre">-</span></code> , <code class="docutils literal notranslate"><span class="pre">*</span></code> , <code class="docutils literal notranslate"><span class="pre">+</span></code> 来标记:</p>
+<ul class="simple">
+<li>无序列表第一项</li>
+<li>无序列表第二项</li>
+</ul>
+<p>有序列表使用 <code class="docutils literal notranslate"><span class="pre">num.</span></code> 来标记:</p>
+<ol class="arabic simple">
+<li>有序列表第一项</li>
+<li>有序列表第二项</li>
+</ol>
+<p>自动编号列表必须使用 <code class="docutils literal notranslate"><span class="pre">#.</span></code> 来标记:</p>
+<ol class="arabic simple">
+<li>自动编号的列表第一项</li>
+<li>自动编号的列表第二项</li>
+</ol>
+<p>这是一个定义列表:</p>
+<dl class="docutils">
+<dt>term</dt><dd><p>术语定义必须缩进</p>
+<p>可以包含多个段落</p>
+</dd>
+<dt>next term</dt><dd>术语描述</dd>
+</dl>
+<p>下面是一个嵌套列表, 每一级别向右缩进一次, 同级别缩进应相同:</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>有序列表第一项</dt><dd><ul class="simple">
+<li>无序列表第一项</li>
+<li>无序列表第二项</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>自动编号列表第二项</dt><dd><ul class="simple">
+<li>无序列表第一项</li>
+<li>无序列表第二项</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="source-code">
+<h3><span class="section-number">2.3.4.5. </span>源代码 (Source Code)<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h3>
+<p>标记符号 <code class="docutils literal notranslate"><span class="pre">::</span></code> 紧接一空白行, 然后紧跟代码, 整个代码文本块必须缩进 (同所有的段落一样, 使用空白行和周围文本完成分隔), 如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>::
+
+    some codes
+    some codes
+    some codes
+
+没有缩进, 这里不是代码, 是正常段落!
+</pre></div>
+</div>
+<p><strong>将被渲染成</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">some</span> <span class="n">codes</span>
+<span class="n">some</span> <span class="n">codes</span>
+<span class="n">some</span> <span class="n">codes</span>
+</pre></div>
+</div>
+<p>没有缩进, 这里不是代码, 是正常段落!</p>
+<p>此外, 高级的代码高亮功能可是使用 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span></code> , 举例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+   <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">Code</span> <span class="n">Blocks</span> <span class="n">can</span> <span class="n">have</span> <span class="n">captions</span><span class="o">.</span>
+   <span class="p">:</span><span class="n">linenos</span><span class="p">:</span>
+   <span class="p">:</span><span class="n">emphasize</span><span class="o">-</span><span class="n">lines</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span>
+
+   <span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+       <span class="n">interesting</span> <span class="o">=</span> <span class="kc">False</span>
+       <span class="nb">print</span> <span class="s1">&#39;This line is highlighted.&#39;</span>
+       <span class="nb">print</span> <span class="s1">&#39;This one is not...&#39;</span>
+       <span class="nb">print</span> <span class="s1">&#39;...but this one is.&#39;</span>
+</pre></div>
+</div>
+<p>被渲染成:</p>
+<div class="literal-block-wrapper container" id="id37">
+<div class="code-block-caption"><span class="caption-number">代码 2.3.1 </span><span class="caption-text">Code Blocks can have captions.</span><a class="headerlink" href="#id37" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+    <span class="n">interesting</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="hll">    <span class="k">print</span> <span class="s1">&#39;This line is highlighted.&#39;</span>
+</span>    <span class="k">print</span> <span class="s1">&#39;This one is not...&#39;</span>
+<span class="hll">    <span class="k">print</span> <span class="s1">&#39;...but this one is.&#39;</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="sidebar">
+<h3><span class="section-number">2.3.4.6. </span>侧边栏 (Sidebar)<a class="headerlink" href="#sidebar" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. sidebar:: 这是一个侧边栏
+
+    这是一个侧边栏, 可以放入代码, 也可以放入图像代码等等, 它下面可以是文字, 图像, 代码等等, 如本例中下面是一段文字.
+
+冬日，在暖暖的午后，泡上一杯茶，随便拿起一本书，凑到阳光跟前，是何等的惬意与享受……
+
+风虽然不大，但走在路上，鼻子冷的刺骨的疼；而阳光却那么地温热，温热地忍不住想和她亲吻。
+
+我泡上一杯碧螺春，从书架上随便拿起一本书，走向靠窗的位置，凑到阳光面前，任由她吻着我的脸，就像吻着自己的情人，这感觉美好的让你忘却了所有的烦恼。
+
+也许是身边暖气的缘故，空气的影子，映衬到桌子上、书纸上。影影绰绰如月下之花影，飘飘忽忽如山间之云气，生生腾腾如村落之炊烟，荡荡漾漾如湖面之微波，似乎在这图书馆的这一隅便可看尽天地间的朴素与祥和。
+</pre></div>
+</div>
+<p>被渲染为:</p>
+<div class="sidebar">
+<p class="first sidebar-title">这是一个侧边栏</p>
+<p class="last">这是一个侧边栏, 可以放入代码, 也可以放入图像代码等等, 它下面可以是文字, 图像, 代码等等, 如本例中下面是一段文字.</p>
+</div>
+<p>冬日，在暖暖的午后，泡上一杯茶，随便拿起一本书，凑到阳光跟前，是何等的惬意与享受……</p>
+<p>风虽然不大，但走在路上，鼻子冷的刺骨的疼；而阳光却那么地温热，温热地忍不住想和她亲吻。</p>
+<p>我泡上一杯碧螺春，从书架上随便拿起一本书，走向靠窗的位置，凑到阳光面前，任由她吻着我的脸，就像吻着自己的情人，这感觉美好的让你忘却了所有的烦恼。</p>
+<p>也许是身边暖气的缘故，空气的影子，映衬到桌子上、书纸上。影影绰绰如月下之花影，飘飘忽忽如山间之云气，生生腾腾如村落之炊烟，荡荡漾漾如湖面之微波，似乎在这图书馆的这一隅便可看尽天地间的朴素与祥和。</p>
+</div>
+<div class="section" id="tables">
+<h3><span class="section-number">2.3.4.7. </span>表格 (Tables)<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h3>
+<p>支持三种表格, 参见 <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#tables">docutils tables</a>. 一种是 <em>网格表格</em> , 可以自定义表格的边框. 如下标记代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. table:: Grid Table Demo
+   :name: table-gridtable
+
+   +------------------------+----------+----------+----------+
+   | Header row, column 1   | Header 2 | Header 3 | Header 4 |
+   | (header rows optional) |          |          |          |
+   +========================+==========+==========+==========+
+   | body row 1, column 1   | column 2 | column 3 | column 4 |
+   +------------------------+----------+----------+----------+
+   | body row 2             | ...      | ...      |          |
+   +------------------------+----------+----------+----------+
+
+
+可以使用 :ref:`table-gridtable` 引用, 在Sphinx中还可以使用 :table:numref:`table-gridtable` 来引用.
+</pre></div>
+</div>
+<p><strong>将被渲染成</strong>:</p>
+<table border="1" class="docutils" id="table-gridtable">
+<caption><span class="caption-number">表 2.3.1 </span><span class="caption-text">Grid Table Demo</span><a class="headerlink" href="#table-gridtable" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="44%" />
+<col width="19%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header row, column 1
+(header rows optional)</th>
+<th class="head">Header 2</th>
+<th class="head">Header 3</th>
+<th class="head">Header 4</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>body row 1, column 1</td>
+<td>column 2</td>
+<td>column 3</td>
+<td>column 4</td>
+</tr>
+<tr class="row-odd"><td>body row 2</td>
+<td>…</td>
+<td>…</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>可以使用 <a class="reference internal" href="#table-gridtable"><span class="std std-ref">Grid Table Demo</span></a> 引用, 在Sphinx中还可以使用 <a class="reference internal" href="#table-gridtable"><span class="std std-numref">表 2.3.1</span></a> 来引用.</p>
+<p><em>简单表格</em> 书写简单, 但有一些限制: 需要有多行, 且第一列元素不能分行显示, 如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">=====</span>  <span class="o">=====</span>  <span class="o">=======</span>
+<span class="n">A</span>      <span class="n">B</span>      <span class="n">A</span> <span class="ow">and</span> <span class="n">B</span>
+<span class="o">=====</span>  <span class="o">=====</span>  <span class="o">=======</span>
+<span class="kc">False</span>  <span class="kc">False</span>  <span class="kc">False</span>
+<span class="kc">True</span>   <span class="kc">False</span>  <span class="kc">False</span>
+<span class="kc">False</span>  <span class="kc">True</span>   <span class="kc">False</span>
+<span class="kc">True</span>   <span class="kc">True</span>   <span class="kc">True</span>
+<span class="o">=====</span>  <span class="o">=====</span>  <span class="o">=======</span>
+</pre></div>
+</div>
+<p><strong>将被渲染成</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="29%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A and B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>CSV表格:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. csv-table:: Frozen Delights!
+   :header: &quot;Treat&quot;, &quot;Quantity&quot;, &quot;Description&quot;
+   :widths: 15, 10, 30
+
+   &quot;Albatross&quot;, 2.99, &quot;On a stick!&quot;
+   &quot;Crunchy Frog&quot;, 1.49, &quot;If we took the bones out, it wouldn&#39;t be
+   crunchy, now would it?&quot;
+   &quot;Gannet Ripple&quot;, 1.99, &quot;On a stick!&quot;
+</pre></div>
+</div>
+<p>被渲染为</p>
+<table border="1" class="docutils" id="id38">
+<caption><span class="caption-number">表 2.3.2 </span><span class="caption-text">Frozen Delights!</span><a class="headerlink" href="#id38" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="27%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Treat</th>
+<th class="head">Quantity</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Albatross</td>
+<td>2.99</td>
+<td>On a stick!</td>
+</tr>
+<tr class="row-odd"><td>Crunchy Frog</td>
+<td>1.49</td>
+<td>If we took the bones out, it wouldn’t be
+crunchy, now would it?</td>
+</tr>
+<tr class="row-even"><td>Gannet Ripple</td>
+<td>1.99</td>
+<td>On a stick!</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">如果你使用”<em>Restructured Text (RST) Snippets</em>”, 即 <code class="docutils literal notranslate"><span class="pre">sublime-rst-completion</span></code> , 那么表格的制作将变得极为简单, 如下, 更多内容参考 <a class="reference external" href="https://github.com/mgaitan/sublime-rst-completion">sublime-rst-completion</a> :</p>
+</div>
+<p>There is a particular <em>magic</em> expansion for tables. Here is how it works:</p>
+<ol class="arabic">
+<li><p class="first">创建表格提纲, 用一个或多个空格分割列:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="n">text</span> <span class="o">*</span><span class="n">before</span><span class="o">*</span> <span class="n">the</span> <span class="n">table</span><span class="o">.</span>
+
+<span class="n">Column</span> <span class="mi">1</span>  <span class="n">Column</span> <span class="mi">2</span>
+<span class="n">Foo</span>  <span class="n">Put</span> <span class="n">two</span> <span class="p">(</span><span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">spaces</span> <span class="k">as</span> <span class="n">a</span> <span class="n">field</span> <span class="n">separator</span><span class="o">.</span>
+<span class="n">Bar</span>  <span class="n">Even</span> <span class="n">very</span> <span class="n">very</span> <span class="n">long</span> <span class="n">lines</span> <span class="n">like</span> <span class="n">these</span> <span class="n">are</span> <span class="n">fine</span><span class="p">,</span> <span class="k">as</span> <span class="n">long</span> <span class="k">as</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">line</span> <span class="n">endings</span> <span class="n">here</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="n">text</span> <span class="o">*</span><span class="n">after</span><span class="o">*</span> <span class="n">the</span> <span class="n">table</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">把光标放在要转化成表格的内容里</p>
+</li>
+<li><p class="first">按下 <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">T,</span> <span class="pre">Enter</span></code> (Linux or Windows) or <code class="docutils literal notranslate"><span class="pre">Super</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">T,</span> <span class="pre">Enter</span></code> (Mac). 将会自动格式化成表格:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="n">text</span> <span class="o">*</span><span class="n">before</span><span class="o">*</span> <span class="n">the</span> <span class="n">table</span><span class="o">.</span>
+
+<span class="o">+----------+---------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Column</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">Column</span> <span class="mi">2</span>                                                <span class="o">|</span>
+<span class="o">+==========+=========================================================+</span>
+<span class="o">|</span> <span class="n">Foo</span>      <span class="o">|</span> <span class="n">Put</span> <span class="n">two</span> <span class="p">(</span><span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">spaces</span> <span class="k">as</span> <span class="n">a</span> <span class="n">field</span> <span class="n">separator</span><span class="o">.</span>          <span class="o">|</span>
+<span class="o">+----------+---------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Bar</span>      <span class="o">|</span> <span class="n">Even</span> <span class="n">very</span> <span class="n">very</span> <span class="n">long</span> <span class="n">lines</span> <span class="n">like</span> <span class="n">these</span> <span class="n">are</span> <span class="n">fine</span><span class="p">,</span> <span class="k">as</span> <span class="n">long</span>  <span class="o">|</span>
+<span class="o">|</span>          <span class="o">|</span> <span class="k">as</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">line</span> <span class="n">endings</span> <span class="n">here</span><span class="o">.</span>                 <span class="o">|</span>
+<span class="o">+----------+---------------------------------------------------------+</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="n">text</span> <span class="o">*</span><span class="n">after</span><span class="o">*</span> <span class="n">the</span> <span class="n">table</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>现在假设你想增加某一单元格内容:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">+----------+---------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Column</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">Column</span> <span class="mi">2</span>                                                <span class="o">|</span>
+<span class="o">+==========+=========================================================+</span>
+<span class="o">|</span> <span class="n">Foo</span> <span class="ow">is</span> <span class="n">longer</span> <span class="n">now</span>     <span class="o">|</span> <span class="n">Put</span> <span class="n">two</span> <span class="p">(</span><span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">spaces</span> <span class="k">as</span> <span class="n">a</span> <span class="n">field</span> <span class="n">separator</span><span class="o">.</span>          <span class="o">|</span>
+<span class="o">+----------+---------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Bar</span>      <span class="o">|</span> <span class="n">Even</span> <span class="n">very</span> <span class="n">very</span> <span class="n">long</span> <span class="n">lines</span> <span class="n">like</span> <span class="n">these</span> <span class="n">are</span> <span class="n">fine</span><span class="p">,</span> <span class="k">as</span> <span class="n">long</span>  <span class="o">|</span>
+<span class="o">|</span>          <span class="o">|</span> <span class="k">as</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">line</span> <span class="n">endings</span> <span class="n">here</span><span class="o">.</span>                 <span class="o">|</span>
+<span class="o">+----------+---------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>按下同样的快捷键, 表格结构会自动调整:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">+-------------------+--------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Column</span> <span class="mi">1</span>          <span class="o">|</span> <span class="n">Column</span> <span class="mi">2</span>                                               <span class="o">|</span>
+<span class="o">+===================+========================================================+</span>
+<span class="o">|</span> <span class="n">Foo</span> <span class="ow">is</span> <span class="n">longer</span> <span class="n">now</span> <span class="o">|</span> <span class="n">Put</span> <span class="n">two</span> <span class="p">(</span><span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">spaces</span> <span class="k">as</span> <span class="n">a</span> <span class="n">field</span> <span class="n">separator</span><span class="o">.</span>         <span class="o">|</span>
+<span class="o">+-------------------+--------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Bar</span>               <span class="o">|</span> <span class="n">Even</span> <span class="n">very</span> <span class="n">very</span> <span class="n">long</span> <span class="n">lines</span> <span class="n">like</span> <span class="n">these</span> <span class="n">are</span> <span class="n">fine</span><span class="p">,</span> <span class="k">as</span> <span class="n">long</span> <span class="o">|</span>
+<span class="o">|</span>                   <span class="o">|</span> <span class="k">as</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">put</span> <span class="ow">in</span> <span class="n">line</span> <span class="n">endings</span> <span class="n">here</span><span class="o">.</span>                <span class="o">|</span>
+<span class="o">+-------------------+--------------------------------------------------------+</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="explicit-markup">
+<h3><span class="section-number">2.3.4.8. </span>直接标记 (Explicit Markup)<a class="headerlink" href="#explicit-markup" title="Permalink to this headline">¶</a></h3>
+<p>直接标记用于处理reST中的特殊内容, 如脚注, 高亮段落, 注释以及通用指令.</p>
+<p>直接标记的标记符号是: 顶格的两个句点紧跟一个空格 <code class="docutils literal notranslate"><span class="pre">..</span></code> , 其后会紧跟直接标记对象, 如 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">NOTE::</span> <span class="pre">some</span> <span class="pre">notes</span></code> 将对应一个注解, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">image::</span> <span class="pre">imagepath</span></code> 对应一幅图像, 会被渲染成 <code class="docutils literal notranslate"><span class="pre">imagepath</span></code> 所表示的图像.</p>
+<p>如果紧跟的是普通文本, 相当于代码注释或者叫评论,  如 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">some</span> <span class="pre">comments</span></code> 则不会渲染显示, 又如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">这是一个注释</span><span class="p">,</span> <span class="n">你只能在源码中看到我</span><span class="p">,</span> <span class="n">我不会被渲染出来</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><em>渲染结果:</em></p>
+<p>可以通过缩进产生多行注释:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span>
+   <span class="n">这整个缩进块都是</span>
+   <span class="n">一个注释</span><span class="o">.</span>
+   <span class="n">你只能在源码中看到我们</span><span class="p">,</span> <span class="n">我们不会被渲染出来</span>
+
+   <span class="n">仍是一个评论</span><span class="o">.</span>
+
+<span class="n">你可以看到我</span><span class="p">,</span> <span class="n">我不是注释</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>渲染结果:</strong></p>
+<p>你可以看到我, 我不是注释.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">下面涉及的很多语法, 都和直接标记 <a href="#id17"><span class="problematic" id="id18">``</span></a>.. `` 有关, 如脚注, 引文, 超链接, 指令, 注释等等.</p>
+</div>
+</div>
+<div class="section" id="directives">
+<h3><span class="section-number">2.3.4.9. </span>指令 (Directives)<a class="headerlink" href="#directives" title="Permalink to this headline">¶</a></h3>
+<p>官方文档的描述是:</p>
+<blockquote>
+<div>Directives are indicated by an explicit markup start (“.. “) followed by the directive type, two colons, and whitespace (together called the “directive marker”). Directive types are case-insensitive single words (alphanumerics plus isolated internal hyphens, underscores, plus signs, colons, and periods; no whitespace). Two colons are used after the directive type for these reasons:</div></blockquote>
+<p>即指令由 <code class="docutils literal notranslate"><span class="pre">直接标记</span> <span class="pre">+</span> <span class="pre">指令类型</span> <span class="pre">+</span> <span class="pre">两个冒号</span> <span class="pre">+</span> <span class="pre">空格(多余0个)</span></code> 组成指令标记 (“directive marker”), 指令类型是大小写不敏感的单个单词 (字母数字加内连字符、下划线、加号, 冒号, 句点；不含空格). 关于为什么使用两个冒号, 可以参考官方文档 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">Directives</a> .</p>
+<p>指令 是reST 的又一个扩展机制, Sphinx 大量使用了指令, 支持的指令很多, 这里仅介绍常用的几个, 请自行查阅手册:</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Sphinx 中的 reST 教程中的 <cite>指令</cite> 部分: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html#directives">http://www.sphinx-doc.org/en/stable/rest.html#directives</a> .</p>
+</div>
+<div class="section" id="id20">
+<h4><span class="section-number">2.3.4.9.1. </span>数学<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<p>数学公式指令 <code class="docutils literal notranslate"><span class="pre">math</span></code></p>
+<p>支持LaTex数学语法, 以及公式引用 (通过 <code class="docutils literal notranslate"><span class="pre">:eq:`x</span> <span class="pre">x</span> <span class="pre">x`</span></code> 引用), 如我是下面的带标签公式 <a class="reference internal" href="#equation-this-is-a-label">Eq.2.3.2</a> , 示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>行内公式 :math:`\alpha &gt; \beta` :
+
+Display 公式:
+
+.. math::
+
+    n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
+
+带标签公式:
+
+.. math::
+   :label: This is a label
+
+    n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
+
+多行公式:
+
+.. math::
+
+   (a + b)^2 = a^2 + 2ab + b^2
+
+   (a - b)^2 = a^2 - 2ab + b^2
+
+对齐多行公式:
+
+.. math::
+
+   (a + b)^2  &amp;=  (a + b)(a + b) \\
+              &amp;=  a^2 + 2ab + b^2
+</pre></div>
+</div>
+<p><strong>将被渲染成</strong>:</p>
+<blockquote>
+<div><p>行内公式 <span class="math">\(\alpha &gt; \beta\)</span> :</p>
+<p>Display 公式:</p>
+<div class="math" id="equation-basic-rest-0">
+<span class="eqno">(2.3.1)<a class="headerlink" href="#equation-basic-rest-0" title="Permalink to this equation">¶</a></span>\[n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k\]</div>
+<p>带标签公式:</p>
+<div class="math" id="equation-this-is-a-label">
+<span class="eqno">(2.3.2)<a class="headerlink" href="#equation-this-is-a-label" title="Permalink to this equation">¶</a></span>\[n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k\]</div>
+<p>多行公式:</p>
+<div class="math" id="equation-basic-rest-1">
+<span class="eqno">(2.3.3)<a class="headerlink" href="#equation-basic-rest-1" title="Permalink to this equation">¶</a></span>\[(a + b)^2 = a^2 + 2ab + b^2
+
+(a - b)^2 = a^2 - 2ab + b^2\]</div>
+<p>对齐多行公式:</p>
+<div class="math" id="equation-basic-rest-2">
+<span class="eqno">(2.3.4)<a class="headerlink" href="#equation-basic-rest-2" title="Permalink to this equation">¶</a></span>\[(a + b)^2  &=  (a + b)(a + b) \\
+           &=  a^2 + 2ab + b^2\]</div>
+</div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<ul class="last simple">
+<li>当使用MathJax对数学公式渲染时, 可能不能达到预期效果, 请参考 <a class="reference internal" href="Sphinx.html#secsphinxmathsupport"><span class="std std-ref">Sphinx数学支持</span></a> ;</li>
+<li>关于Sphinx中的如何使用Katex渲染公式, 参见 <a class="reference internal" href="Sphinx.html#secsphinxmathsupport"><span class="std std-ref">Sphinx数学支持</span></a> .</li>
+<li>关于Sphinx中的如何使用定义定理等环境, 参见 <a class="reference internal" href="SphinxExtensions.html#subsubsection-sphinxcontribproof"><span class="std std-ref">sphinxcontrib-proof</span></a> ;</li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">更多内容参考reST手册, <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#math">这里</a> .
+关于Sphinx中对数学公式的支持部分, 请参考 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/contents.html#document-ext/math">Math support in Sphinx</a> . 或 <a class="reference internal" href="Sphinx.html#secsphinxmathsupport"><span class="std std-ref">Sphinx数学支持</span></a> .</p>
+</div>
+</div>
+<div class="section" id="id22">
+<h4><span class="section-number">2.3.4.9.2. </span>图像<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>图像指令 <code class="docutils literal notranslate"><span class="pre">image</span></code></li>
+</ul>
+<p>即通过 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">image::</span> <span class="pre">imagepath</span></code> 实现插入图像:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="n">picture</span><span class="o">.</span><span class="n">jpeg</span>
+   <span class="p">:</span><span class="n">height</span><span class="p">:</span> <span class="mi">100</span><span class="n">px</span>
+   <span class="p">:</span><span class="n">width</span><span class="p">:</span> <span class="mi">200</span> <span class="n">px</span>
+   <span class="p">:</span><span class="n">scale</span><span class="p">:</span> <span class="mi">50</span> <span class="o">%</span>
+   <span class="p">:</span><span class="n">alt</span><span class="p">:</span> <span class="n">对于不能显示图片的时候</span><span class="p">,</span> <span class="n">显示这些文字</span>
+   <span class="p">:</span><span class="n">align</span><span class="p">:</span> <span class="n">right</span>
+</pre></div>
+</div>
+<p>下面通过 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">image::</span> <span class="pre">../_static/figs/mkdocs/insertimage.png</span></code> 插入一幅图像:</p>
+<a class="reference internal image-reference" href="../_images/insertimage.png"><img alt="../_images/insertimage.png" class="align-center" src="../_images/insertimage.png" style="width: 819.2px; height: 624.0px;" /></a>
+<ul>
+<li><p class="first">图像指令 <code class="docutils literal notranslate"><span class="pre">figure</span></code>, 包含图例和标题, 可以像下面这样使用:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="n">picture</span><span class="o">.</span><span class="n">png</span>
+   <span class="p">:</span><span class="n">scale</span><span class="p">:</span> <span class="mi">50</span> <span class="o">%</span>
+   <span class="p">:</span><span class="n">alt</span><span class="p">:</span> <span class="nb">map</span> <span class="n">to</span> <span class="n">buried</span> <span class="n">treasure</span>
+
+   <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">caption</span> <span class="n">of</span> <span class="n">the</span> <span class="n">figure</span> <span class="p">(</span><span class="n">a</span> <span class="n">simple</span> <span class="n">paragraph</span><span class="p">)</span><span class="o">.</span>
+
+   <span class="n">The</span> <span class="n">legend</span> <span class="n">consists</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">elements</span> <span class="n">after</span> <span class="n">the</span> <span class="n">caption</span><span class="o">.</span>  <span class="n">In</span> <span class="n">this</span>
+   <span class="n">case</span><span class="p">,</span> <span class="n">the</span> <span class="n">legend</span> <span class="n">consists</span> <span class="n">of</span> <span class="n">this</span> <span class="n">paragraph</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>下面通过如下命令插入一幅图像:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="o">../</span><span class="n">_static</span><span class="o">/</span><span class="n">figs</span><span class="o">/</span><span class="n">mkdocs</span><span class="o">/</span><span class="n">insertfigure</span><span class="o">.</span><span class="n">png</span>
+   <span class="p">:</span><span class="n">width</span><span class="p">:</span> <span class="mi">1024</span>
+   <span class="p">:</span><span class="n">scale</span><span class="p">:</span> <span class="mi">50</span><span class="o">%</span>
+   <span class="p">:</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span>
+
+   <span class="n">大唐芙蓉园</span> <span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">caption</span> <span class="n">of</span> <span class="n">the</span> <span class="n">figure</span> <span class="p">(</span><span class="n">a</span> <span class="n">simple</span> <span class="n">paragraph</span><span class="p">)</span><span class="o">.</span>
+
+    <span class="n">The</span> <span class="n">legend</span> <span class="n">consists</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">elements</span> <span class="n">after</span> <span class="n">the</span> <span class="n">caption</span><span class="o">.</span>  <span class="n">In</span> <span class="n">this</span>
+    <span class="n">case</span><span class="p">,</span> <span class="n">the</span> <span class="n">legend</span> <span class="n">consists</span> <span class="n">of</span> <span class="n">this</span> <span class="n">paragraph</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id39">
+<span id="figure-datangfurongyuan"></span><a class="reference internal image-reference" href="../_images/insertfigure.png"><img alt="../_images/insertfigure.png" src="../_images/insertfigure.png" style="width: 512.0px; height: 107.0px;" /></a>
+<p class="caption"><span class="caption-number">图 2.3.1 </span><span class="caption-text">大唐芙蓉园 - This is the caption of the figure (a simple paragraph).</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<blockquote>
+<div>The legend consists of all elements after the caption.  In this
+case, the legend consists of this paragraph.</div></blockquote>
+</div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">在Markdown中, 插入图片很简单, <code class="docutils literal notranslate"><span class="pre">![caption](imagepath)</span></code> 即可.</p>
+</div>
+</div>
+<div class="section" id="id23">
+<h4><span class="section-number">2.3.4.9.3. </span>提示警告类<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<p>有很多: <code class="docutils literal notranslate"><span class="pre">tip</span></code>, <code class="docutils literal notranslate"><span class="pre">note</span></code>, <code class="docutils literal notranslate"><span class="pre">hint</span></code>, <code class="docutils literal notranslate"><span class="pre">danger</span></code>, <code class="docutils literal notranslate"><span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">warning</span></code>, <code class="docutils literal notranslate"><span class="pre">caution</span></code>, <code class="docutils literal notranslate"><span class="pre">attention</span></code> , <code class="docutils literal notranslate"><span class="pre">important</span></code></p>
+<p>reST 标记代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">tip</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">tip</span>
+
+<span class="o">..</span> <span class="n">note</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">note</span>
+
+<span class="o">..</span> <span class="n">hint</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">hint</span>
+
+<span class="o">..</span> <span class="n">danger</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">danger</span>
+
+<span class="o">..</span> <span class="n">error</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">error</span>
+
+<span class="o">..</span> <span class="n">warning</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">warning</span>
+
+<span class="o">..</span> <span class="n">caution</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">caution</span>
+
+<span class="o">..</span> <span class="n">attention</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">attention</span>
+
+<span class="o">..</span> <span class="n">important</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">important</span>
+
+<span class="o">..</span> <span class="n">seealso</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">seealso</span>
+</pre></div>
+</div>
+<p>被渲染成:</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This is a tip</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a note</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">This is a hint</p>
+</div>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p class="last">This is a danger</p>
+</div>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">This is an error</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is a warning</p>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">This is a caution</p>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">This is an attention</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This is an important</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">This is seealso</p>
+</div>
+</div>
+<div class="section" id="id24">
+<h4><span class="section-number">2.3.4.9.4. </span>主题<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<p>reST 标记代码::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">topic</span><span class="p">::</span> <span class="n">Topic</span> <span class="n">Title</span>
+
+    <span class="n">Subsequent</span> <span class="n">indented</span> <span class="n">lines</span> <span class="n">comprise</span>
+    <span class="n">the</span> <span class="n">body</span> <span class="n">of</span> <span class="n">the</span> <span class="n">topic</span><span class="p">,</span> <span class="ow">and</span> <span class="n">are</span>
+    <span class="n">interpreted</span> <span class="k">as</span> <span class="n">body</span> <span class="n">elements</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>被渲染成</p>
+<div class="topic">
+<p class="topic-title first">Topic Title</p>
+<p>Subsequent indented lines comprise
+the body of the topic, and are
+interpreted as body elements.</p>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">Sidebar Title</p>
+<p class="sidebar-subtitle">Optional Sidebar Subtitle</p>
+<p class="last">Subsequent indented lines comprise
+the body of the sidebar, and are
+interpreted as body elements.</p>
+</div>
+</div>
+<div class="section" id="id25">
+<h4><span class="section-number">2.3.4.9.5. </span>额外的主体元素<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">contents</span> <span class="pre">&lt;table-of-contents&gt;</span></code> (本地, 仅是当前文件的内容表格)</li>
+<li><code class="docutils literal notranslate"><span class="pre">container</span></code> (自定义容器, 用来生成HTML的 <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> )</li>
+<li><code class="docutils literal notranslate"><span class="pre">rubric</span></code> (和文档章节无关的标题)</li>
+<li><code class="docutils literal notranslate"><span class="pre">topic</span></code>  (高亮显示的主体元素)</li>
+<li><code class="docutils literal notranslate"><span class="pre">parsed-literal</span></code> (支持内联标记的斜体模块)</li>
+<li><code class="docutils literal notranslate"><span class="pre">epigraph</span></code> (可选属性行的摘要模块)</li>
+<li><code class="docutils literal notranslate"><span class="pre">highlights</span></code> (有自己的类属性的摘要模块)</li>
+<li><code class="docutils literal notranslate"><span class="pre">compound</span></code> ( 复合段落)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id26">
+<h4><span class="section-number">2.3.4.9.6. </span>专用表格<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">table</span></code> (有标题的表格)</li>
+<li><code class="docutils literal notranslate"><span class="pre">csv-table</span></code> (CSV自动生成表格)</li>
+<li><code class="docutils literal notranslate"><span class="pre">list-table</span></code> (列表生成的表格)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id27">
+<h4><span class="section-number">2.3.4.9.7. </span>专用指令<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">raw</span></code> (包含原始格式的标记)</p>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">include</span></code> (包含reStructuredText标记的文件)</dt><dd><p>– 在Sphinx中,如果包含绝对文件路径, 指令会以源目录地址做为参照</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">class</span></code> (将类属性指派给下一个元素)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="html">
+<h4><span class="section-number">2.3.4.9.8. </span>HTML 特性<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">meta</span></code> (生成HTML <code class="docutils literal notranslate"><span class="pre">&lt;meta&gt;</span></code> 标签)</li>
+<li><code class="docutils literal notranslate"><span class="pre">title</span></code> (覆盖文档标题)</li>
+</ul>
+<ul class="simple">
+<li>影响标记:</li>
+</ul>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">default-role</span></code> (设置新的默认角色)</li>
+<li><code class="docutils literal notranslate"><span class="pre">role</span></code> (创建新的角色)</li>
+</ul>
+<p>Sphinx 新增指令可查阅 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/index.html">Sphinx Markup Constructs</a> .</p>
+</div>
+</div>
+<div class="section" id="hyperlinks">
+<h3><span class="section-number">2.3.4.10. </span>超链接 (Hyperlinks)<a class="headerlink" href="#hyperlinks" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h4><span class="section-number">2.3.4.10.1. </span>外部链接<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">`Link</span> <span class="pre">text</span> <span class="pre">&lt;http://example.com/&gt;`_</span></code> 来表示超链接, 将被渲染成 <a class="reference external" href="http://example.com/">Link text</a> 如果文字本身就是链接, 那不用作任何标记, 解析器可以自动将链接和邮箱地址转换为超链接.</p>
+<p>也可以单独定义链接目标用引用:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>This is a paragraph that contains `a link`_.
+
+.. _a link: http://example.com/
+</pre></div>
+</div>
+<p>渲染成:</p>
+<p>This is a paragraph that contains <a class="reference external" href="http://example.com/">a link</a>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">在Markdown中, 插入链接很简单, <code class="docutils literal notranslate"><span class="pre">[Link</span> <span class="pre">Text](http://example.com/)</span></code> 即可.</p>
+</div>
+</div>
+<div class="section" id="id29">
+<h4><span class="section-number">2.3.4.10.2. </span>内部链接<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">首先需要在标题, 图像, 表等对象前放置一个标签 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">_label:</span></code>, 比如我在上幅图上方放置了一个标签 <code class="docutils literal notranslate"><span class="pre">figure-datangfurongyuan</span></code> , 注意空白行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">_figure</span><span class="o">-</span><span class="n">datangfurongyuan</span><span class="p">:</span>
+
+<span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="o">../</span><span class="n">_static</span><span class="o">/</span><span class="n">figs</span><span class="o">/</span><span class="n">mkdocs</span><span class="o">/</span><span class="n">insertfigure</span><span class="o">.</span><span class="n">png</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">引用. 通过 <code class="docutils literal notranslate"><span class="pre">:ref:`label`</span></code> , 接上例, 使用 <code class="docutils literal notranslate"><span class="pre">:ref:`figure-datangfurongyuan`</span></code> 引用, 那么渲染结果为: <a class="reference internal" href="#figure-datangfurongyuan"><span class="std std-ref">大唐芙蓉园 - This is the caption of the figure (a simple paragraph).</span></a>, 点击会跳到图像位置.</p>
+</li>
+</ol>
+<p>其它的交叉引用, 请参考手册 <a class="reference external" href="http://sphinx-doc-zh.readthedocs.io/en/latest/markup/inline.html#ref-role">交叉引用部分</a>,</p>
+</div>
+</div>
+<div class="section" id="footnotes">
+<h3><span class="section-number">2.3.4.11. </span>脚注 (Footnotes)<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
+<p>包含两步:</p>
+<ul>
+<li><p class="first">在文档底部放置脚注主体, 以 <code class="docutils literal notranslate"><span class="pre">rubric</span></code> 指令标示:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">rubric</span><span class="p">::</span> <span class="n">Footnotes</span>
+
+<span class="o">..</span> <span class="p">[</span><span class="c1">#name] 这里是脚注内容</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">在需要插入脚注的地方插入脚注名 <code class="docutils literal notranslate"><span class="pre">[#name]</span></code></p>
+</li>
+</ul>
+<p>其中, 使用 <code class="docutils literal notranslate"><span class="pre">[#name]_</span></code> 可以实现自动编号, 当然你也可以使用数字来指示确定的脚注编号 <code class="docutils literal notranslate"><span class="pre">[1]_</span></code> .</p>
+<p>举例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">我后面插入了一个自编号的脚注</span> <span class="p">[</span><span class="c1">#f1]_ , 后面又跟了一个手动编号的脚注 [2]_ , 后面还跟着一个自动编号的 [#fn]_ .</span>
+
+<span class="o">..</span> <span class="n">rubric</span><span class="p">::</span> <span class="n">Footnotes</span>
+
+<span class="o">..</span> <span class="p">[</span><span class="c1">#f1] 我是自编号脚注1</span>
+<span class="o">..</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">我是手动编号脚注2</span>
+<span class="o">..</span> <span class="p">[</span><span class="c1">#fn] 我是自编号脚注3</span>
+</pre></div>
+</div>
+<p>我后面插入了一个自编号的脚注 <a class="footnote-reference" href="#f1" id="id31">[1]</a> , 后面又跟了一个手动编号的脚注 <a class="footnote-reference" href="#id34" id="id32">[2]</a> , 后面还跟着一个自动编号的 <a class="footnote-reference" href="#fn" id="id33">[3]</a> .</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id31">[1]</a></td><td>我是自编号脚注1</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id34" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id32">[2]</a></td><td>我是手动编号脚注2</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="fn" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id33">[3]</a></td><td>我是自编号脚注3</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="citations">
+<h3><span class="section-number">2.3.4.12. </span>引文 (Citations)<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h3>
+<p>Sphinx支持标准的 reST 引文, 此外, 在Sphinx里, 所有的引文都是全局的, 所有文件都能引用任意的文献, 像下面这样使用引文:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">Lorem</span> <span class="n">ipsum</span> <span class="p">[</span><span class="n">Ref</span><span class="p">]</span><span class="n">_</span> <span class="n">dolor</span> <span class="n">sit</span> <span class="n">amet</span><span class="o">.</span>
+
+<span class="o">..</span> <span class="p">[</span><span class="n">Ref</span><span class="p">]</span> <span class="n">Book</span> <span class="ow">or</span> <span class="n">article</span> <span class="n">reference</span><span class="p">,</span> <span class="n">URL</span> <span class="ow">or</span> <span class="n">whatever</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Lorem ipsum <a class="reference internal" href="#ref" id="id35"><span>[Ref]</span></a> dolor sit amet.</p>
+<table class="docutils citation" frame="void" id="ref" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id35">[Ref]</a></td><td>Book or article reference, URL or whatever.</td></tr>
+</tbody>
+</table>
+<p>引文的用法与脚注用法相似, 但标签不是数字, 也不是以 <code class="docutils literal notranslate"><span class="pre">#</span></code> 开头.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">关于Sphinx中如何使用 <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> 参考文献, 请参考 <a class="reference internal" href="SphinxExtensions.html#subsubsection-sphinxcontribbibtex"><span class="std std-ref">sphinxcontrib-bibtex</span></a> 小结.</p>
+</div>
+</div>
+<div class="section" id="substitutions">
+<h3><span class="section-number">2.3.4.13. </span>替换 (Substitutions)<a class="headerlink" href="#substitutions" title="Permalink to this headline">¶</a></h3>
+<p>reST 支持替换, 你可以像下面这样使用替换:</p>
+<p>首先定义替换操作:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="o">|</span><span class="n">name</span><span class="o">|</span> <span class="n">replace</span><span class="p">::</span> <span class="n">替换文本</span>
+</pre></div>
+</div>
+<p>或者:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. |caution| image:: warning.png
+             :alt: Warning!
+</pre></div>
+</div>
+<p>然后在需要替换的地方使用 <code class="docutils literal notranslate"><span class="pre">|name|</span></code> , 或者 <code class="docutils literal notranslate"><span class="pre">|caution|</span></code></p>
+<p><strong>示例1</strong>:</p>
+<p>reST源码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>你看到了吗? 第二个单词 word |word| !
+
+.. |word| replace:: 替换成我了
+</pre></div>
+</div>
+<p>被渲染成:</p>
+<p>你看到了吗? 第二个单词 word 替换成我了!</p>
+<p><strong>示例2</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>&quot;大唐芙蓉园-婚纱照&quot;本来是个短语, 使用 |大唐芙蓉园-婚纱照| 会被替换成图像!
+
+.. |大唐芙蓉园-婚纱照| image:: ../_static/figs/mkdocs/insertfigure.png
+                       :alt: 大唐芙蓉园-婚纱照!
+</pre></div>
+</div>
+<p>被渲染成:</p>
+<p>“大唐芙蓉园-婚纱照”本来是个短语, 使用 <img alt="大唐芙蓉园-婚纱照!" src="../_images/insertfigure.png" /> 会被替换成图像!</p>
+<p>你可以进行任意的替换!</p>
+</div>
+<div class="section" id="id36">
+<h3><span class="section-number">2.3.4.14. </span>Sphinx扩展指令<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<p>有关Sphinx的扩展指令, 如 <strong>目录树</strong> , <strong>术语</strong> , <strong>特定语法着色</strong> 等, 请移步本手册 <a class="reference internal" href="SphinxExtensions.html#sphinxextensiondirectives"><span class="std std-ref">Sphinx重要扩展介绍</span></a> 指南, 或参考Sphinx官方手册 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/markup/toctree.html">The TOC tree</a> 部分.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SphinxExtensions.html" class="btn btn-neutral float-right" title="2.4. Sphinx重要扩展介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Sphinx.html" class="btn btn-neutral float-left" title="2.2. Sphinx简明教程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

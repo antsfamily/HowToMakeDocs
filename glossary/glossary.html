@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. 名词术语 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="3.4. 发布网站到GitHub" href="../Advanced/gitpages.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Basic/index.html">2. 基础教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">4. </span>名词术语</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/glossary/glossary.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="glossary">
+<span id="id1"></span><h1><span class="section-number">4. </span>名词术语<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<dl class="glossary docutils">
+<dt id="term-architecture">Architecture</dt><dd>体系结构</dd>
+<dt id="term-board-support-package">Board Support Package</dt><dd>板级支持包 (Board Support Package, BSP) 是介于主板硬件和操作系统中驱动层程序之间的一层, 一般认为它属于操作系统一部分, 主要是实现对操作系统的支持, 为上层的驱动程序提供访问硬件设备寄存器的函数包, 使之能够更好的运行于硬件主板. 在嵌入式系统软件的组成中, 就有BSP. BSP是相对于操作系统而言的, 不同的操作系统对应于不同定义形式的BSP,例如VxWorks的BSP和Linux的BSP相对于某一CPU来说尽管实现的功能一样, 可是写法和接口定义是完全不同的, 所以写BSP一定要按照该系统BSP的定义形式来写（BSP的编程过程大多数是在某一个成型的BSP模板上进行修改）. 这样才能与上层OS保持正确的接口, 良好的支持上层OS.</dd>
+<dt id="term-cross-compiling">Cross Compiling</dt><dd>简单地说, 就是在一个平台上生成另一个平台上的可执行代码. 包含两个概念: 体系结构 (Architecture) 和 操作系统 (Operating System). 同一体系结构可以运行不同的操作系统；同样, 同一操作系统也可以在不同的体系结构上运行. 举例来说, 我们常说的x86 Linux平台实际上是Intel x86体系结构和Linux for x86操作系统的统称；而x86 WinNT平台实际上是Intel x86体系结构和Windows NT for x86操作系统的简称. 对于嵌入式Linux开发中的交叉编译, 一般是指, 在Linux PC机上, 利用交叉编译器 <cite>arm-linux-gcc</cite> , 编译生成Linux ARM上的可执行程序.</dd>
+<dt id="term-dmips">DMIPS</dt><dd><p>即 Dhrystone Million Instructions executed Per Second, Dhrystone是一种整数运算测试程序, DMIPS表示了在Dhrystone这样一种测试方法下的MIPS. 举例来说, 如果某处理器性能为: 2DMIPS/MHZ, 那么对于主频为1000MHz即1GHz的处理器, 其计算能力为2000DMIPS.</p>
+<p>CPU性能评估采用综合测试程序, 较流行的有Whetstone 和 Dhrystone 两种. Dhrystone主要用于测整数计算能力, 计算单位就是DMIPS. 采用Whetstone 主要用于测浮点计算能力, 计算单位就是MFLOPS. DMIPS只适宜于评估标量机, 不能用于评估向量机. 而MFLOPS则比较适用于衡量向量机的性能.</p>
+</dd>
+<dt id="term-embedded-operating-system">Embedded Operating System</dt><dd>嵌入式操作系统（Embedded Operating System, 简称：EOS）是指用于嵌入式硬件系统的操作系统. 嵌入式操作系统是一种用途广泛的系统软件, 通常包括与硬件相关的底层驱动软件、系统内核、设备驱动接口、通信协议、图形界面、标准化浏览器等. 嵌入式操作系统负责嵌入式系统的全部软、硬件资源的分配、任务调度, 控制、协调并发活动. 它必须体现其所在系统的特征, 能够通过装卸某些模块来达到系统所要求的功能. 目前在嵌入式领域广泛使用的操作系统有：嵌入式实时操作系统µC/OS-II、嵌入式Linux、Windows Embedded、VxWorks等, 以及应用在智能手机和平板电脑的Android、iOS等.</dd>
+<dt id="term-embedded-real-time-operation-system">Embedded Real-time Operation System</dt><dd>嵌入式实时操作系统 (Embedded Real-time Operation System, EROS) , 具备实时性的嵌入式操作系统.</dd>
+<dt id="term-gpu">GPU</dt><dd>图形处理单元(Graphic Processing Unit, GPU)</dd>
+<dt id="term-gui">GUI</dt><dd>图形用户界面（Graphical User Interface, 简称 GUI, 又称图形用户接口）是指采用图形方式显示的计算机操作用户界面.</dd>
+<dt id="term-markup-language">Markup Language</dt><dd>标记语言（也称置标语言、标记语言、标志语言、标识语言）是一种将文本（Text）以及文本相关的其他信息结合起来, 展现出关于文档结构和数据处理细节的计算机文字编码. 与文本相关的其他信息（包括例如文本的结构和表示信息等）与原来的文本结合在一起, 但是使用标记（markup）进行标识. 当今广泛使用的标记语言是超文本标记语言（HyperText Markup Language, HTML）和可扩展标记语言（eXtensible Markup Language, XML）. 标记语言广泛应用于网页和网络应用程序. 标记最早用于出版业, 是作者、编辑以及出版商之间用于描述出版作品的排版格式所使用的.</dd>
+<dt id="term-mips">MIPS</dt><dd>每秒百万条指令（Million Instructions executed Per Second，MIPS），用来计算同一秒内系统的处理能力，即每秒执行了多少百万条指令.</dd>
+<dt id="term-opencl">OpenCL</dt><dd><p>开放计算语言(Open Computing Language, OpenCL), 是一个为异构平台编写程序的框架, 此异构平台可由CPU、GPU、DSP、FPGA或其他类型的处理器与硬件加速器所组成. OpenCL由一门用于编写kernels（在OpenCL设备上运行的函数）的语言（基于C99）和一组用于定义并控制平台的API组成. OpenCL提供了基于任务分区和数据分区的并行计算机制.</p>
+<p>OpenCL类似于另外两个开放的工业标准OpenGL和OpenAL, 这两个标准分别用于三维图形和计算机音频方面. OpenCL扩充了GPU图形生成之外的能力. OpenCL由非盈利性技术组织Khronos Group掌管.</p>
+</dd>
+<dt id="term-processing-system">Processing System</dt><dd>处理系统 (Processing System, PS), 在 Xilinx Zynq 系列设备中,  SOC被分成 PS (ARM部分) 与 PL (FPGA部分).</dd>
+<dt id="term-programmable-logic">Programmable Logic</dt><dd>可编程逻辑 (Programmable Logic, PL), 在 Xilinx Zynq 系列设备中, SOC被分成 PS (ARM部分) 与 PL (FPGA部分).</dd>
+<dt id="term-real-time-multi-tasking-operation-system">Real Time multi-tasking Operation System</dt><dd>实时多任务操作系统 (Real Time multi-tasking Operation System, RTOS) . 在嵌入式应用中通常注重其实时性.</dd>
+<dt id="term-stream-multiprocessor">Stream Multiprocessor</dt><dd>流处理器 (Stream Multiprocessor, SM)</dd>
+<dt id="term-stream-processor">Stream Processor</dt><dd>流处理器 (Stream Processor, SP)</dd>
+<dt id="term-thread-processor-cluster">Thread Processor Cluster</dt><dd>线程处理器簇 (Thread Processor Cluster, TPC)</dd>
+<dt id="term-xadc">XADC</dt><dd>赛灵思模拟到数字转换器 (Xilinx Analogue to Digital Converter, XADC)</dd>
+<dt id="term-xdc">XDC</dt><dd>赛灵思设计约束 (Xilinx Design Constraints, XDC)</dd>
+<dt id="term-xilinx-software-development-kit">Xilinx Software Development Kit</dt><dd>赛灵思软件开发套件 (Xilinx Software Development Kit, SDK)</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../Advanced/gitpages.html" class="btn btn-neutral float-left" title="3.4. 发布网站到GitHub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

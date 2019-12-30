@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.4. Sphinx重要扩展介绍 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.5. Sphinx其它语言支持" href="SphinxOtherLanguageSupport.html" />
+    <link rel="prev" title="2.3. reStructuredText简明教程" href="reST.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基础教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">2.1. 文档制作简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html">2.2. Sphinx简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html">2.3. reStructuredText简明教程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. Sphinx重要扩展介绍</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.4.1. Sphinx内置扩展</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.4.1.1. 重要内置扩展介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.4.1.2. 其它标记指令</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.4.2. 第三方扩展</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">2.4.2.1. 第三方扩展简介及安装</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">2.4.2.2. 推荐使用的第三方扩展</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html">2.6. 版本控制系统Git教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>基础教程</a> &raquo;</li>
+        
+      <li><span class="section-number">2.4. </span>Sphinx重要扩展介绍</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Basic/SphinxExtensions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx">
+<span id="sphinxextensiondirectives"></span><h1><span class="section-number">2.4. </span>Sphinx重要扩展介绍<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">2.4.1. </span>Sphinx内置扩展<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>可以通过以下链接找到 Sphinx的扩展:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.sphinx-doc.org/en/master/usage/extensions/index.html">sphinx extensions doc</a>  : 官方文档介绍, 含 <strong>Built-in extensions</strong> 和 <strong>Third-party extensions</strong></li>
+<li><a class="reference external" href="https://github.com/yoloseem/awesome-sphinxdoc">Awesome Sphinx</a> : A curated list of awesome tools for Sphinx Python Documentation Generator.</li>
+<li><a class="reference external" href="https://bitbucket.org/birkenfeld/sphinx-contrib">sphinx-contrib</a> : a collection of Sphinx extensions maintained by their respective authors. It is not an official part of Sphinx.</li>
+<li><a class="reference external" href="https://sphinxext-survey.readthedocs.io/en/latest/">Survey of Sphinx extensions</a> : This is list of Sphinx extensions at October, 2014.</li>
+</ul>
+<div class="section" id="id2">
+<h3><span class="section-number">2.4.1.1. </span>重要内置扩展介绍<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="toctree">
+<h4><span class="section-number">2.4.1.1.1. </span>目录树 (toctree)<a class="headerlink" href="#toctree" title="Permalink to this headline">¶</a></h4>
+<p>由于 reST 没有处理多个文档, 或将文档分割成多个输出文件的机制, Sphinx使用一个自定义指令来添加组成整篇文档的单个文件间的关系, 以及目录. 这个指令的核心就是 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> .</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">简单包含某个文件, 可以使用 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#include">include</a> 指令.</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h4><span class="section-number">2.4.1.1.2. </span>代码与语法着色<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>更多功能, 参考 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/usage/restructuredtext/directives.html#showing-code-examples">Showing code examples</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. code-block:: python
+   :lineno-start: 10
+   :emphasize-lines: 9
+   :linenos:
+   :caption: demo_python.py
+   :name: code-PythonGenerateEllipse
+
+   import pytool
+   import numpy as np
+   import matplotlib.pyplot as plt
+
+   # =====================generate Ellipse=====================
+   a = 6  # major axis
+   b = 2  # minor axis
+   x0 = 10  # center x0
+   y0 = 10  # center y0
+   N = 1000  # number of points
+
+   # angle for rotating ellipse data
+   theta = np.pi * 30 / 180
+
+   x, y = pytool.ellipse_surface(a, b, x0, y0, N, &#39;rand&#39;)
+
+   x = x - np.mean(x)
+   y = y - np.mean(y)
+
+
+并可以通过 :code-block:numref:`code-PythonGenerateEllipse` 引用代码段.
+</pre></div>
+</div>
+<p>将被渲染成</p>
+<div class="literal-block-wrapper container" id="code-pythongenerateellipse">
+<div class="code-block-caption"><span class="caption-number">代码 2.4.1 </span><span class="caption-text">demo_python.py</span><a class="headerlink" href="#code-pythongenerateellipse" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pytool</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="c1"># =====================generate Ellipse=====================</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># major axis</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># minor axis</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># center x0</span>
+<span class="hll"><span class="n">y0</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># center y0</span>
+</span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># number of points</span>
+
+<span class="c1"># angle for rotating ellipse data</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">/</span> <span class="mi">180</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pytool</span><span class="o">.</span><span class="n">ellipse_surface</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="s1">&#39;rand&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>并可以通过 <a class="reference internal" href="#code-pythongenerateellipse"><span class="std std-numref">代码 2.4.1</span></a> 引用代码段.</p>
+</div>
+<div class="section" id="id4">
+<h4><span class="section-number">2.4.1.1.3. </span>公式, 图, 表, 代码段编号及引用<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>在 <cite>conf.py</cite> 文件中配置相关选项, 设置是否启用图表公式编号, 以及编号目录深度即格式, 代码如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">math_number_all</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set this option to True if you want all displayed math to be numbered. The default is False.</span>
+<span class="n">math_eqref_format</span> <span class="o">=</span> <span class="s1">&#39;Eq.{number}&#39;</span>  <span class="c1"># gets rendered as, for example, Eq.10.</span>
+
+<span class="c1"># If True, displayed math equations are numbered across pages when numfig</span>
+<span class="c1"># is enabled. The numfig_secnum_depth setting is respected. The eq, not</span>
+<span class="c1"># numref, role must be used to reference equation numbers. Default is</span>
+<span class="c1"># True.</span>
+<span class="n">math_numfig</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># see http://www.sphinx-doc.org/en/master/usage/configuration.html#confval-numfig</span>
+<span class="c1"># If true, figures, tables and code-blocks are automatically numbered if they have a caption.</span>
+<span class="c1"># The numref role is enabled. Obeyed so far only by HTML and LaTeX builders. Default is False.</span>
+<span class="c1"># The LaTeX builder always assigns numbers whether this option is enabled or not.</span>
+<span class="n">numfig</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">numfig_secnum_depth</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># A dictionary mapping &#39;figure&#39;, &#39;table&#39;, &#39;code-block&#39; and &#39;section&#39; to strings that are used for format of figure numbers.</span>
+<span class="c1"># As a special character, %s will be replaced to figure number.</span>
+<span class="c1"># Default is to use &#39;Fig. %s&#39; for &#39;figure&#39;, &#39;Table %s&#39; for &#39;table&#39;, &#39;Listing %s&#39; for &#39;code-block&#39; and &#39;Section&#39; for &#39;section&#39;.</span>
+<span class="n">numfig_format</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;figure&#39;</span><span class="p">:</span> <span class="s1">&#39;Fig. </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="s1">&#39;Table </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;code-block&#39;</span><span class="p">:</span> <span class="s1">&#39;Listing </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;Section </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">numfig_format</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;figure&#39;</span><span class="p">:</span> <span class="s1">&#39;图 </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="s1">&#39;表 </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;code-block&#39;</span><span class="p">:</span> <span class="s1">&#39;代码 </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;section&#39;</span><span class="p">:</span> <span class="s1">&#39;节 </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>公式示例, 代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. math:: e^{i\pi} + 1 = 0
+   :label: euler
+
+使用``label``, 公式将被编号, 可以使用 ``:eq:`euler``` (等效于 :math:numref:`euler` ) 来引用公式 :eq:`euler`.
+</pre></div>
+</div>
+<p>将被渲染为</p>
+<div class="math" id="equation-euler">
+<span class="eqno">(2.4.1)<a class="headerlink" href="#equation-euler" title="Permalink to this equation">¶</a></span>\[e^{i\pi} + 1 = 0
+
+\]</div>
+<p>使用``label``, 公式将被编号, 可以使用 <code class="docutils literal notranslate"><span class="pre">:eq:`euler`</span></code> (等效于 <a class="reference internal" href="#equation-euler">Eq.2.4.1</a> ) 来引用公式 <a class="reference internal" href="#equation-euler">Eq.2.4.1</a>.</p>
+<p>图像示例, 代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. _fig-DeepLearningPlatforms:
+
+.. figure:: ../_static/figs/mkdocs/demo_reffig.png
+   :alt: 深度学习平台
+   :align: center
+
+通过 :figure:numref:`fig-DeepLearningPlatforms` 可以引用.
+</pre></div>
+</div>
+<p>被渲染为</p>
+<div class="figure align-center" id="fig-deeplearningplatforms">
+<img alt="深度学习平台" src="../_images/demo_reffig.png" />
+</div>
+<p>通过 <a class="reference internal" href="#fig-deeplearningplatforms"><span class="std std-numref">图 2.4.1</span></a> 可以引用.</p>
+<p>表格示例, 代码:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. table:: Truth table for &quot;not&quot;
+   :name: table-Not
+
+   =====  =====
+   A      not A
+   =====  =====
+   False  True
+   True   False
+   =====  =====
+
+可以通过 :table:numref:`table-Not` 引用.
+</pre></div>
+</div>
+<p>被渲染为</p>
+<table border="1" class="docutils" id="table-not">
+<caption><span class="caption-number">表 2.4.1 </span><span class="caption-text">Truth table for “not”</span><a class="headerlink" href="#table-not" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">A</th>
+<th class="head">not A</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>False</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>可以通过 <a class="reference internal" href="#table-not"><span class="std std-numref">表 2.4.1</span></a> 引用.</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">2.4.1.2. </span>其它标记指令<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>下表 给出了语义标记, 详见 <a class="reference external" href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#roles">Sphinx Roles</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="21%" />
+<col width="18%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">标记名</th>
+<th class="head">示例代码</th>
+<th class="head">渲染结果</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>缩写 <code class="docutils literal notranslate"><span class="pre">abbr</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:abbr:`LIFO</span> <span class="pre">(last-in,</span> <span class="pre">first-out)`</span></code></td>
+<td><abbr title="last-in, first-out">LIFO</abbr></td>
+<td>An abbreviation</td>
+</tr>
+<tr class="row-odd"><td>命令 <code class="docutils literal notranslate"><span class="pre">command</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:command:`ls`</span></code></td>
+<td><strong class="command">ls</strong></td>
+<td>The name of an OS-level command</td>
+</tr>
+<tr class="row-even"><td>下载 <code class="docutils literal notranslate"><span class="pre">download</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:download:`this</span> <span class="pre">example</span> <span class="pre">script</span> <span class="pre">&lt;../example.py&gt;`</span></code></td>
+<td><code class="xref download docutils literal notranslate"><span class="pre">this</span> <span class="pre">example</span> <span class="pre">script</span></code></td>
+<td>This role lets you link to files within your source tree that are not reST documents that can be viewed, but files that can be downloaded</td>
+</tr>
+<tr class="row-odd"><td>文档 <code class="docutils literal notranslate"><span class="pre">doc</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:doc:`Monty</span> <span class="pre">Python</span> <span class="pre">members</span> <span class="pre">&lt;/people&gt;`</span></code></td>
+<td><span class="xref std std-doc">Monty Python members</span></td>
+<td>Link to the specified document; the document name can be specified in absolute or relative fashion</td>
+</tr>
+<tr class="row-even"><td>编号引用 <code class="docutils literal notranslate"><span class="pre">numref</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:numref:`Monty</span> <span class="pre">Python</span> <span class="pre">members</span> <span class="pre">&lt;/people&gt;`</span></code></td>
+<td><span class="xref std std-doc">Monty Python members</span></td>
+<td>Link to the specified figures, tables, code-blocks and sections; the standard reST labels are used.</td>
+</tr>
+<tr class="row-odd"><td>环境变量 <code class="docutils literal notranslate"><span class="pre">envvar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:envvar:`PATH`</span></code></td>
+<td><span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code></td>
+<td>An environment variable. Index entries are generated. Also generates a link to the matching envvar directive, if it exists.</td>
+</tr>
+<tr class="row-even"><td>语法标记 <code class="docutils literal notranslate"><span class="pre">token</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:token:`math`</span></code></td>
+<td><code class="xref std std-token docutils literal notranslate"><span class="pre">math</span></code></td>
+<td>The name of a grammar token (used to create links between productionlist directives).</td>
+</tr>
+<tr class="row-odd"><td>Python中的关键字 <code class="docutils literal notranslate"><span class="pre">keyword</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:keyword:`ls`</span></code></td>
+<td><code class="xref std std-keyword docutils literal notranslate"><span class="pre">print</span></code></td>
+<td>The name of a keyword in Python. This creates a link to a reference label with that name, if it exists.</td>
+</tr>
+<tr class="row-even"><td>选项 <code class="docutils literal notranslate"><span class="pre">option</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:option:`-o`</span></code></td>
+<td><code class="xref std std-option docutils literal notranslate"><span class="pre">-o</span></code></td>
+<td>A command-line option to an executable program. This generates a link to a option directive, if it exists.</td>
+</tr>
+<tr class="row-odd"><td>图形化标签 <code class="docutils literal notranslate"><span class="pre">guilabel</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:guilabel:`ls`</span></code></td>
+<td><span class="guilabel"><span class="accelerator">C</span>ancel</span></td>
+<td>button, menu, title…</td>
+</tr>
+<tr class="row-even"><td>按键 <code class="docutils literal notranslate"><span class="pre">kbd</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:kbd:`Control-x</span> <span class="pre">Control-f`</span></code></td>
+<td><kbd class="kbd docutils literal notranslate">Control-x Control-f</kbd></td>
+<td>Mark a sequence of keystrokes</td>
+</tr>
+<tr class="row-odd"><td>数学 <code class="docutils literal notranslate"><span class="pre">math</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:math:`\alpha`</span></code></td>
+<td><span class="math">\(\alpha\)</span></td>
+<td>数学公式</td>
+</tr>
+<tr class="row-even"><td>公式引用 <code class="docutils literal notranslate"><span class="pre">eq</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:eq:`xxx`</span></code></td>
+<td><a class="reference internal" href="#equation-euler">Eq.2.4.1</a></td>
+<td>The name of an OS-level command</td>
+</tr>
+<tr class="row-odd"><td>邮件头 <code class="docutils literal notranslate"><span class="pre">mailheader</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:mailheader:`Content-Type`</span></code></td>
+<td><em class="mailheader">Content-Type</em></td>
+<td>The name of an OS-level command</td>
+</tr>
+<tr class="row-even"><td>make变量 <code class="docutils literal notranslate"><span class="pre">makevar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:makevar:`make`</span></code></td>
+<td><strong class="makevar">make</strong></td>
+<td>The name of a make variable</td>
+</tr>
+<tr class="row-odd"><td>首页 <code class="docutils literal notranslate"><span class="pre">manpage</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:manpage:`ls(1)`</span></code></td>
+<td><em class="manpage">ls(1)</em></td>
+<td>A reference to a Unix manual page including the section</td>
+</tr>
+<tr class="row-even"><td>菜单选择 <code class="docutils literal notranslate"><span class="pre">menuselection</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:menuselection:`Start</span> <span class="pre">--&gt;</span> <span class="pre">Programs`</span></code></td>
+<td><span class="menuselection">Start ‣ Programs</span></td>
+<td>Menu selection</td>
+</tr>
+<tr class="row-odd"><td>程序 <code class="docutils literal notranslate"><span class="pre">program</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:program:`notepad`</span></code></td>
+<td><strong class="program">notepad</strong></td>
+<td>The name of an executable program</td>
+</tr>
+<tr class="row-even"><td>正则表达式 <code class="docutils literal notranslate"><span class="pre">regexp</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:regexp:`/[1-9][0-9]{0,1}/`</span></code></td>
+<td><code class="regexp docutils literal notranslate"><span class="pre">/[1-9][0-9]{0,1}/</span></code></td>
+<td>A regular expression. Quotes should not be included.</td>
+</tr>
+<tr class="row-odd"><td>变量渲染 <code class="docutils literal notranslate"><span class="pre">samp</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:samp:`print</span> <span class="pre">1+{variable}`:samp:`print</span> <span class="pre">1+{variable}`</span></code></td>
+<td><code class="samp docutils literal notranslate"><span class="pre">print</span> <span class="pre">1+</span><em><span class="pre">variable</span></em></code></td>
+<td>A piece of literal text, such as code. Within the contents, you can use curly braces to indicate a “variable” part, as in file.</td>
+</tr>
+<tr class="row-even"><td>PythonPEP <code class="docutils literal notranslate"><span class="pre">pep</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:pep:`number#anchor`</span></code></td>
+<td>—</td>
+<td>A reference to a Python Enhancement Proposal</td>
+</tr>
+<tr class="row-odd"><td>命令 <code class="docutils literal notranslate"><span class="pre">rfc</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:rfc:`number#anchor`</span></code></td>
+<td><a href="#id6"><span class="problematic" id="id7">:rfc:`number#anchor`</span></a></td>
+<td>A reference to an Internet Request for Comments.</td>
+</tr>
+<tr class="row-even"><td>定义实例 <code class="docutils literal notranslate"><span class="pre">dfn</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:dfn:`person=Person()`</span></code></td>
+<td><em class="dfn">person=Person()</em></td>
+<td>Mark the defining instance of a term in the text. (No index entries are generated.)</td>
+</tr>
+<tr class="row-odd"><td>文件或目录 <code class="docutils literal notranslate"><span class="pre">file</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:file:`/usr/lib/python2.{x}/site-packages`</span></code></td>
+<td><code class="file docutils literal notranslate"><span class="pre">/usr/lib/python2.</span><em><span class="pre">x</span></em><span class="pre">/site-packages</span></code></td>
+<td>The name of a file or directory. Within the contents, you can use curly braces to indicate a “variable” part</td>
+</tr>
+<tr class="row-even"><td>新闻组 <code class="docutils literal notranslate"><span class="pre">newsgroup</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">:newsgroup:`aaa</span> <span class="pre">bbb`</span></code></td>
+<td><em class="newsgroup">aaa bbb</em></td>
+<td>The name of a Usenet newsgroup.</td>
+</tr>
+</tbody>
+</table>
+<p>下面给出了新增的一些替换指令, 详见 <a class="reference external" href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#substitutions">Sphinx Roles Substitutions</a>.</p>
+<ul class="simple">
+<li>发布: <code class="docutils literal notranslate"><span class="pre">|release|</span></code> 被渲染为 0.1</li>
+<li>版本: <code class="docutils literal notranslate"><span class="pre">|version|</span></code> 被渲染为 0.1</li>
+<li>日期: <code class="docutils literal notranslate"><span class="pre">|today|</span></code> 被渲染为 Dec 30, 2019</li>
+</ul>
+<div class="section" id="more-domains">
+<h4><span class="section-number">2.4.1.2.1. </span>More domains<a class="headerlink" href="#more-domains" title="Permalink to this headline">¶</a></h4>
+<p>The sphinx-contrib repository contains more domains available as extensions; currently Ada, CoffeeScript, Erlang, HTTP, Lasso, MATLAB, PHP, and Ruby domains. Also available are domains for Chapel, Common Lisp, dqn, Go, Jinja, Operation, and Scala. Refer to <a class="reference external" href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#more-domains">Sphinx More domains</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">2.4.2. </span>第三方扩展<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3><span class="section-number">2.4.2.1. </span>第三方扩展简介及安装<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>如下扩展可以通过类似 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">extensions_name</span></code> 的命令安装, 在 <cite>conf.py</cite> 文件中的 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 中加入该扩展, 以下不在赘述.</p>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">2.4.2.2. </span>推荐使用的第三方扩展<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sphinxcontrib-proof">
+<span id="subsubsection-sphinxcontribproof"></span><h4><span class="section-number">2.4.2.2.1. </span>sphinxcontrib-proof<a class="headerlink" href="#sphinxcontrib-proof" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://sphinxcontrib-proof.readthedocs.io/en/latest/">sphinxcontrib-proof</a>  提供定理, 定义, 证明等支持. 在 <cite>conf.py</cite> 文件中的 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 中加入该扩展 ( <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.proof</span></code> ) .</p>
+<p>然后在 <cite>_static</cite> 目录下新建 <cite>proof.css</cite> 和 <cite>proof.js</cite> 两个文件, 加入如下内容, 你可以自己定义其它的样式.</p>
+<p><cite>proof.css</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">.</span><span class="n">proof</span> <span class="p">{</span>
+  <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="p">:</span> <span class="mi">1</span><span class="n">em</span><span class="p">;</span>
+  <span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="p">:</span> <span class="mi">1</span><span class="n">em</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">/*</span> <span class="n">Titles</span> <span class="o">*/</span>
+<span class="o">.</span><span class="n">proof</span> <span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="n">title</span> <span class="p">{</span>
+  <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#0000EE;</span>
+  <span class="n">border</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="c1">#86989b;</span>
+  <span class="n">color</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+  <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">120</span><span class="o">%</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="o">/*</span> <span class="n">Content</span> <span class="o">*/</span>
+<span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="n">content</span> <span class="p">{</span>
+  <span class="n">border</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="c1">#9fb1b4;</span>
+  <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="c1">#F0F8FF;</span>
+  <span class="n">padding</span><span class="p">:</span> <span class="mf">0.5</span><span class="n">em</span> <span class="mi">1</span><span class="n">em</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="o">/*</span> <span class="n">Toggle</span> <span class="n">proof</span> <span class="o">*/</span>
+<span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">proof</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="n">title</span> <span class="p">{</span>
+    <span class="n">display</span><span class="p">:</span> <span class="n">block</span><span class="p">;</span>
+    <span class="n">clear</span><span class="p">:</span> <span class="n">both</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">proof</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="n">title</span><span class="p">:</span><span class="n">after</span> <span class="p">{</span>
+    <span class="n">content</span><span class="p">:</span> <span class="s2">&quot; ▼&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="nb">type</span><span class="o">-</span><span class="n">proof</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">proof</span><span class="o">-</span><span class="n">title</span><span class="o">.</span><span class="n">open</span><span class="p">:</span><span class="n">after</span> <span class="p">{</span>
+    <span class="n">content</span><span class="p">:</span> <span class="s2">&quot; ▲&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><cite>proof.js</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>$(document).ready(function() {
+    $(&quot;.proof-type-proof &gt; *&quot;).hide();
+    $(&quot;.proof-type-proof .proof-title&quot;).show();
+    $(&quot;.proof-type-proof .proof-title&quot;).click(function() {
+        $(this).parent().children().not(&quot;.proof-title&quot;).toggle(400);
+        $(this).parent().children(&quot;.proof-title&quot;).toggleClass(&quot;open&quot;);
+    })
+});
+</pre></div>
+</div>
+<p>使用举例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.. _righttriangle:
+
+.. proof:definition:: Right triangle
+
+   A *right triangle* is a triangle in which one angle is a right angle.
+
+.. _pythagorean:
+
+.. proof:theorem:: Pythagorean theorem
+
+   In a :ref:`righttriangle`, the square of the hypotenuse is equal to the sum of the squares of the other two sides.
+
+.. _proof:
+
+.. proof:proof::
+
+   The proof is left to the reader.
+
+You can label and reference definition and theorems (e.g. :numref:`theorem {number} &lt;pythagorean&gt;`). You can also reference proofs (see the :ref:`proof of the Pythagorean theorem &lt;proof&gt;`).
+</pre></div>
+</div>
+<p>代码将被渲染为</p>
+<div class="proof proof-type-definition" id="id21">
+<span id="righttriangle"></span>
+    <div class="proof-title">
+        <span class="proof-type">Definition 2.4.1</span>
+        
+            <span class="proof-title-name">(Right triangle)</span>
+        
+    </div><div class="proof-content">
+A <em>right triangle</em> is a triangle in which one angle is a right angle.</div></div><div class="proof proof-type-theorem" id="id22">
+<span id="pythagorean"></span>
+    <div class="proof-title">
+        <span class="proof-type">Theorem 2.4.2</span>
+        
+            <span class="proof-title-name">(Pythagorean theorem)</span>
+        
+    </div><div class="proof-content">
+In a <a class="reference internal" href="#righttriangle"><span class="std std-ref">Right triangle</span></a>, the square of the hypotenuse is equal to the sum of the squares of the other two sides.</div></div><div class="proof proof-type-proof" id="proof">
+
+    <div class="proof-title">
+        <span class="proof-type">Proof </span>
+        
+    </div><div class="proof-content">
+The proof is left to the reader.</div></div><p>You can label and reference definition and theorems (e.g. <a class="reference internal" href="#pythagorean"><span class="std std-numref">theorem 2.4.2</span></a>). You can also reference proofs (see the <a class="reference internal" href="#proof"><span class="std std-ref">proof of the Pythagorean theorem</span></a>).</p>
+</div>
+<div class="section" id="id12">
+<h4><span class="section-number">2.4.2.2.2. </span>图表编号<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>借用 jterrace 的论文模版 <a class="reference external" href="http://jterrace.github.io/sphinxtr/">sphinxtr</a> 中的 <code class="docutils literal notranslate"><span class="pre">numfig</span></code> 可以实现. 从 <a class="reference external" href="https://github.com/jterrace/sphinxtr">这里</a> 下载源码, 将其中的 <cite>sphinxtr</cite> 放到你的文档源码根目录下, 然后 <cite>conf.py</cite> 添加</p>
+<div class="literal-block-wrapper container" id="id23">
+<div class="code-block-caption"><span class="caption-number">代码 2.4.2 </span><span class="caption-text">Code Blocks can have captions.</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span class="hll"> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s1">&#39;extensions&#39;</span><span class="p">))</span>
+</span>
+ <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>
+   <span class="c1"># &#39;sphinx.ext.imgmath&#39;,</span>
+   <span class="c1"># &#39;sphinx.ext.mathjax&#39;,</span>
+   <span class="s1">&#39;sphinxcontrib.katex&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;sphinxcontrib.proof&#39;</span><span class="p">,</span>  <span class="c1"># https://framagit.org/spalax/sphinxcontrib-proof/</span>
+   <span class="s1">&#39;sphinxcontrib.bibtex&#39;</span><span class="p">,</span>  <span class="c1"># https://sphinxcontrib-bibtex.readthedocs.io/en/latest/</span>
+   <span class="s1">&#39;sphinxcontrib.seqdiag&#39;</span><span class="p">,</span>  <span class="c1"># http://blockdiag.com/en/</span>
+   <span class="s1">&#39;sphinx.ext.ifconfig&#39;</span><span class="p">,</span>
+   <span class="c1"># &#39;sphinx.ext.viewcode&#39;,</span>
+   <span class="c1"># &#39;sphinx.ext.githubpages&#39;,</span>
+   <span class="c1"># &#39;rst2pdf.pdfbuilder&#39;,</span>
+   <span class="c1"># &#39;sphinx.ext.napoleon&#39;,</span>
+<span class="hll">   <span class="s1">&#39;numequ&#39;</span><span class="p">,</span>  <span class="c1"># https://github.com/jterrace/sphinxtr/tree/master/extensions</span>
+</span><span class="hll">   <span class="s1">&#39;numfig&#39;</span><span class="p">,</span>  <span class="c1"># https://github.com/jterrace/sphinxtr/tree/master/extensions</span>
+</span><span class="hll">   <span class="s1">&#39;subfig&#39;</span><span class="p">,</span>  <span class="c1"># https://github.com/jterrace/sphinxtr/tree/master/extensions</span>
+</span> <span class="p">]</span>
+
+ <span class="n">math_numfig</span> <span class="o">=</span> <span class="bp">True</span>
+ <span class="n">number_figures</span> <span class="o">=</span> <span class="bp">True</span>
+ <span class="n">figure_caption_prefix</span> <span class="o">=</span> <span class="s1">&#39;Figure&#39;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>比如, 这里通过如下代码插入图片:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">_fig</span><span class="o">-</span><span class="n">testFigureNumber</span><span class="p">:</span>
+
+<span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="o">../</span><span class="n">_static</span><span class="o">/</span><span class="n">figs</span><span class="o">/</span><span class="n">logo</span><span class="o">.*</span>
+    <span class="p">:</span><span class="n">alt</span><span class="p">:</span> <span class="n">Test</span> <span class="n">Figure</span> <span class="n">Number</span>
+    <span class="p">:</span><span class="n">width</span><span class="p">:</span> <span class="mi">30</span><span class="o">%</span>
+    <span class="p">:</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span>
+
+    <span class="n">Test</span> <span class="n">Figure</span> <span class="n">Number</span>
+</pre></div>
+</div>
+<p>代码将被渲染为</p>
+<div class="figure align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/logo.png"><img alt="Test Figure Number" src="../_images/logo.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">图 2.4.2 </span><span class="caption-text">Test Figure Number</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</div>
+<p>在其它地方可以通过 <code class="docutils literal notranslate"><span class="pre">:num:`fig-testFigureNumber`</span></code> 引用,  <span class="xref std std-ref">fig-testFigureNumber</span> .</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">新的Sphinx已经支持对数学公式, 图, 表, 代码段进行编号及引用, 建议使用.</p>
+</div>
+</div>
+<div class="section" id="sphinxcontrib-bibtex">
+<span id="subsubsection-sphinxcontribbibtex"></span><h4><span class="section-number">2.4.2.2.3. </span>sphinxcontrib-bibtex<a class="headerlink" href="#sphinxcontrib-bibtex" title="Permalink to this headline">¶</a></h4>
+<p>在 Sphinx中可以使用 <a class="reference external" href="http://www.bibtex.org/">BibTex</a>  , 通过 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinxcontrib-bibtex</span></code> 安装扩展, 并在 <cite>conf.py</cite> 中添加该扩展 <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.bibtex</span></code> , 官方文档在 <a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html">这里</a> .</p>
+<p>然后, 新建 <cite>reference.rst</cite> , 加入如下代码:</p>
+<div class="literal-block-wrapper container" id="id25">
+<div class="code-block-caption"><span class="caption-number">代码 2.4.3 </span><span class="caption-text">reference.rst.</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-rst notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span class="p">..</span> <span class="ow">bibliography</span><span class="p">::</span> ./refs.bib
+    <span class="nc">:list:</span> <span class="nf">enumerated</span>
+<span class="hll">    <span class="nc">:start:</span> <span class="nf">1</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<p>假如 <cite>refs.bib</cite> 文件中的内容如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>  <span class="nd">@Proceedings</span><span class="p">{</span><span class="mi">1993</span><span class="p">:</span><span class="n">PatiOMP</span><span class="p">,</span>
+  <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Y</span><span class="o">.</span> <span class="n">C</span><span class="o">.</span> <span class="p">{</span><span class="n">Pati</span><span class="p">}</span> <span class="ow">and</span> <span class="n">R</span><span class="o">.</span> <span class="p">{</span><span class="n">Rezaiifar</span><span class="p">}</span> <span class="ow">and</span> <span class="n">P</span><span class="o">.</span> <span class="n">S</span><span class="o">.</span> <span class="p">{</span><span class="n">Krishnaprasad</span><span class="p">}},</span>
+  <span class="n">booktitle</span><span class="o">=</span><span class="p">{</span><span class="n">Proceedings</span> <span class="n">of</span> <span class="mi">27</span><span class="n">th</span> <span class="n">Asilomar</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Signals</span><span class="p">,</span> <span class="n">Systems</span> <span class="ow">and</span> <span class="n">Computers</span><span class="p">},</span>
+  <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Orthogonal</span> <span class="n">matching</span> <span class="n">pursuit</span><span class="p">:</span> <span class="n">recursive</span> <span class="n">function</span> <span class="n">approximation</span> <span class="k">with</span> <span class="n">applications</span> <span class="n">to</span> <span class="n">wavelet</span> <span class="n">decomposition</span><span class="p">},</span>
+  <span class="n">year</span><span class="o">=</span><span class="p">{</span><span class="mi">1993</span><span class="p">},</span>
+  <span class="n">volume</span><span class="o">=</span><span class="p">{},</span>
+  <span class="n">number</span><span class="o">=</span><span class="p">{},</span>
+  <span class="n">pages</span><span class="o">=</span><span class="p">{</span><span class="mi">40</span><span class="o">-</span><span class="mi">44</span> <span class="n">vol</span><span class="o">.</span><span class="mi">1</span><span class="p">},</span>
+  <span class="n">doi</span><span class="o">=</span><span class="p">{</span><span class="mf">10.1109</span><span class="o">/</span><span class="n">ACSSC</span><span class="o">.</span><span class="mf">1993.342465</span><span class="p">},</span>
+  <span class="n">ISSN</span><span class="o">=</span><span class="p">{</span><span class="mi">1058</span><span class="o">-</span><span class="mi">6393</span><span class="p">},</span>
+  <span class="n">month</span><span class="o">=</span><span class="p">{</span><span class="n">Nov</span><span class="p">},</span>
+<span class="p">}</span>
+
+
+<span class="nd">@article</span><span class="p">{</span><span class="mi">2003</span><span class="n">JChPh</span><span class="o">.</span><span class="mf">118.6720</span><span class="n">W</span><span class="p">,</span>
+   <span class="n">author</span> <span class="o">=</span> <span class="p">{{</span><span class="n">Wu</span><span class="p">},</span> <span class="n">Y</span><span class="o">.</span> <span class="ow">and</span> <span class="p">{</span><span class="n">Batista</span><span class="p">},</span> <span class="n">V</span><span class="o">.~</span><span class="n">S</span><span class="o">.</span><span class="p">},</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;{Matching-pursuit for simulations of quantum processes}&quot;</span><span class="p">,</span>
+  <span class="n">journal</span> <span class="o">=</span> <span class="p">{</span>\<span class="n">jcp</span><span class="p">},</span>
+ <span class="n">keywords</span> <span class="o">=</span> <span class="p">{</span><span class="n">Tunneling</span> <span class="n">traversal</span> <span class="n">time</span> <span class="n">quantum</span> <span class="n">Zeno</span> <span class="n">dynamics</span><span class="p">,</span> <span class="n">Foundations</span> <span class="n">of</span> <span class="n">quantum</span> <span class="n">mechanics</span><span class="p">,</span> <span class="n">measurement</span> <span class="n">theory</span><span class="p">,</span> <span class="n">Fourier</span> <span class="n">analysis</span><span class="p">,</span> <span class="n">Integral</span> <span class="n">transforms</span><span class="p">},</span>
+     <span class="n">year</span> <span class="o">=</span> <span class="mi">2003</span><span class="p">,</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="n">apr</span><span class="p">,</span>
+   <span class="n">volume</span> <span class="o">=</span> <span class="mi">118</span><span class="p">,</span>
+    <span class="n">pages</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6720</span><span class="o">-</span><span class="mi">6724</span><span class="p">},</span>
+      <span class="n">doi</span> <span class="o">=</span> <span class="p">{</span><span class="mf">10.1063</span><span class="o">/</span><span class="mf">1.1560636</span><span class="p">},</span>
+   <span class="n">adsurl</span> <span class="o">=</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">adsabs</span><span class="o">.</span><span class="n">harvard</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="nb">abs</span><span class="o">/</span><span class="mi">2003</span><span class="n">JChPh</span><span class="o">.</span><span class="mf">118.6720</span><span class="n">W</span><span class="p">},</span>
+  <span class="n">adsnote</span> <span class="o">=</span> <span class="p">{</span><span class="n">Provided</span> <span class="n">by</span> <span class="n">the</span> <span class="n">SAO</span><span class="o">/</span><span class="n">NASA</span> <span class="n">Astrophysics</span> <span class="n">Data</span> <span class="n">System</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>可以通过 <code class="docutils literal notranslate"><span class="pre">:cite:`1993:PatiOMP`</span> <span class="pre">,</span> <span class="pre">:cite:`2003JChPh.118.6720W`</span></code> 来引用, 即 <a class="reference internal" href="reference.html#patiomp" id="id15">[1]</a> , <a class="reference internal" href="reference.html#jchph-118-6720w" id="id16">[2]</a> . 如果一次性引用多个文献, 可以用逗号分开, 但不要有空格, 比如这样 <code class="docutils literal notranslate"><span class="pre">:cite:`1993:PatiOMP,2003JChPh.118.6720W`</span></code> 得到 <a class="reference internal" href="reference.html#patiomp" id="id17">[1]</a><a class="reference internal" href="reference.html#jchph-118-6720w" id="id18">[2]</a> .</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">如果你想自定义参考文献引用格式, 可以通过 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pybtex</span></code> 安装 <a class="reference external" href="https://docs.pybtex.org/api/plugins.html">pybtex</a> , 然后参考 <a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#custom-formatting-sorting-and-labelling">这里</a> 或者下面的讲述配置使用.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">pybtex</span></code> 提示: 安装好 pybtex 后, 若想在你的文档工程中使用, 需要在 <cite>conf.py</cite> 文件中添加该扩展, 即 <code class="docutils literal notranslate"><span class="pre">extensions</span> <span class="pre">=</span> <span class="pre">['pybtex']</span></code> , 然后你就可以使用了, 在 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">bibliography::</span> <span class="pre">./refs.bib</span></code> 里添加 <code class="docutils literal notranslate"><span class="pre">:style:</span> <span class="pre">unsrt</span></code> 即可以更改文献引用格式.</p>
+<div class="literal-block-wrapper container" id="id26">
+<div class="code-block-caption"><span class="caption-number">代码 2.4.4 </span><span class="caption-text">reference.rst.</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-rst notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="p">..</span> <span class="ow">bibliography</span><span class="p">::</span> ./refs.bib
+<span class="hll">   <span class="nc">:style:</span> <span class="nf">unsrt</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+<p class="last">注意, 如果添加 <code class="docutils literal notranslate"><span class="pre">list</span></code> 或 <code class="docutils literal notranslate"><span class="pre">start</span></code> 等域, 不能正常渲染, 不能跳转!</p>
+</div>
+</div>
+<div class="section" id="sphinxcontrib-xxxdiag">
+<h4><span class="section-number">2.4.2.2.4. </span>sphinxcontrib-xxxdiag<a class="headerlink" href="#sphinxcontrib-xxxdiag" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">xxxdiag</span></code> 包含以下几种类型:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">blockdiag</span></code> : <a class="reference external" href="http://blockdiag.com/en/blockdiag/index.html">blockdiag</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">seqdiag</span></code> : <a class="reference external" href="http://blockdiag.com/en/seqdiag/index.html">seqdiag</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">actdiag</span></code> : <a class="reference external" href="http://blockdiag.com/en/actdiag/index.html">actdiag</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">nwdiag</span></code> : <a class="reference external" href="http://blockdiag.com/en/nwdiag/index.html">nwdiag</a></li>
+</ul>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinxcontrib-xxxdiag</span></code> 安装扩展, 并在 <cite>conf.py</cite> 中添加该扩展 <code class="docutils literal notranslate"><span class="pre">sphinxcontrib.xxxdiag</span></code> , 官方文档在 <a class="reference external" href="http://blockdiag.com/en/">这里</a> .</p>
+<p>举例: 如</p>
+<p>原始代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">blockdiag</span><span class="p">::</span>
+
+ <span class="n">blockdiag</span> <span class="p">{</span>
+   <span class="n">blockdiag</span> <span class="o">-&gt;</span> <span class="n">generates</span> <span class="o">-&gt;</span> <span class="s2">&quot;block-diagrams&quot;</span><span class="p">;</span>
+   <span class="n">blockdiag</span> <span class="o">-&gt;</span> <span class="ow">is</span> <span class="o">-&gt;</span> <span class="s2">&quot;very easy!&quot;</span><span class="p">;</span>
+
+   <span class="n">blockdiag</span> <span class="p">[</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;greenyellow&quot;</span><span class="p">];</span>
+   <span class="s2">&quot;block-diagrams&quot;</span> <span class="p">[</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;pink&quot;</span><span class="p">];</span>
+   <span class="s2">&quot;very easy!&quot;</span> <span class="p">[</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span><span class="p">];</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>渲染结果</p>
+<div><img height="200" src="../_images/blockdiag-bcaf83cd27d1a078df2b52647a7b8536930dc8e5.png" width="640" /></div><p>原始代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">seqdiag</span><span class="p">::</span>
+
+ <span class="n">seqdiag</span> <span class="p">{</span>
+   <span class="n">seqdiag</span> <span class="o">-&gt;</span> <span class="s2">&quot;sequence-diagrams&quot;</span> <span class="p">[</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;generates&quot;</span><span class="p">];</span>
+   <span class="n">seqdiag</span> <span class="o">--&gt;</span> <span class="s2">&quot;is very easy!&quot;</span><span class="p">;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>渲染结果</p>
+<div><img height="259" src="../_images/seqdiag-1c33d19fd0575ed749b8739b92a5123ed86f3a86.png" width="640" /></div><p>原始代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">actdiag</span><span class="p">::</span>
+
+   <span class="n">actdiag</span> <span class="p">{</span>
+     <span class="n">write</span> <span class="o">-&gt;</span> <span class="n">convert</span> <span class="o">-&gt;</span> <span class="n">image</span>
+
+     <span class="n">lane</span> <span class="n">user</span> <span class="p">{</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;User&quot;</span>
+        <span class="n">write</span> <span class="p">[</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Writing reST&quot;</span><span class="p">];</span>
+        <span class="n">image</span> <span class="p">[</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Get diagram IMAGE&quot;</span><span class="p">];</span>
+     <span class="p">}</span>
+     <span class="n">lane</span> <span class="n">actdiag</span> <span class="p">{</span>
+        <span class="n">convert</span> <span class="p">[</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Convert reST to Image&quot;</span><span class="p">];</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>渲染结果</p>
+<div><img height="360" src="../_images/actdiag-f956c3e475f134067a22dd189d1d962cdba0ab91.png" width="448" /></div><p>原始代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">..</span> <span class="n">nwdiag</span><span class="p">::</span>
+
+   <span class="n">nwdiag</span> <span class="p">{</span>
+     <span class="n">network</span> <span class="n">dmz</span> <span class="p">{</span>
+         <span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;210.x.x.x/24&quot;</span>
+
+         <span class="n">web01</span> <span class="p">[</span><span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;210.x.x.1&quot;</span><span class="p">];</span>
+         <span class="n">web02</span> <span class="p">[</span><span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;210.x.x.2&quot;</span><span class="p">];</span>
+     <span class="p">}</span>
+     <span class="n">network</span> <span class="n">internal</span> <span class="p">{</span>
+         <span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;172.x.x.x/24&quot;</span><span class="p">;</span>
+
+         <span class="n">web01</span> <span class="p">[</span><span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;172.x.x.1&quot;</span><span class="p">];</span>
+         <span class="n">db01</span><span class="p">;</span>
+         <span class="n">app01</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>渲染结果</p>
+<div><img height="444" src="../_images/nwdiag-f1e303933165fc99eabaa75b5693b0c91f5865a3.png" width="608" /></div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SphinxOtherLanguageSupport.html" class="btn btn-neutral float-right" title="2.5. Sphinx其它语言支持" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="reST.html" class="btn btn-neutral float-left" title="2.3. reStructuredText简明教程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

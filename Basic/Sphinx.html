@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.2. Sphinx简明教程 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. reStructuredText简明教程" href="reST.html" />
+    <link rel="prev" title="2.1. 文档制作简介" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基础教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">2.1. 文档制作简介</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Sphinx简明教程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-sphinx">2.2.1. What is Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-sphinx">2.2.2. Why Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.2.3. 安装Sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.2.3.1. 依赖</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">2.2.3.2. Linux系统</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">2.2.3.3. Windows系统</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">2.2.4. 使用Sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.2.4.1. 手册文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">2.2.4.2. 一起动起来吧</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#secusingtheme">2.2.5. 使用主题</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">2.2.5.1. Sphinx自带主题</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#secgendiffformdocs">2.2.6. 生成不同格式的文档</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#html">2.2.6.1. 生成html静态网站文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#epub">2.2.6.2. 生成epub文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#latex">2.2.6.3. 生成LaTex文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pdf">2.2.6.4. 生成PDF文档</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">2.2.7. 问题集锦</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">2.2.7.1. 源编码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secchinesedocproblem">2.2.7.2. 中文文档问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secchinesesearchproblem">2.2.7.3. 中文分词问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">2.2.7.4. 中文乱码问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secsphinxmathsupport">2.2.7.5. Sphinx数学支持</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">2.2.8. 发布静态网站</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apache">2.2.8.1. 使用Apache建立自己的网站服务器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git">2.2.9. 使用Git版本控制系统</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html">2.3. reStructuredText简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html">2.4. Sphinx重要扩展介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html">2.6. 版本控制系统Git教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>基础教程</a> &raquo;</li>
+        
+      <li><span class="section-number">2.2. </span>Sphinx简明教程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Basic/Sphinx.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx">
+<span id="chasphinxsimpletutorial"></span><h1><span class="section-number">2.2. </span>Sphinx简明教程<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-sphinx">
+<h2><span class="section-number">2.2.1. </span>What is Sphinx<a class="headerlink" href="#what-is-sphinx" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Sphinx 是种令人可以轻松撰写出优美文档的工具, 由 Georg Brandl 在BSD 许可证下创造, 它允许开发人员以纯文本格式编写文档, 以便采用满足不同需求的格式轻松生成输出. 这在使用 Version Control System 追踪变更时非常有用. 纯文本文档对不同系统之间的协作者也非常有用. 纯文本是当前可以采用的最便捷的格式之一.</p>
+<p>虽然 Sphinx 是用 Python 编写的, 并且最初是为 Python 语言文档而创建, 但它并不一定是以语言为中心, 在某些情况下, 甚至不是以程序员为中心. Sphinx 有许多用处, 比如可以用它来发布你的项目文档, 或编写整本书！</p>
+</div></blockquote>
+<p>Sphinx官网：<a class="reference external" href="http://www.sphinx-doc.org/en/stable/">http://www.sphinx-doc.org/en/stable/</a>, 就是采用reStructuredText标记语言撰写, Sphinx发布的.</p>
+</div>
+<div class="section" id="why-sphinx">
+<h2><span class="section-number">2.2.2. </span>Why Sphinx<a class="headerlink" href="#why-sphinx" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx具有以下亮点：</p>
+<ul class="simple">
+<li><strong>丰富的输出格式</strong>：HTML（包括Windows HTML Help）, LaTex（用于可打印PDF）, epub, Texinfo, manual pages, plain text</li>
+<li><strong>完备的交叉引用</strong>：语义化的标签, 并自动链接函式、类、引文、术语以及类似片段信息</li>
+<li><strong>明晰的层级结构</strong>：轻松定义文档树, 并自动化链接同级/父级/下级文章</li>
+<li><strong>美观的自动索引</strong>：自动生成索引以及特定语言模块的索引</li>
+<li><strong>精确的语法高亮</strong>: 基于 <a class="reference external" href="http://pygments.org/">Pygments</a>  自动语法高亮</li>
+<li><strong>开方的扩展</strong>: 支持代码片段的自动测试, 从Python模块的文档字符串包含（API文档）, 参考 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/extensions.html#builtin-sphinx-extensions">more</a></li>
+<li><strong>用户贡献的扩展</strong>: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/develop.html#extensions">用户提供的</a> 大约50个扩展,大多可以通过PyPI安装</li>
+<li><strong>强大简洁的书写语言</strong>: 使用 <a class="reference external" href="http://docutils.sf.net/rst.html">新结构化文本(reStructuredText)</a> 作为标记语言.</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">2.2.3. </span>安装Sphinx<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx的安装很简单, 只需通过 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 或 <code class="docutils literal notranslate"><span class="pre">easy_install</span></code> 安装, 且支持Windows, Linux, Mac等系统. 下面详细介绍Windows, Linux系统下Sphinx的安装.</p>
+<div class="section" id="id3">
+<h3><span class="section-number">2.2.3.1. </span>依赖<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Sphinx需要以下依赖工具:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.python.org/">Python</a> 2.4及以上版本</li>
+<li>docutils 0.5及以上版本库</li>
+<li>jinjia2库</li>
+<li>Pygments库</li>
+</ul>
+<p>不用担心, 这些依赖库会自动安装的, 如果没有请自行安装.</p>
+</div>
+<div class="section" id="linux">
+<h3><span class="section-number">2.2.3.2. </span>Linux系统<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>由于Linux系统中都会自带有Python, 故可以直接在终端 ( <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">T</span></code> 快捷键打开终端) 通过 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 命令安装:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>$ pip install Sphinx
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">安装过程需要连接网络, 请确保网络畅通!</p>
+</div>
+</div>
+<div class="section" id="windows">
+<h3><span class="section-number">2.2.3.3. </span>Windows系统<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>Windows系统中一般不会自带Python, 需要用户自行安装, 首先安装Python和pip, 然后通过pip安装Sphinx即可.</p>
+<ol class="arabic simple">
+<li>安装Python和pip</li>
+</ol>
+<p>目前Python最新版本为 <a class="reference external" href="https://www.python.org/downloads/release/python-351/">Python 3.5.1</a> , 可到 <a class="reference external" href="https://www.python.org/">Python官网</a> 下载安装即可, 该版本已经包含pip, 无需再安装pip.</p>
+<ol class="arabic simple" start="2">
+<li>安装Sphinx</li>
+</ol>
+<p>打开命令提示符 ( <code class="docutils literal notranslate"><span class="pre">运行</span> <span class="pre">--&gt;</span> <span class="pre">cmd</span></code> 或 <code class="docutils literal notranslate"><span class="pre">所有程序</span> <span class="pre">--&gt;</span> <span class="pre">附件</span> <span class="pre">--&gt;</span> <span class="pre">命令提示符</span></code> ), 输入如下命令</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">Sphinx</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">安装过程需要连接网络, 请确保网络畅通!</p>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">2.2.4. </span>使用Sphinx<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><span class="section-number">2.2.4.1. </span>手册文档<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx官网英文手册</a></li>
+<li><a class="reference external" href="http://sphinx-doc-zh.readthedocs.io/en/latest/contents.html">Sphinx 1.3.1 中文手册</a> (推荐查看)</li>
+<li><a class="reference external" href="http://jwch.sdut.edu.cn/book/tool/UseSphinx.html">使用sphinx记笔记</a>  (中文)</li>
+<li><a class="reference external" href="http://hyry.dip.jp/tech/book/page/sphinx/index.html">用Sphinx写书</a></li>
+</ul>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">这些文档大部分都是用Sphinx发布的, 可以下载HTML, PDF, epub查看.</p>
+</div>
+<p>你可以查看 <a class="reference external" href="http://sphinx-doc-zh.readthedocs.io/en/latest/tutorial.html">Sphinx初尝</a> 来学习, 也可以跟着我一起动起来!</p>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">2.2.4.2. </span>一起动起来吧<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>由于Sphinx是跨平台的, 其在Windows上和Linux上的用法相同, 故以Linux系统下Sphinx为例.</p>
+<p>本节旨在让大家了解如何快速使用Sphinx, 故较为精简, 详细的问题请自行查阅手册.</p>
+<div class="section" id="id12">
+<h4><span class="section-number">2.2.4.2.1. </span>配置文档资源<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<p>在你的磁盘里新建一个工作目录, 比如我在用户主目录下的 <code class="docutils literal notranslate"><span class="pre">ws</span></code> 文件夹中建立了个 <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> 目录, 又在其中建立了一个 <code class="docutils literal notranslate"><span class="pre">trysphinx</span></code> 目录用于本次演示, 即 <code class="docutils literal notranslate"><span class="pre">ws/sphinx/trysphinx</span></code> , 然后切换到此目录并启动 <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> 以创建并配置工程, 整个过程命令表示如下 (注意: 仅输入终端命令提示符 <code class="docutils literal notranslate"><span class="pre">$</span></code> 后面的代码)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>$ mkdir ws/sphinx/trysphinx
+$ cd ws/sphinx/trysphinx
+$ sphinx-quickstart
+</pre></div>
+</div>
+<p>之后进入文档资源配置对话框, 比如询问的第一项是 <em>文档的根目录</em>, 由于现在处于根目录, 所以使用**默认的当前目录 [.]**, 即直接回车即可; 询问的第二项是*你想把构建的最终文档目录放在哪*, 是放在”source”里创建成”_build”, 即 <code class="docutils literal notranslate"><span class="pre">trysphinx/source/_build</span></code> , 还是放在根目录里创建成”build”, 即 <code class="docutils literal notranslate"><span class="pre">trysphinx/build</span></code> , 我选择后者, 所以输入 <code class="docutils literal notranslate"><span class="pre">y</span></code>. 如下图所示:</p>
+<a class="reference internal image-reference" href="../_images/sphinx-trysphinx-docsettings.png"><img alt="../_images/sphinx-trysphinx-docsettings.png" class="align-center" src="../_images/sphinx-trysphinx-docsettings.png" style="width: 576.8000000000001px; height: 260.0px;" /></a>
+<p>询问的第四项为工程名字, 比如就叫: “Try Sphinx”, 那么就输入它, 接下来输入作者名字, 我就填 <code class="docutils literal notranslate"><span class="pre">iridescent</span></code> 了哈; 紧接着是工程版本, 以及发布版本; 然后是选择文档语言, 打开提供的链接 (<a class="reference external" href="http://sphinx-doc.org/config.html#confval-language">http://sphinx-doc.org/config.html#confval-language</a>) 查看找到”zh_CN – Simplified Chinese”, 所以输入 <code class="docutils literal notranslate"><span class="pre">zh_CN</span></code>. 接着还会有很多配置询问, 你可以采用默认, 但建议仔细读一下, 有些是可以通过修改”conf.py”文件再修改, 有些就不可以.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">如果你想修改 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 文件, 参考官方文档吧: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/config.html">http://www.sphinx-doc.org/en/stable/config.html</a></p>
+</div>
+<p>我采用了下面的配置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>$ sphinx-quickstart
+Welcome to the Sphinx 1.5a0 quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Enter the root path for documentation.
+&gt; Root path for the documentation [.]:
+
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory &quot;_build&quot; within the root path, or you separate
+&quot;source&quot; and &quot;build&quot; directories within the root path.
+&gt; Separate source and build directories (y/n) [n]: y
+
+Inside the root directory, two more directories will be created; &quot;_templates&quot;
+for custom HTML templates and &quot;_static&quot; for custom stylesheets and other static
+files. You can enter another prefix (such as &quot;.&quot;) to replace the underscore.
+&gt; Name prefix for templates and static dir [_]:
+
+The project name will occur in several places in the built documentation.
+&gt; Project name: Try Sphinx
+&gt; Author name(s): iridescent
+
+Sphinx has the notion of a &quot;version&quot; and a &quot;release&quot; for the
+software. Each version can have multiple releases. For example, for
+Python the version is something like 2.5 or 3.0, while the release is
+something like 2.5.1 or 3.0a1.  If you don&#39;t need this dual structure,
+just set both to the same value.
+&gt; Project version: 0.1
+&gt; Project release [0.1]:
+
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+&gt; Project language [en]: zh_CN
+
+The file name suffix for source files. Commonly, this is either &quot;.txt&quot;
+or &quot;.rst&quot;.  Only files with this suffix are considered documents.
+&gt; Source file suffix [.rst]:
+
+One document is special in that it is considered the top node of the
+&quot;contents tree&quot;, that is, it is the root of the hierarchical structure
+of the documents. Normally, this is &quot;index&quot;, but if your &quot;index&quot;
+document is a custom template, you can also set this to another filename.
+&gt; Name of your master document (without suffix) [index]:
+
+Sphinx can also add configuration for epub output:
+&gt; Do you want to use the epub builder (y/n) [n]: y
+
+Please indicate if you want to use one of the following Sphinx extensions:
+&gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y
+&gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]: y
+&gt; intersphinx: link between Sphinx documentation of different projects (y/n) [n]: y
+&gt; todo: write &quot;todo&quot; entries that can be shown or hidden on build (y/n) [n]: y
+&gt; coverage: checks for documentation coverage (y/n) [n]: y
+&gt; imgmath: include math, rendered as PNG or SVG images (y/n) [n]: n
+&gt; mathjax: include math, rendered in the browser by MathJax (y/n) [n]: y
+&gt; ifconfig: conditional inclusion of content based on config values (y/n) [n]: y
+&gt; viewcode: include links to the source code of documented Python objects (y/n) [n]: y
+&gt; githubpages: create .nojekyll file to publish the document on GitHub pages (y/n) [n]: y
+
+A Makefile and a Windows command file can be generated for you so that you
+only have to run e.g. `make html&#39; instead of invoking sphinx-build
+directly.
+&gt; Create Makefile? (y/n) [y]: y
+&gt; Create Windows command file? (y/n) [y]: y
+
+Creating file ./source/conf.py.
+Creating file ./source/index.rst.
+Creating file ./Makefile.
+Creating file ./make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file ./source/index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where &quot;builder&quot; is one of the supported builders, e.g. html, latex or linkcheck.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">其中, 最后两项询问是否创建”Makefile”文件和”Windows command file”, 选择是( <code class="docutils literal notranslate"><span class="pre">y</span></code> ), 因为这样, 只需在终端简单执行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">target</span></code> 来编译生成目标格式文档, 如 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 生成静态网页文件, 你现在就可以这样做了! 不过还是等等吧, 先看看 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> 都干了啥吧!</p>
+</div>
+<p>打开你的根目录, 你会看到:</p>
+<img alt="../_images/trsphinx-rootdir.png" class="align-center" src="../_images/trsphinx-rootdir.png" />
+<p>我知道你想看看 <code class="docutils literal notranslate"><span class="pre">build</span></code> 目录, 可现在里面确实啥都没有, 看看 <code class="docutils literal notranslate"><span class="pre">source</span></code> 目录吧:</p>
+<img alt="../_images/trsphinx-sourcedir.png" class="align-center" src="../_images/trsphinx-sourcedir.png" />
+<p>是不是想看看 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 里藏着写什么, 那么你看吧, 下面就是:</p>
+<img alt="../_images/trysphinx-source-index.png" class="align-center" src="../_images/trysphinx-source-index.png" />
+<p>好配置已经结束了, 我想你一定迫不及待地想看看生成的文档效果吧, 那就一起来构建文档吧!</p>
+</div>
+<div class="section" id="id13">
+<h4><span class="section-number">2.2.4.2.2. </span>构建文档<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>啊!!! 不是吧, 就这么点东西能干啥, 太小了吧, 是啊, 难道不好吗, 我知道你现在一定想知道这能不能生成静态网站, 是的, 那就在终端 <a class="footnote-reference" href="#f1" id="id14">[1]</a> 输入 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> , 你看到了这些:</p>
+<img alt="../_images/trysphinx-buildhtml-result.png" class="align-center" src="../_images/trysphinx-buildhtml-result.png" />
+<p>我想, 你知道去哪找了, 是的, <code class="docutils literal notranslate"><span class="pre">build</span></code> 目录, 快去打开看看吧 ( <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code> ) !</p>
+<img alt="../_images/trysphinx-buildhtml-view.png" class="align-center" src="../_images/trysphinx-buildhtml-view.png" />
+<p>我知道现在你在想: <strong>我都能make出来什么呢?</strong> 是的, 我也好奇, 终端输入 <code class="docutils literal notranslate"><span class="pre">make</span></code> 看看吧</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>Please use `make &lt;target&gt;&#39; where &lt;target&gt; is one of
+
+html       to make standalone HTML files
+dirhtml    to make HTML files named index.html in directories
+singlehtml to make a single large HTML file
+pickle     to make pickle files
+json       to make JSON files
+htmlhelp   to make HTML files and a HTML help project
+qthelp     to make HTML files and a qthelp project
+applehelp  to make an Apple Help Book
+devhelp    to make HTML files and a Devhelp project
+epub       to make an epub
+epub3      to make an epub3
+latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter
+latexpdf   to make LaTeX files and run them through pdflatex
+latexpdfja to make LaTeX files and run them through platex/dvipdfmx
+text       to make text files
+man        to make manual pages
+texinfo    to make Texinfo files
+info       to make Texinfo files and run them through makeinfo
+gettext    to make PO message catalogs
+changes    to make an overview of all changed/added/deprecated items
+xml        to make Docutils-native XML files
+pseudoxml  to make pseudoxml-XML files for display purposes
+linkcheck  to check all external links for integrity
+doctest    to run all doctests embedded in the documentation (if enabled)
+coverage   to run coverage check of the documentation (if enabled)
+</pre></div>
+</div>
+<p>是不是突然发现了好多, 多到你都不知道选哪个了, 没事, 常用的就 <code class="docutils literal notranslate"><span class="pre">HTML,</span> <span class="pre">PDF,</span> <span class="pre">epub</span></code> 等等那几个, 不过你也可以把这些都给大家提供, 没人会阻拦你, 而且你可能还会遇到点小麻烦, 不过我相信你也不太想这样做!</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">关于如何发布一些格式的文档, 参见 <a class="reference internal" href="#secgendiffformdocs"><span class="std std-ref">生成不同格式的文档</span></a>, 如果你觉得生成的文档太丑, 请继续往下看 <a class="reference internal" href="#secusingtheme"><span class="std std-ref">使用主题</span></a>.</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h4><span class="section-number">2.2.4.2.3. </span>自动构建并预览文件<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>如果你觉得如果能自动打开编译好的文件预览就更好了, 这个是可以的, 真的吗？是的, 真的！</p>
+<p>以 <strong>编译预览HTML文件为例</strong> , 假设我们用Google Chrome预览.</p>
+<ul>
+<li><p class="first">对于Windows系统:</p>
+<ol class="arabic simple">
+<li>首先找到你的浏览器可执行主文件目录, 把它添加到系统环境变量 <code class="docutils literal notranslate"><span class="pre">PATH</span></code> 中去</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">计算机</span> <span class="pre">--&gt;</span> <span class="pre">系统</span> <span class="pre">--&gt;</span> <span class="pre">高级系统设置</span> <span class="pre">--&gt;</span> <span class="pre">高级</span> <span class="pre">--&gt;</span> <span class="pre">环境变量</span> <span class="pre">--&gt;</span> <span class="pre">系统变量</span></code> 里找到 <code class="docutils literal notranslate"><span class="pre">path</span></code> 双击打开, 在最前面添加: <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Google\Chrome\Application;</span></code> (注意你的浏览器路径)</p>
+<ol class="arabic simple" start="2">
+<li>打开 <cite>make.bat</cite> 文件, 在末尾 <code class="docutils literal notranslate"><span class="pre">:end</span></code> 后追加代码( <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">End</span></code> 快捷键可以跳到文件末尾), 即:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="p">:</span><span class="n">end</span>
+
+<span class="n">REM</span> <span class="o">----------------------------------------------</span>
+<span class="n">REM</span> <span class="n">Added</span> <span class="n">by</span> <span class="n">Zhi</span> <span class="n">Liu</span> <span class="o">-</span> <span class="n">Auto</span> <span class="nb">open</span> <span class="n">build</span> <span class="n">file</span>
+<span class="n">REM</span> <span class="o">----------------------------------------------</span>
+
+<span class="k">if</span> <span class="s2">&quot;%1&quot;</span> <span class="o">==</span> <span class="s2">&quot;html&quot;</span> <span class="p">(</span>
+<span class="n">chrome</span> <span class="n">build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">对于Linux系统:</p>
+<p>打开 <cite>Makefile</cite> 文件, 按如下代码所示, 添加对应代码, 注意自己的浏览器名称:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.PHONY: html
+html:
+  $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+  @echo
+  @echo &quot;Build finished. The HTML pages are in $(BUILDDIR)/html.&quot;
+  # --------------------------------------------------------------
+  # Added by Zhi Liu - auto open html
+  google-chrome buil/html/index.html
+  # --------------------------------------------------------------
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h4><span class="section-number">2.2.4.2.4. </span>撰写文档<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<p>我知道, 你发现你的文档没啥内容啊! 你突然感觉要写点什么了, 要不然空空的给谁看谁会看呢? 那就开始学习 <strong>reStructuredText</strong> 吧, 请移步 <a class="reference internal" href="reST.html#restructuredtextsimpletutorial"><span class="std std-ref">reStructuredText简明教程</span></a> .</p>
+</div>
+</div>
+</div>
+<div class="section" id="secusingtheme">
+<span id="id17"></span><h2><span class="section-number">2.2.5. </span>使用主题<a class="headerlink" href="#secusingtheme" title="Permalink to this headline">¶</a></h2>
+<p>如果你觉得生成的HTML不符合你的审美观, 请参考手册 <a class="reference external" href="file:///mnt/d/library/pubdocs/sphinx/manuals/sphinx-stable/contents.html#document-theming">HTML theme support</a> 部分, 里面会详细介绍, 这里只简单介绍主题的更换.</p>
+<div class="section" id="id18">
+<h3><span class="section-number">2.2.5.1. </span>Sphinx自带主题<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>可供选的内置主题有: <strong>basic, alabaster, sphinx_rtd_theme, classic, sphinxdoc, scrolls, agogo, traditional, nature, haiku, pyramid, bizstyle, epub</strong>. 下面给出几个主题的效果, 更多参见: <a class="reference external" href="file:///mnt/d/library/pubdocs/sphinx/manuals/sphinx-stable/contents.html#document-theming">HTML theming support</a> .</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><img alt="../_images/alabaster.png" class="first" src="../_images/alabaster.png" />
+<p class="last">alabaster</p>
+</td>
+<td><img alt="../_images/classic.png" class="first" src="../_images/classic.png" />
+<p class="last">classic</p>
+</td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/haiku.png" class="first" src="../_images/haiku.png" />
+<p class="last">haiku</p>
+</td>
+<td><img alt="../_images/sphinx_rtd_theme.png" class="first" src="../_images/sphinx_rtd_theme.png" />
+<p class="last">sphinx_rtd_theme</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id19">
+<h4><span class="section-number">2.2.5.1.1. </span>更改内置主题<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<p>修改 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 文件, 将 <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> 修改成你想用的主题名字</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;alabaster&#39;</span>
+</pre></div>
+</div>
+<p>然后重新编译 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 即可.</p>
+</div>
+<div class="section" id="readthedocs">
+<h4><span class="section-number">2.2.5.1.2. </span>使用readthedocs主题<a class="headerlink" href="#readthedocs" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://readthedocs.org/">Read the Docs</a> 提供项目文档托管服务, 不过这里只是使用其提供的主题.</p>
+<ol class="arabic simple">
+<li>终端输入 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinx_rtd_theme</span></code> 安装readthedocs主题</li>
+<li>然后修改 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 文件:</li>
+</ol>
+<p>首先在文件开头导入主题包</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="c1"># for using Read the Docs theme</span>
+<span class="kn">import</span> <span class="nn">sphinx_rtd_theme</span>
+</pre></div>
+</div>
+<p>然后修改 <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> 和 <code class="docutils literal notranslate"><span class="pre">html_theme_path</span></code> 的值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="c1"># html_theme = &#39;sphinxdoc&#39;</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+
+<span class="c1">#html_theme_path = []</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">sphinx_rtd_theme</span><span class="o">.</span><span class="n">get_html_theme_path</span><span class="p">()]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>最后终端执行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 即可, 效果图如下：</li>
+</ol>
+<img alt="../_images/using-readthedocs-theme.png" class="align-center" src="../_images/using-readthedocs-theme.png" />
+</div>
+</div>
+</div>
+<div class="section" id="secgendiffformdocs">
+<span id="id20"></span><h2><span class="section-number">2.2.6. </span>生成不同格式的文档<a class="headerlink" href="#secgendiffformdocs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="html">
+<h3><span class="section-number">2.2.6.1. </span>生成html静态网站文件<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
+<p>进入Sphinx工程根目录, 直接终端运行： <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 即可在 <code class="docutils literal notranslate"><span class="pre">build/html</span></code> 目录中看到生成的静态网站文件, 双击首页html文件即可打开浏览.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">如果文档含有中文, 且需要中文搜索功能, 请参考 <a class="reference internal" href="#secchinesesearchproblem"><span class="std std-ref">中文分词问题</span></a> .</p>
+</div>
+</div>
+<div class="section" id="epub">
+<h3><span class="section-number">2.2.6.2. </span>生成epub文档<a class="headerlink" href="#epub" title="Permalink to this headline">¶</a></h3>
+<p>进入Sphinx工程根目录, 直接终端运行： <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">epub</span></code> 即可在 <code class="docutils literal notranslate"><span class="pre">build/epub</span></code> 目录中看到生成的epub文件.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">如果文档含有中文, 且需要中文搜索功能, 请参考 <a class="reference internal" href="#secchinesesearchproblem"><span class="std std-ref">中文分词问题</span></a></p>
+</div>
+</div>
+<div class="section" id="latex">
+<span id="genlatex"></span><h3><span class="section-number">2.2.6.3. </span>生成LaTex文档<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h3>
+<p>要生成LaTex文档, 需要安装LaTex编译环境, 这里建议使用 <a class="reference external" href="http://www.tug.org/texlive/">TeXLive</a> , 安装包约2GB, 虽然安装后约占4GB空间, 但最为完整且支持Windows、Linux、Mac系统.</p>
+<p>安装完成后, 进入Sphinx工程根目录, 在终端输入： <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latex</span></code> 即可生成对应的LaTex文件, 在目录 <code class="docutils literal notranslate"><span class="pre">build/latex</span></code> 里.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">如果文档含有中文, 请参考 <a class="reference internal" href="#secchinesedocproblem"><span class="std std-ref">中文文档问题</span></a></p>
+</div>
+<p>这里还可以自定义 <code class="docutils literal notranslate"><span class="pre">Latex</span></code> 输出样式, 具体参见 <a class="reference external" href="https://www.sphinx-doc.org/en/master/latex.html">LaTeX customization</a> . 主要修改 <cite>conf.py</cite> 文件, 本人采用的配置如下:</p>
+<div class="literal-block-wrapper container" id="bind-id">
+<div class="code-block-caption"><span class="caption-number">代码 2.2.1 </span><span class="caption-text">latex_elements of conf.py</span><a class="headerlink" href="#bind-id" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 0
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># -- Options for LaTeX output ---------------------------------------------</span>
+<span class="n">latex_engine</span> <span class="o">=</span> <span class="s1">&#39;xelatex&#39;</span>
+<span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll"><span class="s1">&#39;passoptionstopackages&#39;</span><span class="p">:</span> <span class="s1">r&#39;&#39;&#39;\PassOptionsToPackage{svgnames}{xcolor}&#39;&#39;&#39;</span><span class="p">,</span>
+</span><span class="c1"># The paper size (&#39;letterpaper&#39; or &#39;a4paper&#39;).</span>
+<span class="c1">#&#39;papersize&#39;: &#39;letterpaper&#39;,</span>
+<span class="s1">&#39;papersize&#39;</span><span class="p">:</span> <span class="s1">&#39;a4paper&#39;</span><span class="p">,</span>
+
+<span class="c1"># The font size (&#39;10pt&#39;, &#39;11pt&#39; or &#39;12pt&#39;).</span>
+<span class="c1">#&#39;pointsize&#39;: &#39;10pt&#39;,</span>
+
+<span class="c1"># Additional stuff for the LaTeX preamble.</span>
+<span class="c1">#&#39;preamble&#39;: &#39;&#39;,</span>
+
+
+<span class="c1"># Latex figure (float) alignment</span>
+<span class="s1">&#39;figure_align&#39;</span><span class="p">:</span> <span class="s1">&#39;htbp&#39;</span><span class="p">,</span>
+
+
+<span class="s1">&#39;sphinxsetup&#39;</span><span class="p">:</span> <span class="s1">r&#39;&#39;&#39;</span>
+<span class="s1">verbatimwithframe = true,</span>
+<span class="s1">VerbatimColor = {named}{Gainsboro}, % background colour for code-blocks</span>
+<span class="s1">VerbatimBorderColor = {rgb}{0.5,0.3,0.9}, % The frame color</span>
+<span class="s1">VerbatimHighlightColor = {rgb}{0.878,1,1}, % The color for highlighted lines.</span>
+<span class="s1">InnerLinkColor = {rgb}{0.208,0.374,0.486}, % Inner Link Color</span>
+<span class="s1">OuterLinkColor = {named}{LightSkyBlue}, % Inner Link Color</span>
+<span class="s1">TitleColor = {named}{Black},</span>
+<span class="s1">hintBorderColor = {named}{Green},</span>
+<span class="s1">dangerBorderColor = {named}{Red},</span>
+<span class="s1">dangerBgColor = {named}{Tomato},</span>
+<span class="s1">errorBorderColor = {named}{Crimson},</span>
+<span class="s1">warningBorderColor = {named}{Chocolate},</span>
+<span class="s1">attentionborder = 2pt,</span>
+<span class="s1">attentionBorderColor = {named}{Salmon},</span>
+<span class="s1">attentionBgColor = {named}{LightSalmon},</span>
+<span class="s1">noteborder = 2pt,</span>
+<span class="s1">noteBorderColor = {named}{Goldenrod},</span>
+<span class="s1">importantborder = 2pt,</span>
+<span class="s1">importantBorderColor = {named}{OrangeRed},</span>
+<span class="s1">cautionborder = 2pt,</span>
+<span class="s1">cautionBorderColor = {named}{Pink},</span>
+<span class="s1">cautionBgColor = {named}{LightPink}&#39;&#39;&#39;</span><span class="p">,</span>
+
+<span class="c1"># Using Package for ZH</span>
+<span class="s1">&#39;preamble&#39;</span><span class="p">:</span><span class="s1">r&#39;&#39;&#39;\usepackage{ctex}</span>
+<span class="s1">\usepackage{bm}</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">上述代码中包含的颜色信息, 可以从 <a class="reference external" href="http://www.latextemplates.com/svgnames-colors">svgnames Colors</a> 找到.</p>
+</div>
+</div>
+<div class="section" id="pdf">
+<h3><span class="section-number">2.2.6.4. </span>生成PDF文档<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
+<p>由于Sphinx通过Latex间接生成PDF文档, 所以需要安装LaTex编译环境. 安装完成后, 进入Sphinx工程根目录, 直接终端运行： <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latexpdf</span></code> 即可在 <code class="docutils literal notranslate"><span class="pre">build/latex</span></code> 目录中看到生成的PDF文件.</p>
+<p>其实，我们还可以先通过 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latex</span></code> 生成 <cite>tex</cite> 文件，然后就可以像处理普通 tex 文件那样自由编辑编译 生成PDF文件。</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">如果文档含有中文, 请参考 <a class="reference internal" href="#secchinesedocproblem"><span class="std std-ref">中文文档问题</span></a> , 如果你觉得生成的PDF不好看, 可以参考 <a class="reference internal" href="#genlatex"><span class="std std-ref">生成LaTex文档</span></a> 自定义.</p>
+</div>
+<p>自定义生成的PDF文件部分环境预览如下</p>
+<div class="figure align-center" id="id37">
+<a class="reference internal image-reference" href="../_images/customizeLatexColor.png"><img alt="自定义生成的PDF文件部分环境预览" src="../_images/customizeLatexColor.png" style="width: 871.2px; height: 972.8000000000001px;" /></a>
+<p class="caption"><span class="caption-number">图 2.2.1 </span><span class="caption-text">自定义生成的PDF文件部分环境预览结果</span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
+<div class="legend">
+自定义生成的PDF文件部分环境预览结果</div>
+</div>
+</div>
+</div>
+<div class="section" id="id21">
+<h2><span class="section-number">2.2.7. </span>问题集锦<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id22">
+<h3><span class="section-number">2.2.7.1. </span>源编码<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>在reST使用Unicode字符可以容易的包含特殊字符如破折号, 版权标志.
+Sphinx 默认源文件使用UTF-8 编码; 你可以通过修改 <cite>conf.py</cite> 文件的 <code class="docutils literal notranslate"><span class="pre">source_encoding</span></code> 的配置值改变编码.</p>
+</div>
+<div class="section" id="secchinesedocproblem">
+<span id="id23"></span><h3><span class="section-number">2.2.7.2. </span>中文文档问题<a class="headerlink" href="#secchinesedocproblem" title="Permalink to this headline">¶</a></h3>
+<p>在使用Sphinx发布**中文文档**生成LaTex或PDF文件时, 会发现报出如下类似错误</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>! Package inputenc Error: Unicode char \u8:引 not set up for use with LaTeX.
+</pre></div>
+</div>
+<p>这是因为, Sphinx默认使用 <code class="docutils literal notranslate"><span class="pre">pdflatex</span></code> 编译文档, 而要让 <code class="docutils literal notranslate"><span class="pre">latex</span></code> 支持中文, 需要包含一些中文包. 最好的解决方案是使用 <code class="docutils literal notranslate"><span class="pre">xelatex</span></code> 编译引擎并包含 <code class="docutils literal notranslate"><span class="pre">CTEX</span></code> 包, 只需要修改两个文件：</p>
+<ol class="arabic simple">
+<li>修改 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 文件（约220行）</li>
+</ol>
+<p>添加如下代码, 使得程序自动在latex文件的导言区加入包引用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="c1"># -- Options for LaTeX output ---------------------------------------------</span>
+
+<span class="n">latex_elements</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1"># The paper size (&#39;letterpaper&#39; or &#39;a4paper&#39;).</span>
+<span class="c1">#&#39;papersize&#39;: &#39;letterpaper&#39;,</span>
+
+<span class="c1"># The font size (&#39;10pt&#39;, &#39;11pt&#39; or &#39;12pt&#39;).</span>
+<span class="c1">#&#39;pointsize&#39;: &#39;10pt&#39;,</span>
+
+<span class="c1"># Additional stuff for the LaTeX preamble.</span>
+<span class="c1">#&#39;preamble&#39;: &#39;&#39;,</span>
+
+<span class="c1"># Latex figure (float) alignment</span>
+<span class="c1">#&#39;figure_align&#39;: &#39;htbp&#39;,</span>
+
+<span class="c1"># Using Package for ZH</span>
+<span class="s1">&#39;preamble&#39;</span> <span class="p">:</span> <span class="s1">r&#39;&#39;&#39;</span>
+<span class="s1">\usepackage{ctex}</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>添加的代码为 <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Using</span> <span class="pre">Package</span> <span class="pre">for</span> <span class="pre">ZH</span></code> 下面的三行, 然后保存.</p>
+<ol class="arabic simple" start="2">
+<li>修改 <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> 文件（约142行）</li>
+</ol>
+<p>添加如下代码中的第5行代码, 即可更改编译引擎为xelatex</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>.PHONY: latexpdf
+latexpdf:
+    $(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+    @echo &quot;Running LaTeX files through pdflatex...&quot;
+    sed -i s/pdflatex/xelatex/ $(BUILDDIR)/latex/Makefile
+    $(MAKE) -C $(BUILDDIR)/latex all-pdf
+    @echo &quot;pdflatex finished; the PDF files are in $(BUILDDIR)/latex.&quot;
+</pre></div>
+</div>
+<p>修改后保存, 然后终端运行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latexpdf</span></code> 即可看到PDF成功生成的提示, 在 <code class="docutils literal notranslate"><span class="pre">build/latex</span></code> 文件夹中可以找到.</p>
+</div>
+<div class="section" id="secchinesesearchproblem">
+<span id="id24"></span><h3><span class="section-number">2.2.7.3. </span>中文分词问题<a class="headerlink" href="#secchinesesearchproblem" title="Permalink to this headline">¶</a></h3>
+<p>Sphinx原生只支持英文搜索, 参考 <a class="reference external" href="https://github.com/bosbyj/sphinx.search.zh_CN">让sphinx支持简体中文搜索的插件</a> , 来实现中文搜索的支持, 下载插件并安装, 具体过程如下：</p>
+<ol class="arabic">
+<li><p class="first">安装结巴分词, Linux： <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jieba</span></code> , Windows： <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jieba</span></code></p>
+</li>
+<li><p class="first">复制文件 <code class="docutils literal notranslate"><span class="pre">zh_CN.py</span></code> 到sphinx的search目录下, Linux： <code class="docutils literal notranslate"><span class="pre">/usr/lib/python2.7/dist-packages/sphinx/search</span></code>, Windows： <code class="docutils literal notranslate"><span class="pre">C:\Python27\Lib\site-packages\sphinx\search</span></code></p>
+</li>
+<li><p class="first">打开 <code class="docutils literal notranslate"><span class="pre">search</span></code> 目录下的 <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> 文件, 找到代码, 添加对中文的支持：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>from sphinx.search import en, ja
+languages = {
+    &#39;en&#39;: en.SearchEnglish,
+    &#39;ja&#39;: ja.SearchJapanese,
+}
+
+修改成：
+
+from sphinx.search import en, ja, zh_CN
+languages = {
+    &#39;en&#39;: en.SearchEnglish,
+    &#39;ja&#39;: ja.SearchJapanese,
+    &#39;zh_CN&#39;: zh_CN.SearchChinese
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">修改 <cite>conf.py</cite> 文件, 将语言设置成 <code class="docutils literal notranslate"><span class="pre">language</span> <span class="pre">=</span> <span class="pre">'zh_CN'</span></code> , 保存然后重新编译 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 即可.</p>
+</li>
+</ol>
+<p>关于CJK支持请参考: <a class="reference external" href="http://tesfans.org/using-sphinx-search-engine-with-chinese-japanese-and-korean-language-documents/">CJK支持</a> .</p>
+</div>
+<div class="section" id="id26">
+<h3><span class="section-number">2.2.7.4. </span>中文乱码问题<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p><strong>问题描述</strong>: 如果你使用Sphinx生成含有中文字符的静态网页时, 当你你视图点击 <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">page</span> <span class="pre">source</span></code> 时可能发现中文乱码的问题, 如下图:</p>
+<img alt="../_images/result-changeto-utf8.png" class="align-center" src="../_images/result-changeto-utf8.png" />
+<p>这时要确保编码的匹配一致性: <strong>源码文件编码</strong>, <strong>源码编码设置值</strong>, <strong>浏览器编码</strong> 要一致, Sphinx采用 <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code> 来支持不同特殊的字符. 所以, 请检查以上三项: 第二项是要确保 <cite>conf.py</cite> 文件中的编码为 <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code>, 即 <code class="docutils literal notranslate"><span class="pre">#source_encoding</span> <span class="pre">=</span> <span class="pre">'utf-8-sig'</span></code>, 这也是默认值; 第三项, 可参见下图更改浏览器编码:</p>
+<img alt="../_images/genggaibianma.png" class="align-center" src="../_images/genggaibianma.png" />
+</div>
+<div class="section" id="secsphinxmathsupport">
+<span id="id27"></span><h3><span class="section-number">2.2.7.5. </span>Sphinx数学支持<a class="headerlink" href="#secsphinxmathsupport" title="Permalink to this headline">¶</a></h3>
+<p>有关Sphinx中对数学公式的支持, 参考手册 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/contents.html#document-ext/math">Math support in Sphinx</a> 部分, 下面简单介绍使用.</p>
+<p>还记得在创建工程时, 询问如何处理数学公式的吗:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="o">&gt;</span> <span class="n">imgmath</span><span class="p">:</span> <span class="n">include</span> <span class="n">math</span><span class="p">,</span> <span class="n">rendered</span> <span class="k">as</span> <span class="n">PNG</span> <span class="ow">or</span> <span class="n">SVG</span> <span class="n">images</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="p">[</span><span class="n">n</span><span class="p">]:</span> <span class="n">n</span>
+<span class="o">&gt;</span> <span class="n">mathjax</span><span class="p">:</span> <span class="n">include</span> <span class="n">math</span><span class="p">,</span> <span class="n">rendered</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">browser</span> <span class="n">by</span> <span class="n">MathJax</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="p">[</span><span class="n">n</span><span class="p">]:</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>当时选择的是使用 MathJax (两者只能选一个, 不信你试试) , 是的, 所以”conf.py” 里的 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 项里只有 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.mathjax'</span></code>, 如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.ifconfig&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.viewcode&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;sphinx.ext.githubpages&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>如果你想更改, 可以, 注释掉 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.mathjax',</span></code> , 并添加 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.imgmath',</span></code> 即可.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Sphinx提供了两种数学公式的渲染方式 ( <strong>二选一</strong> ):</p>
+<ul class="last simple">
+<li><code class="docutils literal notranslate"><span class="pre">'sphinx.ext.imgmath'</span></code> : 通过 <strong>LaTex</strong> 渲染成图片( <code class="docutils literal notranslate"><span class="pre">png</span></code> 或 <code class="docutils literal notranslate"><span class="pre">svg</span></code> ).</li>
+<li><code class="docutils literal notranslate"><span class="pre">'sphinx.ext.mathjax'</span></code> : 通过 <strong>MathJax</strong> 渲染.</li>
+</ul>
+</div>
+<div class="section" id="id28">
+<h4><span class="section-number">2.2.7.5.1. </span>使用LaTex渲染公式<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<p>如上所述, 在 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 列表变量里添加项 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.imgmath',</span></code> 即可. 数学公式通过LaTex引擎渲染成图片, 然后在HTML中显示. 但要求PC机安装有LaTex.</p>
+<p>如果你不使用默认配置, 请参考 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/contents.html#document-ext/math">Math support in Sphinx</a> .</p>
+</div>
+<div class="section" id="katex">
+<h4><span class="section-number">2.2.7.5.2. </span>使用KaTex渲染公式<a class="headerlink" href="#katex" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><a class="reference external" href="https://katex.org/">KaTex</a> 具有比 MathJax更快的解析速度. 使用 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinxcontrib.katex</span></code> 安装 <a class="reference external" href="https://katex.org/">KaTex</a>  扩展. 如上所述, 在 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 列表变量里添加项 <code class="docutils literal notranslate"><span class="pre">'sphinxcontrib.katex',</span></code> 即可. 数学公式通过KaTex引擎渲染公式在HTML中显示.</div></blockquote>
+</div>
+<div class="section" id="mathjax">
+<h4><span class="section-number">2.2.7.5.3. </span>使用MathJax渲染公式<a class="headerlink" href="#mathjax" title="Permalink to this headline">¶</a></h4>
+<p>如上所述, 使用MathJax (准确说是Render math via JavaScript) 渲染公式, 需要在 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 列表变量里添加项 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.mathjax',</span></code> .</p>
+<p>此外, 你还需要配置MathJax的路径 <code class="docutils literal notranslate"><span class="pre">mathjax_path</span></code> , Sphinx默认使用 <a class="reference external" href="http://docs.mathjax.org/en/latest/start.html">MathJax CDN</a> 提供的 JS 文件. Sphinx默认使用的MathJax的路径值为 <code class="docutils literal notranslate"><span class="pre">https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></code> 但你可能发现不管用, 可能是 <code class="docutils literal notranslate"><span class="pre">https</span></code> 安全协议的问题, 改成 <code class="docutils literal notranslate"><span class="pre">http</span></code> 即可, 即设置配置文件 <cite>conf.py</cite> 中的 <code class="docutils literal notranslate"><span class="pre">mathjax_path</span> <span class="pre">=</span> <span class="pre">'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</span></code> .</p>
+<p>当然你也可以使用本地的MathJax, 参考 <a class="reference external" href="http://docs.mathjax.org/en/latest/start.html#installing-your-own-copy-of-mathjax">Installing Your Own Copy of MathJax</a>  , 到 <a class="reference external" href="https://github.com/mathjax/MathJax/archive/master.zip">这里</a> 下载MathJax包 (约34.1MB) 并解压放到 “_static” 目录, 然后设置路径, 即在 <cite>conf.py</cite> 文件中添加代码: <code class="docutils literal notranslate"><span class="pre">mathjax_path</span> <span class="pre">=</span> <span class="pre">MathJax/MathJax.js</span></code> . 重新 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 即可.</p>
+<p>更多细节问题请参考 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/contents.html#document-ext/math">Math support in Sphinx</a> .</p>
+</div>
+</div>
+</div>
+<div class="section" id="id34">
+<h2><span class="section-number">2.2.8. </span>发布静态网站<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<p>如果你想让别人看到你的项目文档, 你有两个选择:</p>
+<ul class="simple">
+<li>放到 <a class="reference external" href="https://readthedocs.org/">Read the Docs</a> 进行托管;</li>
+<li>建立你自己的网站.</li>
+</ul>
+<p>这里介绍第二种方案.</p>
+<div class="section" id="apache">
+<h3><span class="section-number">2.2.8.1. </span>使用Apache建立自己的网站服务器<a class="headerlink" href="#apache" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><cite>Apache &lt;http://httpd.apache.org/&gt;</cite> 是世界使用排名第一的Web服务器软件. 它可以运行在几乎所有广泛使用的计算机平台上, 由于其跨平台和安全性被广泛使用, 是最流行的Web服务器端软件之一. 它快速、可靠并且可通过简单的API扩充, 将Perl/Python等解释器编译到服务器中. 同时Apache音译为阿帕奇, 是北美印第安人的一个部落, 叫阿帕奇族, 在美国的西南部. 也是一个基金会的名称、一种武装直升机等等.</div></blockquote>
+<p>以 <strong>Ubuntu</strong> 系统为例:</p>
+<div class="section" id="apache2">
+<h4><span class="section-number">2.2.8.1.1. </span>安装apache2<a class="headerlink" href="#apache2" title="Permalink to this headline">¶</a></h4>
+<p>使用命令 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">apache2</span></code> , 安装完成后浏览器输入 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code> 测试显示 <cite>It works!</cite> 表明安装成功.</p>
+</div>
+<div class="section" id="id36">
+<h4><span class="section-number">2.2.8.1.2. </span>配置apache2<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<p>修改主配置文件 <code class="docutils literal notranslate"><span class="pre">/etc/apache2/apache2.conf</span></code> 和 端口监听设置文件 <code class="docutils literal notranslate"><span class="pre">/etc/apache2/port.conf</span></code> 文件:</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/apache2/apache2.conf</span></code> 打开文件, 在文件末尾添加:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">ServerName</span> <span class="n">localhost</span>
+<span class="n">DirectoryIndex</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span> <span class="n">index</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/apache2/port.conf</span></code> 打开文件, 在文件末尾添加:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>- **重启apache2**: ``sudo /etc/init.d/apache2 restart`` .
+</pre></div>
+</div>
+<p>现在</p>
+</div>
+</div>
+</div>
+<div class="section" id="git">
+<h2><span class="section-number">2.2.9. </span>使用Git版本控制系统<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<p>请参考 <a class="reference internal" href="Git.html#chaversctrlgit"><span class="std std-ref">版本控制系统Git教程</span></a> .</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id14">[1]</a></td><td>由于创建工程时, 选择了生成 <cite>make.bat</cite> 文件, 所以Windows, Linux系统上命令操作一样: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> .</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reST.html" class="btn btn-neutral float-right" title="2.3. reStructuredText简明教程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="2.1. 文档制作简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

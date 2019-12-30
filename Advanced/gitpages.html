@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.4. 发布网站到GitHub &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. 名词术语" href="../glossary/glossary.html" />
+    <link rel="prev" title="3.3. 项目文档制作指南" href="projdocs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Basic/index.html">2. 基础教程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. 进阶指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">3.1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apidocs.html">3.2. API手册制作指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projdocs.html">3.3. 项目文档制作指南</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. 发布网站到GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github-pages">3.4.1. 什么是 GitHub Pages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">3.4.2. 为你的工程库制作网站</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">3. </span>进阶指南</a> &raquo;</li>
+        
+      <li><span class="section-number">3.4. </span>发布网站到GitHub</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Advanced/gitpages.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="github">
+<h1><span class="section-number">3.4. </span>发布网站到GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="github-pages">
+<h2><span class="section-number">3.4.1. </span>什么是 GitHub Pages<a class="headerlink" href="#github-pages" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">3.4.2. </span>为你的工程库制作网站<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>本节讲述如何为自己的工程制作主页, 并附加API手册项目手册到网站, 以一个例子说明 <a class="footnote-reference" href="#f1" id="id2">[1]</a>. 新建一个文件夹, 比如 <code class="docutils literal notranslate"><span class="pre">pyml</span></code>, 在该文件夹下存放你的工程源码和构建的文档, 以 <code class="docutils literal notranslate"><span class="pre">pyml</span></code> 为例, 新建 <cite>pyml</cite> 和 <cite>pyml-docs</cite> 文件夹分别用于存放项目和文档源码和用于发布的网站文件.</p>
+<ol class="arabic simple" start="0">
+<li>进入 <cite>pyml-docs</cite> 文件夹, 克隆你的库到该文件夹(如 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/antsfamily/pyml.git</span> <span class="pre">html</span></code>)</li>
+</ol>
+<ol class="arabic" start="2">
+<li><p class="first">进入 <cite>html</cite> 文件夹, 此时该包依然为 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支, 使用如下命令为其创建一个 <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> 分支</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">git</span> <span class="n">branch</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span>
+<span class="n">git</span> <span class="n">symbolic</span><span class="o">-</span><span class="n">ref</span> <span class="n">HEAD</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">gh</span><span class="o">-</span><span class="n">pages</span>  <span class="c1"># auto-switches branches to gh-pages</span>
+<span class="n">rm</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">index</span>
+<span class="n">git</span> <span class="n">clean</span> <span class="o">-</span><span class="n">fdx</span>
+<span class="n">git</span> <span class="n">branch</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="2">
+<li><p class="first">参考 <span class="xref std std-ref">_ChapterMakeManualAPI</span> 小结生成 API文档, 注意修改 <cite>Makefile</cite> 文件中的 输出文件夹路径 <code class="docutils literal notranslate"><span class="pre">BUILDDIR</span></code> 为上述 <code class="docutils literal notranslate"><span class="pre">html</span></code> 文件夹所在路径, 如果没有修改就手动将生成的 build/html 文件夹中的内容拷贝到 <code class="docutils literal notranslate"><span class="pre">pyml-docs/html</span></code> 文件夹下即可.</p>
+</li>
+<li><p class="first">发布网站到GitHub: 执行更改提交即可</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">git</span> <span class="n">add</span> <span class="o">-</span><span class="n">A</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="s2">&quot;update docs&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">设置GitHub Pages: 浏览器登录你的 GitHub 账户, 找到你的库 (如 <code class="docutils literal notranslate"><span class="pre">pyml</span></code> ), 点击 <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">--&gt;</span> <span class="pre">GitHub</span> <span class="pre">Pages</span> <span class="pre">--&gt;</span> <span class="pre">Source</span></code> 选择 <code class="docutils literal notranslate"><span class="pre">gh-pages</span> <span class="pre">branch</span></code> 即可</p>
+</li>
+<li><p class="first">访问你的网站: 默认的网址为 <code class="docutils literal notranslate"><span class="pre">http://username.github.io/repositoryname</span></code>, 你可以自定义域名, 比如本人的将 <code class="docutils literal notranslate"><span class="pre">username.github.io</span></code> 换为 <code class="docutils literal notranslate"><span class="pre">iridescent.ink</span></code> , 不过你需要买个域名.</p>
+</li>
+</ol>
+<p>目录树结构如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre>└── pyml
+    ├── pyml
+    │   ├── docs
+    │   │   ├── make.bat
+    │   │   ├── Makefile
+    │   │   └── source
+    │   │       ├── conf.py
+    │   │       ├── index.rst
+    │   │       ├── modules.rst
+    │   │       ├── pyml.math.rst
+    │   │       ├── pyml.nn.rst
+    │   │       ├── pyml.rst
+    │   │       ├── _static
+    │   │       └── _templates
+    │   ├── LICENSE
+    │   ├── pyml
+    │   │   ├── __init__.py
+    │   │   ├── math
+    │   │   │   ├── geometry
+    │   │   │   │   └── generate.py
+    │   │   │   ├── __init__.py
+    │   │   │   ├── __pycache__
+    │   │   │   │   ├── __init__.cpython-36.pyc
+    │   │   │   │   └── rand.cpython-36.pyc
+    │   │   │   └── rand.py
+    │   │   ├── nn
+    │   │   │   ├── activations.py
+    │   │   │   ├── __init__.py
+    │   │   │   └── __pycache__
+    │   │   │       ├── activations.cpython-36.pyc
+    │   │   │       └── __init__.cpython-36.pyc
+    │   │   └── __pycache__
+    │   │       └── __init__.cpython-36.pyc
+    │   └── README.md
+    └── pyml-docs
+        └── pyml
+            ├── genindex.html
+            ├── index.html
+            ├── ...
+            .
+            .
+            .
+</pre></div>
+</div>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://iridescent.ink/pyml/">http://iridescent.ink/pyml/</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../glossary/glossary.html" class="btn btn-neutral float-right" title="4. 名词术语" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="projdocs.html" class="btn btn-neutral float-left" title="3.3. 项目文档制作指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

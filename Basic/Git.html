@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.6. 版本控制系统Git教程 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7. 参考文献" href="reference.html" />
+    <link rel="prev" title="2.5. Sphinx其它语言支持" href="SphinxOtherLanguageSupport.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基础教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">2.1. 文档制作简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html">2.2. Sphinx简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html">2.3. reStructuredText简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html">2.4. Sphinx重要扩展介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.6. 版本控制系统Git教程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-git">2.6.1. What is Git?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-git">2.6.2. Why Git?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to">2.6.3. How to</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.6.3.1. 安装Git</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.6.3.2. 创建本地仓库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.6.3.3. 版本库管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">2.6.3.4. 远程仓库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">2.6.3.5. 分支管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">2.6.3.6. 标签话管理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">2.6.4. Git命令概览</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">2.6.4.1. 自定义快捷命令</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">2.6.5. 子模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">2.6.5.1. 自动下载</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">2.6.6. 搭建Git服务器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">2.6.6.1. 参考示例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssh">2.6.6.2. 安装配置SSH服务端客户端</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">2.6.6.3. 安装配置Git服务端客户端</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">2.6.7. 简化命令</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">2.6.7.1. 自定义域名</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">2.6.7.2. 克隆</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">2.6.8. 错误解决</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone">2.6.8.1. Clone过程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">2.6.8.2. SSH秘钥</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>基础教程</a> &raquo;</li>
+        
+      <li><span class="section-number">2.6. </span>版本控制系统Git教程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Basic/Git.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="git">
+<span id="chaversctrlgit"></span><h1><span class="section-number">2.6. </span>版本控制系统Git教程<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
+<p><strong>什么是版本控制系统 (Version Control System)?</strong> <cite>版本</cite> 这一词大家都不陌生, 那么想必也能猜出来版本控制系统的含义: 能够自动管理文件版本的系统. 这句话似乎是废话, 举个例子来说, 平时在写文章或代码时, 经常会复制多个文件以保存不同版本的修改, 而且你还的重命名文件, 以告诉自己这一版本在哪里修改了, 是不是很繁琐, 不仅如此, 你还要存储不同的文件版本, 那么版本控制系统就是帮你完成这件事, 比如, 它可能会像下面这样自动记录每个版本的变动:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="50%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">版本</th>
+<th class="head">用户</th>
+<th class="head">说明</th>
+<th class="head">日期</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>张三</td>
+<td>删除了软件服务条款5</td>
+<td>7/12 10:38</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>张三</td>
+<td>增加了License人数限制</td>
+<td>7/12 18:09</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>李四</td>
+<td>财务部门调整了合同金额</td>
+<td>7/13 9:51</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>王五</td>
+<td>延长了免费升级周期</td>
+<td>7/14 15:17</td>
+</tr>
+</tbody>
+</table>
+<p>你可能还希望恢复不同的版本状态时的文件, 可以的, 就是说你有后悔药可以吃的. 怎么样? 是不是突然觉得自己要解放了, 不过你得先学会使用一款版本控制系统软件才行. 下面开始吧!!!</p>
+<p>此教程部分内容参考了 <a class="reference external" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程 - 廖雪峰的官方网站</a> 号称最浅显易懂的教程, 是吗? 是的, 至少我觉得是.</p>
+<div class="section" id="what-is-git">
+<h2><span class="section-number">2.6.1. </span>What is Git?<a class="headerlink" href="#what-is-git" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</div></blockquote>
+<p>Git (读音/gɪt/) 是一个免费开源的分布式版本系统, 无论项目大小, 都能游刃有余地管理项目的版本. 我们还希望它是易学的, 是的, 它也确实如此! 右图为 Git 的 logo.</p>
+<div class="figure align-right" id="id27">
+<a class="reference internal image-reference" href="../_images/git_logo.png"><img alt="Logo of Git" src="../_images/git_logo.png" style="width: 130.0px; height: 130.0px;" /></a>
+<p class="caption"><span class="caption-number">图 2.6.1 </span><span class="caption-text">Logo of Git</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Git 与 GitHub</strong>: 我们知道 Git 是一个免费开源的分布式版本系统, 跟svn、cvs是同级的概念, 那么 <a class="reference external" href="https://github.com/">GitHub</a> 是什么呢? 是一个免费的远程仓库, 顾名思义就是用来存储你的文件的, 给用户提供git服务. 这样你就不用自己部署git系统, 直接用注册个账号, 用他们提供的git服务就可以. 右图为其吉祥物 Octocat .</p>
+<div class="figure align-right" id="id28">
+<a class="reference internal image-reference" href="../_images/github_logo.png"><img alt="Logo of Github" src="../_images/github_logo.png" style="width: 128.0px; height: 128.0px;" /></a>
+<p class="caption"><span class="caption-number">图 2.6.2 </span><span class="caption-text">Github 吉祥物 Octocat</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="why-git">
+<h2><span class="section-number">2.6.2. </span>Why Git?<a class="headerlink" href="#why-git" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>免费开源</li>
+<li>分布式</li>
+<li>高效高速</li>
+<li>简单易学</li>
+</ul>
+</div>
+<div class="section" id="how-to">
+<h2><span class="section-number">2.6.3. </span>How to<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h2>
+<p>下面给出一些学习参考资料:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程 - 廖雪峰的官方网站</a> 自称最浅显易懂的Git教程.</li>
+<li><a class="reference external" href="https://git-scm.com/book/en/v2">Pro Git</a> : 由 Scott Chacon and Ben Straub 写的一本书, 可以在线浏览, 也可以下载 PDF, epub, mobi, html 版本查看, 被翻译成多种语言, 简体中文版在 <a class="reference external" href="https://git-scm.com/book/zh/v2">这里</a> 查看与下载.</li>
+</ul>
+<div class="section" id="id4">
+<h3><span class="section-number">2.6.3.1. </span>安装Git<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="windows">
+<h4><span class="section-number">2.6.3.1.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
+<p>可以从 <a class="reference external" href="https://git-scm.com/">Git 官网</a> 下载 Windows 版 Git 安装包 <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a> , 根据提示安装即可.</p>
+<p>此外, <cite>Git for Windows</cite> 是一个轻量级且具有 <a class="reference external" href="http://git-scm.com/">Git SCM</a> 全特性的 Git 软件 , 可以从 <a class="reference external" href="https://git-for-windows.github.io">https://git-for-windows.github.io</a> 下载安装.</p>
+<blockquote>
+<div>Git for Windows focuses on offering a lightweight, native set of tools that bring the full feature set of the Git SCM to Windows while providing appropriate user interfaces for experienced Git users and novices alike.</div></blockquote>
+</div>
+<div class="section" id="linux">
+<h4><span class="section-number">2.6.3.1.2. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h4>
+<p>Git 在 ubuntu 上的安装很简单, 首先终端 ( 快捷键 <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">T</span></code> ) 输入 <code class="docutils literal notranslate"><span class="pre">git</span></code> , 查看是否已安装, 如果没有, 对于 Ubuntu 系统通过如下命令安装即可:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span>
+</pre></div>
+</div>
+<p>其它系统可以根据 <a class="reference external" href="https://git-scm.com/">Git官网</a> 提示下载安装.</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">2.6.3.2. </span>创建本地仓库<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">2.6.3.3. </span>版本库管理<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h4><span class="section-number">2.6.3.3.1. </span>瘦身<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>对于一个git库, 提交次数多了, 特别是库中含有大文件时, 会使得库显得很臃肿, 如果直接删除 <cite>.git</cite> 文件夹会带来很多问题, 使用下面的命令可以清空提交历史缓存, 保持最新代码, 达到瘦身的效果.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># 1. Checkout</span>
+
+git checkout --orphan latest_branch
+
+<span class="c1"># 2. Add all the files</span>
+
+git add -A
+
+<span class="c1"># 3. Commit the changes</span>
+
+git commit -am <span class="s2">&quot;commit message&quot;</span>
+
+<span class="c1"># 4. Delete the branch</span>
+
+git branch -D master
+
+<span class="c1"># 5. Rename the current branch to master</span>
+
+git branch -m master
+
+<span class="c1"># 6. Finally, force update your repository</span>
+
+git push -f origin master
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">2.6.3.4. </span>远程仓库<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">2.6.3.5. </span>分支管理<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id12">
+<h3><span class="section-number">2.6.3.6. </span>标签话管理<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id13">
+<h2><span class="section-number">2.6.4. </span>Git命令概览<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>初始化操作
+    $ git config --global user.name &lt;name&gt; <span class="c1">#设置提交者名字</span>
+    $ git config --global user.email &lt;email&gt; <span class="c1">#设置提交者邮箱</span>
+    $ git config --global core.editor &lt;editor&gt; <span class="c1">#设置默认文本编辑器</span>
+    $ git config --global merge.tool &lt;tool&gt; <span class="c1">#设置解决合并冲突时差异分析工具</span>
+    $ git config -list <span class="c1">#检查已有的配置信息</span>
+创建新版本库
+    $ git clone &lt;url&gt; <span class="c1">#克隆远程版本库</span>
+    $ git init <span class="c1">#初始化本地版本库</span>
+修改和提交
+    $ git add . <span class="c1">#添加所有改动过的文件</span>
+    $ git add &lt;file&gt; <span class="c1">#添加指定的文件</span>
+    $ git mv &lt;old&gt; &lt;new&gt; <span class="c1">#文件重命名</span>
+    $ git rm &lt;file&gt; <span class="c1">#删除文件</span>
+    $ git rm -cached &lt;file&gt; <span class="c1">#停止跟踪文件但不删除</span>
+    $ git commit -m &lt;file&gt; <span class="c1">#提交指定文件</span>
+    $ git commit -m “commit message” <span class="c1">#提交所有更新过的文件</span>
+    $ git commit -amend <span class="c1">#修改最后一次提交</span>
+    $ git commit -C HEAD -a -amend <span class="c1">#增补提交（不会产生新的提交历史纪录）</span>
+查看提交历史
+    $ git log <span class="c1">#查看提交历史</span>
+    $ git log -p &lt;file&gt; <span class="c1">#查看指定文件的提交历史</span>
+    $ git blame &lt;file&gt; <span class="c1">#以列表方式查看指定文件的提交历史</span>
+    $ gitk <span class="c1">#查看当前分支历史纪录</span>
+    $ gitk &lt;branch&gt; <span class="c1">#查看某分支历史纪录</span>
+    $ gitk --all <span class="c1">#查看所有分支历史纪录</span>
+    $ git branch -v <span class="c1">#每个分支最后的提交</span>
+    $ git status <span class="c1">#查看当前状态</span>
+    $ git diff <span class="c1">#查看变更内容</span>
+撤消操作
+    $ git reset -hard HEAD <span class="c1">#撤消工作目录中所有未提交文件的修改内容</span>
+    $ git checkout HEAD &lt;file1&gt; &lt;file2&gt; <span class="c1">#撤消指定的未提交文件的修改内容</span>
+    $ git checkout HEAD. <span class="c1">#撤消所有文件</span>
+    $ git revert &lt;commit&gt; <span class="c1">#撤消指定的提交</span>
+分支与标签
+    $ git branch <span class="c1">#显示所有本地分支</span>
+    $ git checkout &lt;branch/tagname&gt; <span class="c1">#切换到指定分支或标签</span>
+    $ git branch &lt;new-branch&gt; <span class="c1">#创建新分支</span>
+    $ git branch -d &lt;branch&gt; <span class="c1">#删除本地分支</span>
+    $ git tag <span class="c1">#列出所有本地标签</span>
+    $ git tag &lt;tagname&gt; <span class="c1">#基于最新提交创建标签</span>
+    $ git tag -d &lt;tagname&gt; <span class="c1">#删除标签</span>
+合并与衍合
+    $ git merge &lt;branch&gt; <span class="c1">#合并指定分支到当前分支</span>
+    $ git rebase &lt;branch&gt; <span class="c1">#衍合指定分支到当前分支</span>
+远程操作
+    $ git remote -v <span class="c1">#查看远程版本库信息</span>
+    $ git remote show &lt;remote&gt; <span class="c1">#查看指定远程版本库信息</span>
+    $ git remote add &lt;remote&gt; &lt;url&gt; <span class="c1">#添加远程版本库</span>
+    $ git fetch &lt;remote&gt; <span class="c1">#从远程库获取代码</span>
+    $ git pull &lt;remote&gt; &lt;branch&gt; <span class="c1">#下载代码及快速合并</span>
+    $ git push &lt;remote&gt; &lt;branch&gt; <span class="c1">#上传代码及快速合并</span>
+    $ git push &lt;remote&gt; : &lt;branch&gt;/&lt;tagname&gt; <span class="c1">#删除远程分支或标签</span>
+    $ git push -tags <span class="c1">#上传所有标签</span>
+</pre></div>
+</div>
+<div class="section" id="id14">
+<h3><span class="section-number">2.6.4.1. </span>自定义快捷命令<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">alias</span> <span class="nv">gcommit</span><span class="o">=</span><span class="s1">&#39;func() { git commit -m $1;}; func&#39;</span>
+<span class="nb">alias</span> <span class="nv">gpush</span><span class="o">=</span><span class="s1">&#39;git push -u origin master&#39;</span>
+<span class="nb">alias</span> <span class="nv">gadd</span><span class="o">=</span><span class="s1">&#39;git add -A&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># for my git server</span>
+<span class="nb">alias</span> <span class="nv">gitclone</span><span class="o">=</span><span class="s1">&#39;func() { git clone git@lab.ink:/home/git/repositories/$1;}; func&#39;</span>
+<span class="c1">#alias gitclone=&#39;func() { git clone git@$LABIP:/home/git/repositories/$1;}; func&#39;</span>
+<span class="nb">alias</span> <span class="nv">gitadd</span><span class="o">=</span><span class="s1">&#39;func() { sudo /home/liu/sfw/zhi/gitadd.sh $1;}; func&#39;</span>
+<span class="nb">alias</span> <span class="nv">upd</span><span class="o">=</span><span class="s1">&#39;func() { sudo /home/liu/sfw/zhi/updatedomain.sh $1;}; func&#39;</span>
+
+
+<span class="c1"># for git</span>
+<span class="nb">alias</span> <span class="nv">gcommit</span><span class="o">=</span><span class="s1">&#39;git commit -m&#39;</span>
+<span class="nb">alias</span> <span class="nv">gpush</span><span class="o">=</span><span class="s1">&#39;func() { git push -u origin $1;}; func&#39;</span>
+<span class="nb">alias</span> <span class="nv">gpushm</span><span class="o">=</span><span class="s1">&#39;git push -u origin master&#39;</span>
+<span class="nb">alias</span> <span class="nv">gpushp</span><span class="o">=</span><span class="s1">&#39;git push -u origin gh-pages&#39;</span>
+<span class="nb">alias</span> <span class="nv">gadd</span><span class="o">=</span><span class="s1">&#39;git add -A&#39;</span>
+<span class="nb">alias</span> <span class="nv">gstatus</span><span class="o">=</span><span class="s1">&#39;git status&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><span class="section-number">2.6.5. </span>子模块<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h3><span class="section-number">2.6.5.1. </span>自动下载<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>如果你在克隆含有子模块的库时， 没有使用 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recursive</span> <span class="pre">xxx</span></code> ，
+那么不要急， 可以这样把子模块克隆进去</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">cd</span> <span class="o">[</span>project<span class="o">]</span>
+git submodule init
+git submodule update
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2><span class="section-number">2.6.6. </span>搭建Git服务器<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h3><span class="section-number">2.6.6.1. </span>参考示例<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://www.cnblogs.com/linsanshu/p/5512038.html">Git本地服务器搭建及使用详解</a></li>
+<li><a class="reference external" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000">搭建Git服务器</a></li>
+<li><a class="reference external" href="https://gitee.com/progit/4-%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git.html#4.2-%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2-Git">在服务器上部署
+Git</a></li>
+</ul>
+</div>
+<div class="section" id="ssh">
+<h3><span class="section-number">2.6.6.2. </span>安装配置SSH服务端客户端<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>安装SSH: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">openssh-server</span> <span class="pre">openssh-client</span></code></li>
+<li>配置SSH服务端(可选, 默认配置下需要输入密码)：
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/ssh/sshd_config</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">StrictModes</span>&#160; <span class="pre">no</span></code> ,
+<code class="docutils literal notranslate"><span class="pre">RSAAuthentication</span> <span class="pre">yes</span></code> (使用纯的RSA认证),
+<code class="docutils literal notranslate"><span class="pre">PubkeyAuthentication</span> <span class="pre">yes</span></code> (允许Public Key) ,
+<code class="docutils literal notranslate"><span class="pre">AuthorizedKeysFile</span>&#160;&#160;&#160;&#160; <span class="pre">%h/.ssh/authorized_keys</span></code> (公钥存储路径).</li>
+<li>重启SSH服务: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">/etc/init.d/ssh</span> <span class="pre">restart</span></code> 或
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">ssh</span> <span class="pre">restart</span></code></li>
+</ol>
+</div>
+<div class="section" id="id19">
+<h3><span class="section-number">2.6.6.3. </span>安装配置Git服务端客户端<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h4><span class="section-number">2.6.6.3.1. </span>Git服务端配置<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">安装服务端: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span> <span class="pre">git-core</span></code></p>
+</li>
+<li><p class="first">新建用户用于git : <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">adduser</span> <span class="pre">git</span></code> (或 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">useradd</span> <span class="pre">-m</span> <span class="pre">git</span></code> ，
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">passwd</span> <span class="pre">git</span></code>)</p>
+</li>
+<li><p class="first">将git设为管理员(可选): <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/sudoers</span></code> –&gt; 添加
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">ALL=(ALL:ALL)</span>&#160; <span class="pre">ALL</span></code></p>
+</li>
+<li><p class="first">新建仓库目录并更改权限</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">cd</span> /home/git
+sudo mkdir repositories
+sudo chown git:git /home/git/repositories <span class="c1"># 设定所有者</span>
+sudo chmod <span class="m">755</span> /home/git/repositories <span class="c1"># 设置仓库访问权限</span>
+<span class="nb">cd</span> repositories
+sudo git init --bare sample.git <span class="c1"># 创建 sample 库</span>
+sudo chown -R git:git sample.git <span class="c1"># 更改 sample 权限</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>提示:</strong></p>
+<p>出于安全考虑，可以限制git用户通过ssh使用git，但无法登录shell。 打开编辑
+<code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code> 文件并找到 类似 下面的一行(自行创建的用户名)：</p>
+<p><code class="docutils literal notranslate"><span class="pre">git:x:1001:1001:,,,:/home/git:/bin/bash</span></code></p>
+<p>改为：</p>
+<p><code class="docutils literal notranslate"><span class="pre">git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</span></code></p>
+</div>
+<div class="section" id="id21">
+<h4><span class="section-number">2.6.6.3.2. </span>Git客户端配置<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>安装Git客户端（Windows，或Linux）</li>
+<li>生成免密登录的秘钥（可选）: 打开 <code class="docutils literal notranslate"><span class="pre">gitbash</span></code> (Windows) 或终端
+(linux)， 输入以下指令生成秘钥</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">bash</span>&#160;&#160;&#160; <span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span></code> 生成的秘钥一般在
+<code class="docutils literal notranslate"><span class="pre">C:/Users/yourname/.ssh/id_rsa.pub</span></code> (Windows), <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_rsa.pub</span></code>
+(Linux) 文件中.</p>
+<ol class="arabic simple" start="3">
+<li>秘钥上传到服务器: 方法1 –&gt; 在<code class="docutils literal notranslate"><span class="pre">/home/git/</span></code> 下 新建
+<code class="docutils literal notranslate"><span class="pre">.ssh/authorized_keys</span></code> 文件 (如果没有), 复制上述生成的秘钥内容,
+粘贴到 authorized_keys 中保存. 方法2 –&gt; 客户端gitbash终端执行:
+<code class="docutils literal notranslate"><span class="pre">ssh-copy-id</span> <span class="pre">git&#64;yourhost</span></code></li>
+<li>克隆服务端的仓库:</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">bash</span>&#160;&#160;&#160; <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;yourhost:/home/git/repositories/samples.git</span></code></p>
+<ol class="arabic simple" start="5">
+<li>提交到服务端:</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">bash</span>&#160;&#160;&#160; <span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">orig</span> <span class="pre">master</span></code></p>
+<p>按上述步骤配置完即可</p>
+</div>
+</div>
+</div>
+<div class="section" id="id22">
+<h2><span class="section-number">2.6.7. </span>简化命令<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id23">
+<h3><span class="section-number">2.6.7.1. </span>自定义域名<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>通过修改 <code class="docutils literal notranslate"><span class="pre">host</span></code> 文件实现：</p>
+<ul class="simple">
+<li>Windows: <code class="docutils literal notranslate"><span class="pre">C:/Windows/System32/drivers/etc/hosts</span></code></li>
+<li>Ubuntu : <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code></li>
+</ul>
+<p>打开文件，添加域名解析条目即可：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># server at lab</span>
+<span class="c1"># IP domain</span>
+xxx.xxx.xxx.xxx lab.ink
+</pre></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h3><span class="section-number">2.6.7.2. </span>克隆<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<p>采用 <code class="docutils literal notranslate"><span class="pre">alias</span></code> 实现命令的简化：</p>
+<p>Windows与Linux命令相同, 只不过目录不一样：</p>
+<ul class="simple">
+<li>Linux下在 <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> 里</li>
+<li>Windows下在 <code class="docutils literal notranslate"><span class="pre">C:\Users\yourusername/.bashrc</span></code> 里，如果没有，gitbash
+终端执行 : <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">.bashrc</span></code> 即可</li>
+</ul>
+<p>打开该文件，并输入:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">alias</span> <span class="nv">gitclone</span><span class="o">=</span><span class="s1">&#39;func() { git clone git@lab.ink:/home/git/$1;}; func&#39;</span>
+</pre></div>
+</div>
+<p>重启终端，以后可以通过执行如下命令进行克隆：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="c1"># gitclone your_git_repository_name</span>
+gitclone sample
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id25">
+<h2><span class="section-number">2.6.8. </span>错误解决<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clone">
+<h3><span class="section-number">2.6.8.1. </span>Clone过程<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h3>
+<p>clone 时提示如下错误</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>gitclone sample
+Cloning into <span class="s1">&#39;sample&#39;</span>...
+ssh: connect to host lab.ink port 33: Connection timed out
+fatal: Could not <span class="nb">read</span> from remote repository.
+</pre></div>
+</div>
+<p>通过将端口 <code class="docutils literal notranslate"><span class="pre">33</span></code> 改为 <code class="docutils literal notranslate"><span class="pre">22</span></code> 即可。 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/ssh/ssh_config</span></code>
+找到 <code class="docutils literal notranslate"><span class="pre">Port</span></code> 修改即可。</p>
+<p><strong>提示：</strong></p>
+<ul class="simple">
+<li>SSH服务端配置: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/ssh/sshd_config</span></code></li>
+<li>SSH客户端配置: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gedit</span> <span class="pre">/etc/ssh/ssh_config</span></code></li>
+</ul>
+</div>
+<div class="section" id="id26">
+<h3><span class="section-number">2.6.8.2. </span>SSH秘钥<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p>明明添加了秘钥，却提示：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre>sign_and_send_pubkey: signing failed: agent refused operation
+</pre></div>
+</div>
+<p>解决办法：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference.html" class="btn btn-neutral float-right" title="2.7. 参考文献" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="SphinxOtherLanguageSupport.html" class="btn btn-neutral float-left" title="2.5. Sphinx其它语言支持" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

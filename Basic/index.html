@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. 基础教程 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.1. 文档制作简介" href="intro.html" />
+    <link rel="prev" title="1. 引言" href="../Introduction/intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 基础教程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html">2.1. 文档制作简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html">2.2. Sphinx简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html">2.3. reStructuredText简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html">2.4. Sphinx重要扩展介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html">2.6. 版本控制系统Git教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>基础教程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Basic/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="partbasic">
+<span id="id1"></span><h1><span class="section-number">2. </span>基础教程<a class="headerlink" href="#partbasic" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">2.1. 文档制作简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id2">2.1.1. 标记语言简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#markdown">2.1.1.1. Markdown标记语言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id8">2.1.1.2. reStructuredText标记语言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id10">2.1.1.3. 标记语言的优点</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id11">2.1.2. 使用标记语言需要会什么？</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Sphinx.html">2.2. Sphinx简明教程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#what-is-sphinx">2.2.1. What is Sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#why-sphinx">2.2.2. Why Sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#id2">2.2.3. 安装Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#id3">2.2.3.1. 依赖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#linux">2.2.3.2. Linux系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#windows">2.2.3.3. Windows系统</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#id5">2.2.4. 使用Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#id6">2.2.4.1. 手册文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#id11">2.2.4.2. 一起动起来吧</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#secusingtheme">2.2.5. 使用主题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#id18">2.2.5.1. Sphinx自带主题</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#secgendiffformdocs">2.2.6. 生成不同格式的文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#html">2.2.6.1. 生成html静态网站文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#epub">2.2.6.2. 生成epub文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#latex">2.2.6.3. 生成LaTex文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#pdf">2.2.6.4. 生成PDF文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#id21">2.2.7. 问题集锦</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#id22">2.2.7.1. 源编码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#secchinesedocproblem">2.2.7.2. 中文文档问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#secchinesesearchproblem">2.2.7.3. 中文分词问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#id26">2.2.7.4. 中文乱码问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#secsphinxmathsupport">2.2.7.5. Sphinx数学支持</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#id34">2.2.8. 发布静态网站</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sphinx.html#apache">2.2.8.1. 使用Apache建立自己的网站服务器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html#git">2.2.9. 使用Git版本控制系统</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reST.html">2.3. reStructuredText简明教程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reST.html#what-is-restructuredtext">2.3.1. What is reStructuredText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html#why-restructuredtext">2.3.2. Why reStructuredText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html#rest">2.3.3. reST环境搭建</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#sublime-text">2.3.3.1. Sublime Text及其安装</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html#id12">2.3.4. reST语法简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#section-structure">2.3.4.1. 章节 (Section Structure)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#paragraphs">2.3.4.2. 段落 (Paragraphs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#inline-markup">2.3.4.3. 行内标记 (Inline Markup)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#lists">2.3.4.4. 列表 (Lists)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#source-code">2.3.4.5. 源代码 (Source Code)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#sidebar">2.3.4.6. 侧边栏 (Sidebar)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#tables">2.3.4.7. 表格 (Tables)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#explicit-markup">2.3.4.8. 直接标记 (Explicit Markup)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#directives">2.3.4.9. 指令 (Directives)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#hyperlinks">2.3.4.10. 超链接 (Hyperlinks)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#footnotes">2.3.4.11. 脚注 (Footnotes)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#citations">2.3.4.12. 引文 (Citations)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#substitutions">2.3.4.13. 替换 (Substitutions)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reST.html#id36">2.3.4.14. Sphinx扩展指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SphinxExtensions.html">2.4. Sphinx重要扩展介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html#id1">2.4.1. Sphinx内置扩展</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SphinxExtensions.html#id2">2.4.1.1. 重要内置扩展介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SphinxExtensions.html#id5">2.4.1.2. 其它标记指令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html#id8">2.4.2. 第三方扩展</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SphinxExtensions.html#id9">2.4.2.1. 第三方扩展简介及安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SphinxExtensions.html#id10">2.4.2.2. 推荐使用的第三方扩展</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html#id1">2.5.1. 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Git.html">2.6. 版本控制系统Git教程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#what-is-git">2.6.1. What is Git?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#why-git">2.6.2. Why Git?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#how-to">2.6.3. How to</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id4">2.6.3.1. 安装Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id7">2.6.3.2. 创建本地仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id8">2.6.3.3. 版本库管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id10">2.6.3.4. 远程仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id11">2.6.3.5. 分支管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id12">2.6.3.6. 标签话管理</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#id13">2.6.4. Git命令概览</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id14">2.6.4.1. 自定义快捷命令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#id15">2.6.5. 子模块</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id16">2.6.5.1. 自动下载</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#id17">2.6.6. 搭建Git服务器</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id18">2.6.6.1. 参考示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#ssh">2.6.6.2. 安装配置SSH服务端客户端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id19">2.6.6.3. 安装配置Git服务端客户端</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#id22">2.6.7. 简化命令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id23">2.6.7.1. 自定义域名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id24">2.6.7.2. 克隆</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html#id25">2.6.8. 错误解决</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#clone">2.6.8.1. Clone过程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Git.html#id26">2.6.8.2. SSH秘钥</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="intro.html" class="btn btn-neutral float-right" title="2.1. 文档制作简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Introduction/intro.html" class="btn btn-neutral float-left" title="1. 引言" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

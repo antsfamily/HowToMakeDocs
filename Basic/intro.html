@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.1. 文档制作简介 &mdash; A Brief Tutorial On Sphinx and reStructuredText 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon1.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/proof.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"></script>
+        <script type="text/javascript" src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/proof.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Sphinx简明教程" href="Sphinx.html" />
+    <link rel="prev" title="2. 基础教程" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> A Brief Tutorial On Sphinx and reStructuredText
+          
+
+          
+            
+            <img src="../_static/logo1.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/intro.html">1. 引言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 基础教程</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. 文档制作简介</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.1.1. 标记语言简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#markdown">2.1.1.1. Markdown标记语言</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.1.1.2. reStructuredText标记语言</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">2.1.1.3. 标记语言的优点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">2.1.2. 使用标记语言需要会什么？</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Sphinx.html">2.2. Sphinx简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reST.html">2.3. reStructuredText简明教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxExtensions.html">2.4. Sphinx重要扩展介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SphinxOtherLanguageSupport.html">2.5. Sphinx其它语言支持</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git.html">2.6. 版本控制系统Git教程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">2.7. 参考文献</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/index.html">3. 进阶指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/glossary.html">4. 名词术语</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Brief Tutorial On Sphinx and reStructuredText</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>基础教程</a> &raquo;</li>
+        
+      <li><span class="section-number">2.1. </span>文档制作简介</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Basic/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="section-number">2.1. </span>文档制作简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>该手册采用 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> 标记语言（ <a class="reference internal" href="../glossary/glossary.html#term-markup-language"><span class="xref std std-term">Markup Language</span></a> ）撰写, 使用 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 进行发布.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">2.1.1. </span>标记语言简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>你可能觉得标记语言是个新名词, 然而你大错特错, 如果我说 <a class="reference external" href="https://zh.wikipedia.org/wiki/HTML">HTML</a> 、<a class="reference external" href="https://zh.wikipedia.org/wiki/LaTeX">Latex</a> 也是标记语言, 前者用于创建网页, 后者用于排版文档书籍, 你可能就知道一点了.</p>
+<p>简而言之, 标记语言就是特定的标记符号集合, 每个特定标记符可以实现特定的功能（自己总结的）, 如倾斜、加粗、连接、引用等等, 如在reStructureText或者Markdown中, 使用星号括住文本, 可将文本渲染成斜体或粗体, 即 <code class="docutils literal notranslate"><span class="pre">*我变斜了*</span></code> 被渲染成 <em>我变斜了</em>, <code class="docutils literal notranslate"><span class="pre">**我变粗了**</span></code> 被渲染成 <strong>我变粗了</strong> .</p>
+<div class="section" id="markdown">
+<h3><span class="section-number">2.1.1.1. </span>Markdown标记语言<a class="headerlink" href="#markdown" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://zh.wikipedia.org/wiki/Markdown">Markdown</a> 的 <strong>设计哲学是易读（easy-to-read）易写（easy-to-write）, 是一种轻量级标记语言</strong>, 之所以称为轻量级是因为其标记符号集合较小, 容易记住和使用. Markdown标记语言, 如今被越来越多的写作爱好者和撰稿者广泛使用, 也被大多数现代网站所采用, 如 <a class="reference external" href="https://github.com/">GitHub</a> 、 <a class="reference external" href="http://stackoverflow.com/">StackOverflow</a> 、 <a class="reference external" href="http://www.jianshu.com/">简书</a> 、 <a class="reference external" href="http://www.csdn.net/">CSDN</a> 、 <a class="reference external" href="http://note.youdao.com/">有道云笔记</a> 、 <a class="reference external" href="http://www.gitblog.cn/">Gitblog</a> 等等. 此外, 很多开源项目的自述文件 <code class="docutils literal notranslate"><span class="pre">README.md</span></code> 就是采用Markdown语言编写的.</p>
+<p>Markdown的语法手册可以参见：</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.jianshu.com/p/1e402922ee32/">Markdown——入门指南</a></li>
+<li><a class="reference external" href="http://www.markdown.cn/">Markdown中文语法指南</a></li>
+<li><a class="reference external" href="http://daringfireball.net/projects/markdown/">创始人John Gruber的Markdown语法说明</a></li>
+</ul>
+<p>由于Markdown的语法简单, 使得其共功能有限, 因而有了基于Markdown的各种语法扩展, 这里就不再细说, 有兴趣地话自行了解.</p>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">2.1.1.2. </span>reStructuredText标记语言<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> 是比Markdown功能更为强大但语法也更为复杂的一种标记语言. 配合Sphinx使用, 可以撰写渲染排版出优美的文档, 且输出格式丰富. 两者的介绍分别见： <a class="reference internal" href="reST.html#restructuredtextsimpletutorial"><span class="std std-ref">reStructuredText简明教程</span></a> 和 <a class="reference internal" href="Sphinx.html#chasphinxsimpletutorial"><span class="std std-ref">Sphinx简明教程</span></a> .</p>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">2.1.1.3. </span>标记语言的优点<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>标记语言的撰写很简单, 不需要很高大上的IDE, 只需要一个能够编辑文字的文本编辑器即可, 完全可以只用Windows系统的“记事本”或者Linux上的“vi”来完成撰写. 这样的类似代码的语言, 很容易使用诸如Git这样的版本控制系统进行管理！可以总结出以下优点：</p>
+<ul class="simple">
+<li>专注于文本内容而不是排版样式</li>
+<li>兼容所有文本编辑器与字处理软件</li>
+<li>渲染导出格式丰富, 如HTML、PDF, 借助一些工具还可以导出Latex、epub等文件</li>
+<li>可以使用Git等版本控制系统管理文章版本</li>
+<li>可读、直观、易学</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><span class="section-number">2.1.2. </span>使用标记语言需要会什么？<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>哈哈, 首先得知道写什么</li>
+<li>嘿嘿, 你得会打字</li>
+<li>正经的, 你必须学习一门标记语言的语法（如Markdown、reStructureText）</li>
+<li>工具1：你需要一个文本编辑器（notepad、vi、<strong>Sublime Text</strong>）</li>
+<li>工具2：你需要一个该标记语言的解释渲染器（太多了, 不同平台不一样, 如Sphinx）</li>
+</ul>
+<p>让我们开始吧！！！</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Sphinx.html" class="btn btn-neutral float-right" title="2.2. Sphinx简明教程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="2. 基础教程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018，刘志，西安电子科技大学，智能感知与图像理解教育部重点实验室
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
