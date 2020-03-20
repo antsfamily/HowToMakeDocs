@@ -138,11 +138,13 @@ def educate_quotes_latex(s, dquotes=("``", "''")):
 
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 
+
 class DocTranslator(BaseTranslator):
 
     def __init__(self, *args, **kwargs):
         BaseTranslator.__init__(self, *args, **kwargs)
         self.verbatim = None
+
     def visit_caption(self, node):
         caption_idx = node.parent.index(node)
         if caption_idx > 0:
@@ -156,6 +158,7 @@ class DocTranslator(BaseTranslator):
 
         self.in_caption += 1
         self.body.append('\\caption%s{' % short_caption)
+
     def depart_caption(self, node):
         self.body.append('}')
         self.in_caption -= 1
@@ -245,7 +248,7 @@ class DocTranslator(BaseTranslator):
         def warner(msg):
             self.builder.warn(msg, (self.curfilestack[-1], node.line))
         hlcode = self.highlighter.highlight_block(code, lang, warn=warner,
-                linenos=linenos, **highlight_args)
+                                                  linenos=linenos, **highlight_args)
         hlcode = hlcode.replace('\$', '$')
         hlcode = hlcode.replace('\%', '%')
         # workaround for Unicode issue
@@ -257,13 +260,13 @@ class DocTranslator(BaseTranslator):
             self.table.has_problematic = True
             self.table.has_verbatim = True
         # get consistent trailer
-        hlcode = hlcode.rstrip()[:-14] # strip \end{Verbatim}
+        hlcode = hlcode.rstrip()[:-14]  # strip \end{Verbatim}
         hlcode = hlcode.rstrip() + '\n'
         hlcode = '\n' + hlcode + '\\end{%sVerbatim}\n' % (self.table and 'Original' or '')
         hlcode = hlcode.replace('Verbatim', 'lstlisting')
         begin_bracket = hlcode.find('[')
         end_bracket = hlcode.find(']')
-        hlcode = hlcode[:begin_bracket] + '[]' + hlcode[end_bracket+1:]
+        hlcode = hlcode[:begin_bracket] + '[]' + hlcode[end_bracket + 1:]
         self.body.append(hlcode)
         self.verbatim = None
 
@@ -279,7 +282,7 @@ class DocTranslator(BaseTranslator):
             self.context.append(ids + '\\end{wrapfigure}\n')
         else:
             if (not 'align' in node.attributes or
-                node.attributes['align'] == 'center'):
+                    node.attributes['align'] == 'center'):
                 # centering does not add vertical space like center.
                 align = '\n\\centering'
                 align_end = ''
@@ -294,15 +297,16 @@ class DocTranslator(BaseTranslator):
 
 # sphinx.writers.latex.LaTeXTranslator = DocTranslator
 
+
 class CustomLaTeXTranslator(DocTranslator):
     def astext(self):
-            return (#HEADER % self.elements +
-                    #self.highlighter.get_stylesheet() +
-                    u''.join(self.body)
-                    #'\n' + self.elements['footer'] + '\n' +
-                    #self.generate_indices() +
-                    #FOOTER % self.elements
-                    )
+        return (  # HEADER % self.elements +
+            # self.highlighter.get_stylesheet() +
+            u''.join(self.body)
+            #'\n' + self.elements['footer'] + '\n' +
+            # self.generate_indices() +
+            #FOOTER % self.elements
+        )
 
     def unknown_departure(self, node):
         if node.tagname == 'only':
@@ -313,6 +317,7 @@ class CustomLaTeXTranslator(DocTranslator):
         if node.tagname == 'only':
             return
         return super(CustomLaTeXTranslator, self).unknown_visit(node)
+
 
 class CustomLaTeXBuilder(sphinx.builders.latex.LaTeXBuilder):
 
@@ -327,8 +332,8 @@ class CustomLaTeXBuilder(sphinx.builders.latex.LaTeXBuilder):
         # output these as include files
         for docname in ['abstract', 'dedication', 'acknowledgements']:
             destination = FileOutput(
-                    destination_path=os.path.join(self.outdir, '%s.inc' % docname),
-                    encoding='utf-8')
+                destination_path=os.path.join(self.outdir, '%s.inc' % docname),
+                encoding='utf-8')
 
             docwriter = LaTeXWriter(self)
             doctree = self.env.get_doctree(docname)
@@ -348,7 +353,7 @@ class CustomLaTeXBuilder(sphinx.builders.latex.LaTeXBuilder):
         if self.config.latex_additional_files:
             self.info(bold('copying additional files again...'), nonl=1)
             for filename in self.config.latex_additional_files:
-                self.info(' '+filename, nonl=1)
+                self.info(' ' + filename, nonl=1)
                 copyfile(os.path.join(self.confdir, filename),
                          os.path.join(self.outdir, os.path.basename(filename)))
             self.info()

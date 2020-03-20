@@ -8,14 +8,18 @@ import docutils.parsers.rst.directives as directives
 from docutils.parsers.rst import Directive
 from sphinx import addnodes
 
+
 class figtable(nodes.General, nodes.Element):
     pass
+
 
 def visit_figtable_node(self, node):
     pass
 
+
 def depart_figtable_node(self, node):
     pass
+
 
 def visit_figtable_tex(self, node):
     if node['nofig']:
@@ -23,18 +27,22 @@ def visit_figtable_tex(self, node):
     else:
         self.body.append('\n\n\\begin{figure}[tbp]\n\\capstart\n\\begin{center}\n')
 
+
 def depart_figtable_tex(self, node):
     if node['nofig']:
         self.body.append('\n\\end{center}\n\\end{table}\n')
     else:
         self.body.append('\n\\end{center}\n\\end{figure}\n')
 
+
 def visit_figtable_html(self, node):
     atts = {'class': 'figure align-center'}
     self.body.append(self.starttag(node, 'div', **atts) + '<center>')
 
+
 def depart_figtable_html(self, node):
     self.body.append('</center></div>')
+
 
 class FigTableDirective(Directive):
 
@@ -79,6 +87,7 @@ class FigTableDirective(Directive):
             figtable_node.append(targetnode)
 
         return [figtable_node]
+
 
 def setup(app):
     app.add_node(figtable,

@@ -6,6 +6,7 @@ instead of the title of the section.
 from docutils import nodes
 import sphinx.domains.std
 
+
 class CustomStandardDomain(sphinx.domains.std.StandardDomain):
 
     def __init__(self, env):
@@ -15,16 +16,17 @@ class CustomStandardDomain(sphinx.domains.std.StandardDomain):
     def resolve_xref(self, env, fromdocname, builder,
                      typ, target, node, contnode):
         res = super(CustomStandardDomain, self).resolve_xref(env, fromdocname, builder,
-                                                            typ, target, node, contnode)
+                                                             typ, target, node, contnode)
 
         if res is None:
             return res
 
         if typ == 'ref' and not node['refexplicit']:
-            docname, labelid, sectname = self.data['labels'].get(target, ('','',''))
+            docname, labelid, sectname = self.data['labels'].get(target, ('', '', ''))
             res['refdocname'] = docname
 
         return res
+
 
 def doctree_resolved(app, doctree, docname):
     secnums = app.builder.env.toc_secnumbers
@@ -45,6 +47,7 @@ def doctree_resolved(app, doctree, docname):
                             continue
                         linktext = '.'.join(map(str, secnum[anchorname]))
                         child.parent.replace(child, nodes.Text(linktext))
+
 
 def setup(app):
     app.override_domain(CustomStandardDomain)

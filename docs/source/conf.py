@@ -50,7 +50,7 @@ extensions = [
     'sphinxcontrib.nwdiag',  # http://blockdiag.com/en/
     'sphinx.ext.ifconfig',
     # 'sphinx.ext.viewcode',
-    # 'sphinx.ext.githubpages',
+    'sphinx.ext.githubpages',
     'pybtex',  # for style of bibtex
     # 'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
     # 'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions

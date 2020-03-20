@@ -26,6 +26,7 @@ def number_equations(app, doctree, docname):
         num = '%d' % numbers[node['target']]
         node[0] = nodes.Text(num, num)
 
+
 sphinx.ext.mathbase.number_equations = number_equations
 
 

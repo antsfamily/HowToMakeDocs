@@ -9,17 +9,21 @@ from sphinx.util.osutil import ensuredir, os_path
 from sphinx.builders.text import TextBuilder
 from sphinx.writers.text import TextWriter, TextTranslator
 
+
 class SingleFileTextTranslator(TextTranslator):
     def visit_start_of_file(self, node):
         pass
+
     def depart_start_of_file(self, node):
         pass
+
 
 class SingleFileTextWriter(TextWriter):
     def translate(self):
         visitor = SingleFileTextTranslator(self.document, self.builder)
         self.document.walkabout(visitor)
         self.output = visitor.body
+
 
 class SingleFileTextBuilder(TextBuilder):
     """
@@ -56,6 +60,7 @@ class SingleFileTextBuilder(TextBuilder):
         self.info(bold('writing... '), nonl=True)
         self.write_doc(self.config.master_doc, doctree)
         self.info('done')
+
 
 def setup(app):
     app.add_builder(SingleFileTextBuilder)

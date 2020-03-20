@@ -7,15 +7,19 @@ import docutils.parsers.rst.directives as directives
 from docutils.parsers.rst import Directive
 from sphinx import addnodes
 
+
 class subfig(nodes.General, nodes.Element):
     pass
+
 
 def skip_visit(self, node):
     raise nodes.SkipNode
 
+
 def visit_subfig_tex(self, node):
     self.__body = self.body
     self.body = []
+
 
 def depart_subfig_tex(self, node):
     figoutput = ''.join(self.body)
@@ -24,9 +28,11 @@ def depart_subfig_tex(self, node):
     self.body = self.__body
     self.body.append(figoutput)
 
+
 def visit_subfig_html(self, node):
     self.__body = self.body
     self.body = []
+
 
 def depart_subfig_html(self, node):
     figoutput = ''.join(self.body)
@@ -34,36 +40,47 @@ def depart_subfig_html(self, node):
     self.body = self.__body
     self.body.append(figoutput)
 
+
 class subfigstart(nodes.General, nodes.Element):
     pass
+
 
 def visit_subfigstart_tex(self, node):
     self.body.append('\n\\begin{figure}\n\\centering\n\\capstart\n')
 
+
 def depart_subfigstart_tex(self, node):
     pass
+
 
 def visit_subfigstart_html(self, node):
     atts = {'class': 'figure compound align-center'}
     self.body.append(self.starttag(node['subfigend'], 'div', **atts))
 
+
 def depart_subfigstart_html(self, node):
     pass
+
 
 class subfigend(nodes.General, nodes.Element):
     pass
 
+
 def visit_subfigend_tex(self, node):
     pass
+
 
 def depart_subfigend_tex(self, node):
     self.body.append('\n\n\\end{figure}\n\n')
 
+
 def visit_subfigend_html(self, node):
     pass
 
+
 def depart_subfigend_html(self, node):
     self.body.append('</div>')
+
 
 class SubFigEndDirective(Directive):
     has_content = True
@@ -101,6 +118,7 @@ class SubFigEndDirective(Directive):
 
         return [node]
 
+
 class SubFigStartDirective(Directive):
     has_content = False
     optional_arguments = 0
@@ -108,6 +126,7 @@ class SubFigStartDirective(Directive):
     def run(self):
         node = subfigstart()
         return [node]
+
 
 def doctree_read(app, doctree):
     secnums = app.builder.env.toc_secnumbers
@@ -130,7 +149,7 @@ def doctree_read(app, doctree):
         for i, n in enumerate(between_nodes):
             if isinstance(n, nodes.figure):
                 children = [n]
-                prevnode = between_nodes[i-1]
+                prevnode = between_nodes[i - 1]
                 if isinstance(prevnode, nodes.target):
                     node.parent.children.remove(prevnode)
                     children.insert(0, prevnode)
@@ -138,6 +157,7 @@ def doctree_read(app, doctree):
                 node.parent.children[nodeloc] = subfig('', *children)
                 node.parent.children[nodeloc]['width'] = subfigend_node['width']
                 node.parent.children[nodeloc]['mainfigid'] = subfigend_node['ids'][0]
+
 
 def setup(app):
     app.add_node(subfigstart,

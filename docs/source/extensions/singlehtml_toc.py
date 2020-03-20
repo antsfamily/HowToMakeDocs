@@ -6,8 +6,10 @@ correct section number in front.
 from docutils import nodes
 from sphinx import addnodes
 
+
 def stringize_secnum(secnum):
     return '.'.join(map(str, secnum))
+
 
 def doctree_resolved(app, doctree, fromdocname):
     if app.builder.name == 'singlehtml':
@@ -34,6 +36,7 @@ def doctree_resolved(app, doctree, fromdocname):
                             title_text_node = first_title_node.children[0]
                             newtext = subsection_num + ' ' + title_text_node.astext()
                             first_title_node.replace(title_text_node, nodes.Text(newtext))
+
 
 def setup(app):
     app.connect('doctree-resolved', doctree_resolved)
