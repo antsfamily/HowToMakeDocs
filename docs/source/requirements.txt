@@ -1,4 +1,8 @@
 sphinxcontrib.katex
 sphinxcontrib.bibtex
 sphinxcontrib.proof
-
+sphinxcontrib.blockdiag
+sphinxcontrib.seqdiag
+sphinxcontrib.actdiag
+sphinxcontrib.nwdiag
+pybtex
