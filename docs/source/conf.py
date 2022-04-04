@@ -51,7 +51,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     # 'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
-    'pybtex',  # for style of bibtex
+    # 'pybtex',  # for style of bibtex
     # 'numequ',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
     # 'numfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
     # 'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
