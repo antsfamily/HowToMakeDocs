@@ -57,6 +57,8 @@ extensions = [
     # 'subfig',  # https://github.com/jterrace/sphinxtr/tree/master/extensions
 ]
 
+bibtex_bibfiles = []
+
 #-------------------------added------------
 #-----------pip install sphinx-numfig
 # -----------# https://bitbucket.org/arjones6/sphinx-numfig
