@@ -1,8 +1,8 @@
 sphinxcontrib.katex
-sphinxcontrib.bibtex
-sphinxcontrib.proof
-sphinxcontrib.blockdiag
-sphinxcontrib.seqdiag
-sphinxcontrib.actdiag
-sphinxcontrib.nwdiag
+sphinxcontrib.bibtex==2.3.0
+sphinxcontrib.proof==1.3.0
+sphinxcontrib.blockdiag==2.0.0
+sphinxcontrib.seqdiag==2.0.0
+sphinxcontrib.actdiag==2.0.0
+sphinxcontrib.nwdiag==2.0.0
 pybtex
